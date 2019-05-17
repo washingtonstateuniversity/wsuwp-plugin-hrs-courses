@@ -31,6 +31,7 @@
 	],
 	"devDependencies": {
 		"@wordpress/babel-preset-default": "^4.1.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "file:src/_js/packages/dependency-extraction-webpack-plugin",
 		"@wordpress/eslint-plugin": "^2.1.0",
 		"@wordpress/jest-preset-default": "^4.0.0",
 		"@wordpress/npm-package-json-lint-config": "^1.2.0",
@@ -60,7 +61,7 @@
 		"build:scripts": "webpack",
 		"build:styles": "postcss src/_css/main.css --output build/main.css",
 		"clean": "rimraf build/",
-		"lint:scripts": "eslint '*.js' 'src/**/*.js'",
+		"lint:scripts": "eslint '*.js' 'src/**/*.js' --ignore-pattern 'src/_js/packages/**/*.js'",
 		"lint:styles": "stylelint 'src/**/*.css'",
 		"lint:pkg": "npmPkgJsonLint .",
 		"lint:php": "composer lint-detail",

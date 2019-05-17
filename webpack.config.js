@@ -4,6 +4,11 @@
 const { BundleAnalyzerPlugin } = require( 'webpack-bundle-analyzer' );
 const path = require( 'path' );
 
+/**
+ * WordPress dependencies
+ */
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+
 const isProduction = process.env.NODE_ENV === 'production';
 const mode = isProduction ? 'production' : 'development';
 
@@ -46,6 +51,7 @@ const config = {
 		// WP_BUNDLE_ANALYZER global variable enables utility that represents
 		// bundle content as a convenient interactive zoomable treemap.
 		process.env.WP_BUNDLE_ANALYZER && new BundleAnalyzerPlugin(),
+		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 	].filter( Boolean ),
 	stats: {
 		children: false,

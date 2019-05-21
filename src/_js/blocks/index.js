@@ -14,9 +14,9 @@ import * as courselocation from './courselocation';
  *
  * @example
  * ```js
- * import { registerHelpDocBlocks } from './blocks';
+ * import { registerCoursesBlocks } from './blocks';
  *
- * registerHelpDocBlocks();
+ * registerCoursesBlocks();
  * ```
  */
 export const registerCoursesBlocks = () => {

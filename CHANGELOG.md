@@ -18,9 +18,19 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.1.0-alpha01 (:construction: WIP 2019-05-14)
+## 0.1.0 (2019-05-21)
+
+### Fixed
+
+- :bug: Fix #1 Define script dependencies in Webpack configuration using the WordPress [Dependency Extraction Webpack Plugin](https://github.com/WordPress/gutenberg/tree/master/packages/dependency-extraction-webpack-plugin).
 
 ### Added
 
+- :sparkles: Block to handle course location (physical and online) post meta data.
+- :sparkles: Block to handle course date and time post meta data.
+- Primary script entry point and blocks registration handler.
+- Class to handle registering the Courses custom post type and supporting methods such as registering taxonomies and enqueueing scripts.
+- Uninstall file to handle plugin content removal on deletion.
+- :alien: Manually include the `@wordpress/dependency-extraction-webpack-plugin` package (until published to NPM).
 - :memo: Initial documentation files.
 - :wrench: Initial build tool configuration and scripts files.

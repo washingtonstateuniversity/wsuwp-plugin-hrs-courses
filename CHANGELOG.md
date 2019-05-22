@@ -18,6 +18,14 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.2.0 (2019-05-22)
+
+### Added
+
+- Labelling for course location meta rich-text meta block.
+- Course online availability meta data (yes/no toggle for whether the course is available online and a string value for the location).
+- Display handlers to print course online availability.
+
 ## 0.1.0 (2019-05-21)
 
 ### Fixed

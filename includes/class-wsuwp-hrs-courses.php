@@ -292,6 +292,34 @@ class WSUWP_HRS_Courses {
 				},
 			)
 		);
+
+		register_meta(
+			'post',
+			'_' . self::$post_type_slug . '_online', // _wsuwp_hrs_courses_online
+			array(
+				'object_subtype' => self::$post_type_slug,
+				'show_in_rest'   => true,
+				'single'         => true,
+				'type'           => 'string',
+				'auth_callback'  => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+
+		register_meta(
+			'post',
+			'_' . self::$post_type_slug . '_is_online', // _wsuwp_hrs_courses_is_online
+			array(
+				'object_subtype' => self::$post_type_slug,
+				'show_in_rest'   => true,
+				'single'         => true,
+				'type'           => 'boolean',
+				'auth_callback'  => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
 	}
 
 	/**
@@ -308,8 +336,9 @@ class WSUWP_HRS_Courses {
 				plugins_url( 'build/index.js', $this->basename ),
 				array(
 					'wp-blocks',
-					'wp-element',
+					'wp-block-editor',
 					'wp-components',
+					'wp-element',
 					'wp-i18n',
 				)
 			);
@@ -325,10 +354,12 @@ class WSUWP_HRS_Courses {
 		global $post;
 
 		if ( self::$post_type_slug === $post->post_type ) {
-			$datetime = get_post_meta( $post->ID, '_wsuwp_hrs_courses_datetime', true );
-			$location = get_post_meta( $post->ID, '_wsuwp_hrs_courses_location', true );
+			$datetime  = get_post_meta( $post->ID, '_wsuwp_hrs_courses_datetime', true );
+			$location  = get_post_meta( $post->ID, '_wsuwp_hrs_courses_location', true );
+			$is_online = get_post_meta( $post->ID, '_wsuwp_hrs_courses_is_online', true );
+			$url       = get_post_meta( $post->ID, '_wsuwp_hrs_courses_online', true );
 
-			if ( $datetime || $location ) {
+			if ( $datetime || $location || $is_online ) {
 				$meta = '';
 
 				if ( $datetime ) {
@@ -336,7 +367,11 @@ class WSUWP_HRS_Courses {
 				}
 
 				if ( $location ) {
-					$meta .= sprintf( '<p class="location">Location: %1$s</p>', esc_html( $location ) );
+					$meta .= sprintf( '<p class="location">Location: %1$s</p>', $location );
+				}
+
+				if ( $is_online && $url ) {
+					$meta .= sprintf( '<p class="online"><a href="%1$s">View course online</a></p>', esc_url( $url ) );
 				}
 
 				return sprintf( '<div class="course-meta">%1$s</div>%2$s', $meta, $content );

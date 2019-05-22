@@ -309,7 +309,7 @@ class WSUWP_HRS_Courses {
 
 		register_meta(
 			'post',
-			'_' . self::$post_type_slug . '_online_available', // _wsuwp_hrs_courses_online_available
+			'_' . self::$post_type_slug . '_is_online', // _wsuwp_hrs_courses_is_online
 			array(
 				'object_subtype' => self::$post_type_slug,
 				'show_in_rest'   => true,
@@ -336,12 +336,10 @@ class WSUWP_HRS_Courses {
 				plugins_url( 'build/index.js', $this->basename ),
 				array(
 					'wp-blocks',
-					'wp-element',
-					'wp-components',
-					'wp-i18n',
 					'wp-block-editor',
-					'wp-date',
-					'wp-compose',
+					'wp-components',
+					'wp-element',
+					'wp-i18n',
 				)
 			);
 		}
@@ -356,12 +354,12 @@ class WSUWP_HRS_Courses {
 		global $post;
 
 		if ( self::$post_type_slug === $post->post_type ) {
-			$datetime = get_post_meta( $post->ID, '_wsuwp_hrs_courses_datetime', true );
-			$location = get_post_meta( $post->ID, '_wsuwp_hrs_courses_location', true );
-			$online   = get_post_meta( $post->ID, '_wsuwp_hrs_courses_online_available', true );
-			$url      = get_post_meta( $post->ID, '_wsuwp_hrs_courses_online', true );
+			$datetime  = get_post_meta( $post->ID, '_wsuwp_hrs_courses_datetime', true );
+			$location  = get_post_meta( $post->ID, '_wsuwp_hrs_courses_location', true );
+			$is_online = get_post_meta( $post->ID, '_wsuwp_hrs_courses_is_online', true );
+			$url       = get_post_meta( $post->ID, '_wsuwp_hrs_courses_online', true );
 
-			if ( $datetime || $location || $online ) {
+			if ( $datetime || $location || $is_online ) {
 				$meta = '';
 
 				if ( $datetime ) {
@@ -372,7 +370,7 @@ class WSUWP_HRS_Courses {
 					$meta .= sprintf( '<p class="location">Location: %1$s</p>', $location );
 				}
 
-				if ( $online && $url ) {
+				if ( $is_online && $url ) {
 					$meta .= sprintf( '<p class="online"><a href="%1$s">View course online</a></p>', esc_url( $url ) );
 				}
 

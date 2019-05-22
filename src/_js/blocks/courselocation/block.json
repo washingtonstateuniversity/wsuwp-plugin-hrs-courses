@@ -11,6 +11,12 @@
 			"type": "string",
 			"source": "meta",
 			"meta": "_wsuwp_hrs_courses_online"
+		},
+		"onlineValueToggle": {
+			"type": "boolean",
+			"default": false,
+			"source": "meta",
+			"meta": "_wsuwp_hrs_courses_is_online"
 		}
 	}
 }

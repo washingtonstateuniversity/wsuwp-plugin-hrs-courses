@@ -1,6 +1,6 @@
 {
 	"name": "@wsuwp/hrscourses",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"description": "A plugin to create a Course custom post type for WSU Human Resource Services.",
 	"author": "washingtonstateuniversity",

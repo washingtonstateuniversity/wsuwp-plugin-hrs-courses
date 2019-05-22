@@ -205,7 +205,7 @@ function save() {
 /*! exports provided: name, category, attributes, default */
 /***/ (function(module) {
 
-module.exports = {"name":"hrscourses/course-location","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_location"},"onlineValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_online"}}};
+module.exports = {"name":"hrscourses/course-location","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_location"},"onlineValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_online"},"onlineValueToggle":{"type":"boolean","default":false,"source":"meta","meta":"_wsuwp_hrs_courses_is_online"}}};
 
 /***/ }),
 
@@ -227,35 +227,71 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 var __ = wp.i18n.__;
-var TextControl = wp.components.TextControl;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    Dashicon = _wp$components.Dashicon,
+    IconButton = _wp$components.IconButton,
+    PanelBody = _wp$components.PanelBody,
+    ToggleControl = _wp$components.ToggleControl;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    RichText = _wp$blockEditor.RichText,
+    URLInput = _wp$blockEditor.URLInput;
 function CourseDateEdit(_ref) {
   var attributes = _ref.attributes,
       className = _ref.className,
-      setAttributes = _ref.setAttributes;
+      setAttributes = _ref.setAttributes,
+      isSelected = _ref.isSelected;
   var blockValue = attributes.blockValue,
       onlineValue = attributes.onlineValue,
+      onlineValueToggle = attributes.onlineValueToggle,
       placeholder = attributes.placeholder;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Online Location Settings', 'wsuwp-hrs-courses')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+    label: __('Online Location Available', 'wsuwp-hrs-courses'),
+    checked: onlineValueToggle,
+    onChange: function onChange(checked) {
+      return setAttributes({
+        onlineValueToggle: checked
+      });
+    }
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: className
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course location'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
     label: __('Course location'),
-    placeholder: placeholder || __('Add location…'),
+    placeholder: placeholder || __('Add location…', 'wsuwp-hrs-courses'),
+    keepPlaceholderOnFocus: true,
     value: blockValue,
     onChange: function onChange(value) {
       return setAttributes({
         blockValue: value
       });
+    },
+    formattingControls: ['bold', 'italic']
+  })), onlineValueToggle && isSelected && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("form", {
+    className: "block-library-button__inline-link",
+    onSubmit: function onSubmit(event) {
+      return event.preventDefault();
     }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
-    label: __('Online'),
-    placeholder: placeholder || __('Add URL…'),
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Dashicon, {
+    icon: "media-video"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInput, {
     value: onlineValue,
     onChange: function onChange(value) {
       return setAttributes({
         onlineValue: value
       });
     }
-  }));
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
+    icon: "editor-break",
+    label: __('Apply course URL'),
+    type: "submit"
+  })));
 }
 
 /***/ }),
@@ -347,9 +383,9 @@ var registerBlockType = wp.blocks.registerBlockType;
  *
  * @example
  * ```js
- * import { registerHelpDocBlocks } from './blocks';
+ * import { registerCoursesBlocks } from './blocks';
  *
- * registerHelpDocBlocks();
+ * registerCoursesBlocks();
  * ```
  */
 

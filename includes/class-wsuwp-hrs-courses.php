@@ -6,6 +6,7 @@
  * @since 0.1.0
  */
 namespace WSUWP\HRS\Courses\Setup;
+use WSUWP\HRS\Courses\Render;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -48,10 +49,10 @@ class WSUWP_HRS_Courses {
 		// Only set up and activate the plugin if it hasn't already been done.
 		if ( null === $instance ) {
 			$instance = new WSUWP_HRS_Courses();
-			$instance->setup_hooks();
-			$instance->basename = $file;
-			//$instance->includes();
 
+			$instance->basename = $file;
+			$instance->setup_hooks();
+			$instance->includes();
 		}
 
 		return $instance;
@@ -74,8 +75,8 @@ class WSUWP_HRS_Courses {
 	 * @access private
 	 */
 	private function includes() {
-		// The plugin templating functions.
-		require __DIR__ . '/template-tags.php';
+		// Functions to handle rendering and formatting.
+		require __DIR__ . '/render-functions.php';
 	}
 
 	/**
@@ -89,10 +90,9 @@ class WSUWP_HRS_Courses {
 		add_action( 'init', array( $this, 'register_courses_taxonomies' ), 0 );
 		add_action( 'init', array( $this, 'register_courses_post_type' ) );
 		add_action( 'init', array( $this, 'register_courses_meta' ) );
+		add_action( 'init', array( $this, 'register_dynamic_render_callbacks' ) );
 		add_action( 'after_setup_theme', array( $this, 'maybe_flush_rewrite_rules' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_scripts' ) );
-
-		add_filter( 'the_content', array( $this, 'display_course_meta' ) );
 	}
 
 	/**
@@ -346,38 +346,37 @@ class WSUWP_HRS_Courses {
 	}
 
 	/**
-	 * Prints the course meta data if available.
+	 * Sets up rendering callbacks for the Courses dynamic blocks.
 	 *
-	 * @since 0.1.0
+	 * Because these are dynamic blocks they doesn’t use default block save
+	 * implementation through the JS client. Instead they use a server component
+	 * to render the output. The contents on the front end depend this function
+	 * called by the `render_callback` property of `register_block_type`.
+	 * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/creating-dynamic-blocks/ Documentation on dynamic blocks.
+	 *
+	 * @since 0.3.0
 	 */
-	public function display_course_meta( $content ) {
-		global $post;
+	public function register_dynamic_render_callbacks() {
+		$block_names = array(
+			'hrscourses/course-date-time',
+			'hrscourses/course-location',
+		);
 
-		if ( self::$post_type_slug === $post->post_type ) {
-			$datetime  = get_post_meta( $post->ID, '_wsuwp_hrs_courses_datetime', true );
-			$location  = get_post_meta( $post->ID, '_wsuwp_hrs_courses_location', true );
-			$is_online = get_post_meta( $post->ID, '_wsuwp_hrs_courses_is_online', true );
-			$url       = get_post_meta( $post->ID, '_wsuwp_hrs_courses_online', true );
-
-			if ( $datetime || $location || $is_online ) {
-				$meta = '';
-
-				if ( $datetime ) {
-					$meta .= sprintf( '<p class="date">Date: %1$s</p>', esc_html( $datetime ) );
-				}
-
-				if ( $location ) {
-					$meta .= sprintf( '<p class="location">Location: %1$s</p>', $location );
-				}
-
-				if ( $is_online && $url ) {
-					$meta .= sprintf( '<p class="online"><a href="%1$s">View course online</a></p>', esc_url( $url ) );
-				}
-
-				return sprintf( '<div class="course-meta">%1$s</div>%2$s', $meta, $content );
-			}
+		/*
+		 * Registers a render callback for each dynamic block in block_names[]
+		 * with the callback function name formatted by converting the name to
+		 * lowercase and replacing non-alphanumeric characters and underscores
+		 * with underscores. For example, "example/wp-block-02" would become:
+		 * "render_block_example_wp_block_02".
+		 */
+		foreach ( $block_names as $name ) {
+			register_block_type(
+				$name,
+				array(
+					'render_callback' => 'WSUWP\HRS\Courses\Render\render_block_' . Render\sanitize_block_name( $name ),
+				)
+			);
 		}
-
-		return $content;
 	}
+
 }

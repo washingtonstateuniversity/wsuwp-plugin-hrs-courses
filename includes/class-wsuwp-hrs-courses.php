@@ -254,6 +254,7 @@ class WSUWP_HRS_Courses {
 				array( 'hrscourses/course-location' ),
 				array( 'core/paragraph', array( 'placeholder' => 'Describe the course…' ) ),
 			),
+			//'template_lock'   => 'all', Uncomment to lock the template. Use value 'insert' to allow moving items around but lock adding/removing.
 		);
 
 		register_post_type( self::$post_type_slug, $args );

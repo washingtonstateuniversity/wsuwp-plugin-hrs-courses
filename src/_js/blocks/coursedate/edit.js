@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { TextControl } = wp.components;
+const {	RichText } = wp.blockEditor;
 
 export default function CourseDateEdit( {
 	attributes,
@@ -16,11 +16,18 @@ export default function CourseDateEdit( {
 
 	return (
 		<div className={ className }>
-			<TextControl
+			<div className={ 'components-base-control' }>
+				<p className="components-base-control__label">
+					{ __( 'Course date' ) }
+				</p>
+			</div>
+			<RichText
 				label={ __( 'Course date and time' ) }
 				placeholder={ placeholder || __( 'Add date and / or time…' ) }
+				keepPlaceholderOnFocus={ true }
 				value={ blockValue }
 				onChange={ ( value ) => setAttributes( { blockValue: value } ) }
+				formattingControls={ [] }
 			/>
 		</div>
 	);

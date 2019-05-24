@@ -15,7 +15,7 @@ const {
 	URLInput,
 } = wp.blockEditor;
 
-export default function CourseDateEdit( {
+export default function CourseLocationEdit( {
 	attributes,
 	className,
 	setAttributes,

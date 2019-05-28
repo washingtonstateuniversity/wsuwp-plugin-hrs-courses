@@ -18,6 +18,22 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.3.0 (2019-05-28)
+
+### Added
+
+- Rendering calling function for the course presenter(s) block.
+- :sparkles: Block to handle course presenter(s) post meta data.
+- File to handle rendering and formatting functions for Course custom post data.
+
+### Changed
+
+- Make the post meta registration method use an array and add new 'hrscourses/course-presenter' block.
+- Move template definition into a separate variable for readability.
+- Use a rich-text field for the Course date-time meta value instead of a plain-text field.
+- :recycle: Move rendering functions from the setup class to the new `render-functions.php` file.
+- Register `render_callback` functions for all Course dynamic blocks to handle displaying content on the front end.
+
 ## 0.2.0 (2019-05-22)
 
 ### Added

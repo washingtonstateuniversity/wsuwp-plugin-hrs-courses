@@ -226,6 +226,34 @@ class WSUWP_HRS_Courses {
 			'item_updated'             => __( 'Course updated', 'wsuwp-hrs-courses' ),
 		);
 
+		$template = array(
+			array(
+				'hrs-wsu-edu/sidebar',
+				array( 'align' => 'wide' ),
+				array(
+					array(
+						'core/column',
+						array(),
+						array(
+							array( 'core/paragraph', array( 'placeholder' => 'Describe the course…' ) ),
+						),
+					),
+					array(
+						'core/column',
+						array(),
+						array(
+							array( 'hrscourses/course-date-time' ),
+							array( 'hrscourses/course-location' ),
+							array( 'hrscourses/course-presenter' ),
+						),
+					),
+				),
+			),
+			array(
+				'core/file',
+			),
+		);
+
 		$args = array(
 			'labels'          => $labels,
 			'description'     => __( 'Course details.', 'wsuwp-hrs-courses' ),
@@ -249,11 +277,7 @@ class WSUWP_HRS_Courses {
 			'has_archive'     => false,
 			'rewrite'         => array( 'slug' => 'training/courses' ),
 			'show_in_rest'    => true,
-			'template'        => array(
-				array( 'hrscourses/course-date-time' ),
-				array( 'hrscourses/course-location' ),
-				array( 'core/paragraph', array( 'placeholder' => 'Describe the course…' ) ),
-			),
+			'template'        => $template,
 			//'template_lock'   => 'all', Uncomment to lock the template. Use value 'insert' to allow moving items around but lock adding/removing.
 		);
 
@@ -266,61 +290,49 @@ class WSUWP_HRS_Courses {
 	 * @since 0.1.0
 	 */
 	public function register_courses_meta() {
-		register_meta(
-			'post',
-			'_' . self::$post_type_slug . '_datetime', // _wsuwp_hrs_courses_datetime
+		$protected_meta = array(
 			array(
-				'object_subtype' => self::$post_type_slug,
-				'show_in_rest'   => true,
-				'single'         => true,
-				'type'           => 'string',
-				'auth_callback'  => function() {
-					return current_user_can( 'edit_posts' );
-				},
-			)
+				'name'   => '_' . self::$post_type_slug . '_datetime', // _wsuwp_hrs_courses_datetime
+				'single' => true,
+				'type'   => 'string',
+			),
+			array(
+				'name'   => '_' . self::$post_type_slug . '_location', // _wsuwp_hrs_courses_location
+				'single' => true,
+				'type'   => 'string',
+			),
+			array(
+				'name'   => '_' . self::$post_type_slug . '_online', // _wsuwp_hrs_courses_online
+				'single' => true,
+				'type'   => 'string',
+			),
+			array(
+				'name'   => '_' . self::$post_type_slug . '_is_online', // _wsuwp_hrs_courses_is_online
+				'single' => true,
+				'type'   => 'boolean',
+			),
+			array(
+				'name'   => '_' . self::$post_type_slug . '_presenter', // _wsuwp_hrs_courses_presenter
+				'single' => true,
+				'type'   => 'string',
+			),
 		);
 
-		register_meta(
-			'post',
-			'_' . self::$post_type_slug . '_location', // _wsuwp_hrs_courses_location
-			array(
-				'object_subtype' => self::$post_type_slug,
-				'show_in_rest'   => true,
-				'single'         => true,
-				'type'           => 'string',
-				'auth_callback'  => function() {
-					return current_user_can( 'edit_posts' );
-				},
-			)
-		);
-
-		register_meta(
-			'post',
-			'_' . self::$post_type_slug . '_online', // _wsuwp_hrs_courses_online
-			array(
-				'object_subtype' => self::$post_type_slug,
-				'show_in_rest'   => true,
-				'single'         => true,
-				'type'           => 'string',
-				'auth_callback'  => function() {
-					return current_user_can( 'edit_posts' );
-				},
-			)
-		);
-
-		register_meta(
-			'post',
-			'_' . self::$post_type_slug . '_is_online', // _wsuwp_hrs_courses_is_online
-			array(
-				'object_subtype' => self::$post_type_slug,
-				'show_in_rest'   => true,
-				'single'         => true,
-				'type'           => 'boolean',
-				'auth_callback'  => function() {
-					return current_user_can( 'edit_posts' );
-				},
-			)
-		);
+		foreach ( $protected_meta as $meta ) {
+			register_meta(
+				'post',
+				$meta['name'],
+				array(
+					'object_subtype' => self::$post_type_slug,
+					'show_in_rest'   => true,
+					'single'         => $meta['single'],
+					'type'           => $meta['type'],
+					'auth_callback'  => function() {
+						return current_user_can( 'edit_posts' );
+					},
+				)
+			);
+		}
 	}
 
 	/**
@@ -361,6 +373,7 @@ class WSUWP_HRS_Courses {
 		$block_names = array(
 			'hrscourses/course-date-time',
 			'hrscourses/course-location',
+			'hrscourses/course-presenter',
 		);
 
 		/*

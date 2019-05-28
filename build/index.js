@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 var __ = wp.i18n.__;
-var TextControl = wp.components.TextControl;
+var RichText = wp.blockEditor.RichText;
 function CourseDateEdit(_ref) {
   var attributes = _ref.attributes,
       className = _ref.className,
@@ -124,15 +124,21 @@ function CourseDateEdit(_ref) {
       placeholder = attributes.placeholder;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: className
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course date'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
     label: __('Course date and time'),
     placeholder: placeholder || __('Add date and / or time…'),
+    keepPlaceholderOnFocus: true,
     value: blockValue,
     onChange: function onChange(value) {
       return setAttributes({
         blockValue: value
       });
-    }
+    },
+    formattingControls: []
   }));
 }
 
@@ -191,8 +197,15 @@ var settings = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
 function save() {
-  // No data is saved to the block. Data is saved to post meta via attributes.
   return null;
 }
 
@@ -218,7 +231,7 @@ module.exports = {"name":"hrscourses/course-location","category":"common","attri
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseDateEdit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseLocationEdit; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -237,7 +250,7 @@ var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     RichText = _wp$blockEditor.RichText,
     URLInput = _wp$blockEditor.URLInput;
-function CourseDateEdit(_ref) {
+function CourseLocationEdit(_ref) {
   var attributes = _ref.attributes,
       className = _ref.className,
       setAttributes = _ref.setAttributes,
@@ -349,8 +362,140 @@ var settings = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
 function save() {
-  // No data is saved to the block. Data is saved to post meta via attributes.
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursepresenter/block.json":
+/*!***************************************************!*\
+  !*** ./src/_js/blocks/coursepresenter/block.json ***!
+  \***************************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = {"name":"hrscourses/course-presenter","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_presenter"}}};
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursepresenter/edit.js":
+/*!************************************************!*\
+  !*** ./src/_js/blocks/coursepresenter/edit.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CoursePresenterEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var RichText = wp.blockEditor.RichText;
+function CoursePresenterEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var blockValue = attributes.blockValue,
+      placeholder = attributes.placeholder;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course presenter(s)'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    label: __('Course date and time'),
+    placeholder: placeholder || __('Add presenter(s)…'),
+    keepPlaceholderOnFocus: true,
+    value: blockValue,
+    onChange: function onChange(value) {
+      return setAttributes({
+        blockValue: value
+      });
+    },
+    formattingControls: ['bold']
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursepresenter/index.js":
+/*!*************************************************!*\
+  !*** ./src/_js/blocks/coursepresenter/index.js ***!
+  \*************************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/_js/blocks/coursepresenter/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/_js/blocks/coursepresenter/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/_js/blocks/coursepresenter/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/_js/blocks/coursepresenter/save.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Presenter(s)'),
+  category: category,
+  description: __('The course presenter(s).'),
+  icon: 'id',
+  keywords: [__('courses'), __('people'), __('presenters')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursepresenter/save.js":
+/*!************************************************!*\
+  !*** ./src/_js/blocks/coursepresenter/save.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
   return null;
 }
 
@@ -368,6 +513,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerCoursesBlocks", function() { return registerCoursesBlocks; });
 /* harmony import */ var _coursedate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coursedate */ "./src/_js/blocks/coursedate/index.js");
 /* harmony import */ var _courselocation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./courselocation */ "./src/_js/blocks/courselocation/index.js");
+/* harmony import */ var _coursepresenter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coursepresenter */ "./src/_js/blocks/coursepresenter/index.js");
 /**
  * WordPress dependencies
  */
@@ -375,6 +521,7 @@ var registerBlockType = wp.blocks.registerBlockType;
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -390,7 +537,7 @@ var registerBlockType = wp.blocks.registerBlockType;
  */
 
 var registerCoursesBlocks = function registerCoursesBlocks() {
-  [_coursedate__WEBPACK_IMPORTED_MODULE_0__, _courselocation__WEBPACK_IMPORTED_MODULE_1__].forEach(function (block) {
+  [_coursedate__WEBPACK_IMPORTED_MODULE_0__, _courselocation__WEBPACK_IMPORTED_MODULE_1__, _coursepresenter__WEBPACK_IMPORTED_MODULE_2__].forEach(function (block) {
     if (!block) {
       return;
     }

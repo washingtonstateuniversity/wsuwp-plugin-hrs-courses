@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const {	RichText } = wp.blockEditor;
 
-export default function CourseDateEdit( {
+export default function CoursePresenterEdit( {
 	attributes,
 	className,
 	setAttributes,
@@ -18,16 +18,16 @@ export default function CourseDateEdit( {
 		<div className={ className }>
 			<div className={ 'components-base-control' }>
 				<p className="components-base-control__label">
-					{ __( 'Course date' ) }
+					{ __( 'Course presenter(s)' ) }
 				</p>
 			</div>
 			<RichText
 				label={ __( 'Course date and time' ) }
-				placeholder={ placeholder || __( 'Add date and / or time…' ) }
+				placeholder={ placeholder || __( 'Add presenter(s)…' ) }
 				keepPlaceholderOnFocus={ true }
 				value={ blockValue }
 				onChange={ ( value ) => setAttributes( { blockValue: value } ) }
-				formattingControls={ [] }
+				formattingControls={ [ 'bold' ] }
 			/>
 		</div>
 	);

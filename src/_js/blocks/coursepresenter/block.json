@@ -1,0 +1,11 @@
+{
+	"name": "hrscourses/course-presenter",
+	"category": "common",
+	"attributes": {
+		"blockValue": {
+			"type": "string",
+			"source": "meta",
+			"meta": "_wsuwp_hrs_courses_presenter"
+		}
+	}
+}

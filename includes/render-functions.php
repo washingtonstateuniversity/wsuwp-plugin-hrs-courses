@@ -86,3 +86,22 @@ function render_block_hrscourses_course_location( $attributes, $content ) {
 		( ! empty( $url_string ) ) ? $url_string : ''
 	);
 }
+
+/**
+ * Renders the HRS Courses presenter post meta for display.
+ *
+ * @since 0.3.0
+ *
+ * @param array $attributes Optional. An array of block attributes passed from `register_block_type`.
+ * @param array $content    Optional. Content value(s) passed from `register_block_type`.
+ * @return string The formatted HTML for display.
+ */
+function render_block_hrscourses_course_presenter( $attributes, $content ) {
+	$presenter = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_presenter', true );
+
+	if ( $presenter ) {
+		return sprintf( '<p class="wp-block-hrscourses-course-presenter">%s</p>', $presenter );
+	}
+
+	return;
+}

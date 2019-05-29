@@ -93,6 +93,7 @@ class WSUWP_HRS_Courses {
 		add_action( 'init', array( $this, 'register_dynamic_render_callbacks' ) );
 		add_action( 'after_setup_theme', array( $this, 'maybe_flush_rewrite_rules' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'taxonomy_template', array( $this, 'load_taxonomy_template' ) );
 	}
 
 	/**
@@ -391,6 +392,20 @@ class WSUWP_HRS_Courses {
 				)
 			);
 		}
+	}
+
+	/**
+	 *
+	 * @since 0.4.0
+	 *
+	 * @param string $template Path to the template. See locate_template().
+	 * @return string Path to the custom template.
+	 */
+	public function load_taxonomy_template( $template ) {
+		if ( is_tax( 'learning_program' ) || is_tax( 'course_tag' ) ) {
+			$template = dirname( $this->basename ) . '/templates/taxonomy-archive.php';
+		}
+		return $template;
 	}
 
 }

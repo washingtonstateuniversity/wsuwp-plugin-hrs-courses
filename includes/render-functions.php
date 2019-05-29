@@ -105,3 +105,43 @@ function render_block_hrscourses_course_presenter( $attributes, $content ) {
 
 	return;
 }
+
+/**
+ * Displays the post archive page navigation.
+ *
+ * Retrieves and displays the pagination navigation section on archive type
+ * pages such as a taxonomy archives page.
+ *
+ * @since 0.4.0
+ */
+function archive_pagination( $total_pages = '' ) {
+	$args = array(
+		'base'               => str_replace( 99164, '%#%', esc_url( get_pagenum_link( 99164 ) ) ),
+		'format'             => 'page/%#%',
+		'type'               => 'list',
+		'current'            => max( 1, get_query_var( 'paged' ) ),
+		'prev_text'          => 'Previous <span class="screen-reader-text">page</span>',
+		'next_text'          => 'Next <span class="screen-reader-text">page</span>',
+		'before_page_number' => '<span class="screen-reader-text">Page </span>',
+	);
+
+	if ( '' !== $total_pages ) {
+		$args['total'] = $total_pages;
+	}
+
+	$pagination = paginate_links( $args );
+
+	if ( ! empty( $pagination ) ) {
+		?>
+		<footer class="article-footer">
+			<section class="row single pager prevnext gutter pad-ends">
+				<div class="column one">
+					<nav class="navigation pagination" role="navigation" aria-label="Pagination navigation">
+						<?php echo wp_kses_post( $pagination ); ?>
+					</nav>
+				</div>
+			</section>
+		</footer>
+		<?php
+	}
+}

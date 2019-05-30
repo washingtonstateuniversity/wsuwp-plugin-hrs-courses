@@ -1,23 +1,30 @@
 <?php
 /**
- * WSUWP Courses Taxonomy Archive Template
+ * WSUWP Courses Archive Template
  *
- * The template for displaying lists of courses in the custom taxonomies.
+ * The template for displaying lists of courses in archive formats.
  *
  * @package WSUWP_HRS_Courses
  * @since 0.4.0
  */
-namespace WSUWP\HRS\Courses\Templates\Taxonomy;
+namespace WSUWP\HRS\Courses\Templates\Archive;
 use WSUWP\HRS\Courses\Render;
 
 get_header();
 ?>
 
-<main id="wsuwp-main" class="spine-wsuwp-hrs-courses_tax-index">
+<main id="wsuwp-main" class="wsuwp-courses-archive">
 
 	<header class="page-header">
-		<?php /* translators: the HRS news archive title: 1: the taxonomy name */ ?>
-		<h1><?php printf( esc_html__( 'Courses: %s', 'hrs-wsu-edu' ), single_term_title( '', false ) ); ?></h1>
+		<h1>
+			<?php
+			printf(
+				/* translators: the HRS news archive title: 1: the taxonomy name */
+				esc_html__( '%s Courses', 'wsuwp-hrs-courses' ),
+				single_term_title( '', false )
+			);
+			?>
+		</h1>
 	</header>
 
 	<?php
@@ -25,7 +32,7 @@ get_header();
 		while ( have_posts() ) {
 			the_post();
 			?>
-			<section class="row single gutter courses-archive">
+			<section class="row single gutter pad-bottom courses-archive">
 				<div class="column one courses-list">
 					<article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-content' ); ?>>
 						<header class="article-header">

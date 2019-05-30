@@ -51,7 +51,11 @@ function render_block_hrscourses_course_date_time( $attributes, $content ) {
 	$datetime = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_datetime', true );
 
 	if ( $datetime ) {
-		return sprintf( '<p class="wp-block-hrscourses-course-date-time">%s</p>', $datetime );
+		return sprintf(
+			'<p class="wp-block-hrscourses-course-date-time"><span class="label">%1$s</span> %2$s</p>',
+			__( 'Date:', 'wsuwp-hrs-courses' ),
+			$datetime
+		);
 	}
 
 	return;
@@ -67,24 +71,15 @@ function render_block_hrscourses_course_date_time( $attributes, $content ) {
  * @return string The formatted HTML for display.
  */
 function render_block_hrscourses_course_location( $attributes, $content ) {
-	$post_id   = get_the_ID();
-	$location  = get_post_meta( $post_id, '_wsuwp_hrs_courses_location', true );
-	$is_online = get_post_meta( $post_id, '_wsuwp_hrs_courses_is_online', true );
-	$url       = get_post_meta( $post_id, '_wsuwp_hrs_courses_online', true );
+	$location  = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_location', true );
 
 	if ( $location ) {
-		$location_string = sprintf( '<p class="course-location">%s</p>', $location );
+		return sprintf(
+			'<p class="wp-block-hrscourses-course-location"><span class="label">%1$s</span> %2$s</p>',
+			__( 'Location:', 'wsuwp-hrs-courses' ),
+			$location
+		);
 	}
-
-	if ( $is_online && $url ) {
-		$url_string = sprintf( '<p class="course-url"><a href="%1$s">%2$s</a></p>', esc_url( $url ), __( 'View course online', 'wsuwp-hrs-courses' ) );
-	}
-
-	return sprintf(
-		'<div class="wp-block-hrscourses-course-location">%1$s%2$s</div>',
-		( ! empty( $location_string ) ) ? $location_string : '',
-		( ! empty( $url_string ) ) ? $url_string : ''
-	);
 }
 
 /**
@@ -100,7 +95,11 @@ function render_block_hrscourses_course_presenter( $attributes, $content ) {
 	$presenter = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_presenter', true );
 
 	if ( $presenter ) {
-		return sprintf( '<p class="wp-block-hrscourses-course-presenter">%s</p>', $presenter );
+		return sprintf(
+			'<p class="wp-block-hrscourses-course-presenter"><span class="label">%1s</span> %2$s</p>',
+			__( 'Presenter:', 'wsuwp-hrs-courses' ),
+			$presenter
+		);
 	}
 
 	return;

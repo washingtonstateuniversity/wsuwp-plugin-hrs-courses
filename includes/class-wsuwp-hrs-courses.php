@@ -93,7 +93,8 @@ class WSUWP_HRS_Courses {
 		add_action( 'init', array( $this, 'register_dynamic_render_callbacks' ) );
 		add_action( 'after_setup_theme', array( $this, 'maybe_flush_rewrite_rules' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'taxonomy_template', array( $this, 'load_taxonomy_template' ) );
+		add_filter( 'taxonomy_template', array( $this, 'load_template' ) );
+		add_filter( 'archive_template', array( $this, 'load_template' ) );
 	}
 
 	/**
@@ -234,24 +235,40 @@ class WSUWP_HRS_Courses {
 				array(
 					array(
 						'core/column',
-						array(),
+						array( 'className' => 'course-description' ),
 						array(
-							array( 'core/paragraph', array( 'placeholder' => 'Describe the course…' ) ),
+							array(
+								'core/paragraph',
+								array( 'placeholder' => __( 'Describe the course…', 'wsuwp-hrs-courses' ) ),
+							),
+							array(
+								'core/list',
+								array(
+									'placeholder' => __( 'Add course document…', 'wsuwp-hrs-courses' ),
+									'className'   => 'course-documents',
+								),
+							),
+							array(
+								'core/button',
+								array(
+									'text'      => 'Enroll',
+									'className' => 'is-style-outline'
+								),
+							),
 						),
 					),
 					array(
 						'core/column',
-						array(),
+						array( 'className' => 'course-meta' ),
 						array(
 							array( 'hrscourses/course-date-time' ),
 							array( 'hrscourses/course-location' ),
 							array( 'hrscourses/course-presenter' ),
+							array( 'hrscourses/course-online' ),
+							array( 'hrscourses/course-video' ),
 						),
 					),
 				),
-			),
-			array(
-				'core/file',
 			),
 		);
 
@@ -266,7 +283,6 @@ class WSUWP_HRS_Courses {
 				'title',
 				'editor',
 				'author',
-				'thumbnail',
 				'excerpt',
 				'revisions',
 				'custom-fields',
@@ -275,11 +291,10 @@ class WSUWP_HRS_Courses {
 				'course_tag',
 				'learning_program',
 			),
-			'has_archive'     => false,
+			'has_archive'     => true,
 			'rewrite'         => array( 'slug' => 'training/courses' ),
 			'show_in_rest'    => true,
 			'template'        => $template,
-			//'template_lock'   => 'all', Uncomment to lock the template. Use value 'insert' to allow moving items around but lock adding/removing.
 		);
 
 		register_post_type( self::$post_type_slug, $args );
@@ -291,49 +306,45 @@ class WSUWP_HRS_Courses {
 	 * @since 0.1.0
 	 */
 	public function register_courses_meta() {
-		$protected_meta = array(
+		register_meta(
+			'post',
+			'_' . self::$post_type_slug . '_datetime', // _wsuwp_hrs_courses_datetime
 			array(
-				'name'   => '_' . self::$post_type_slug . '_datetime', // _wsuwp_hrs_courses_datetime
-				'single' => true,
-				'type'   => 'string',
-			),
-			array(
-				'name'   => '_' . self::$post_type_slug . '_location', // _wsuwp_hrs_courses_location
-				'single' => true,
-				'type'   => 'string',
-			),
-			array(
-				'name'   => '_' . self::$post_type_slug . '_online', // _wsuwp_hrs_courses_online
-				'single' => true,
-				'type'   => 'string',
-			),
-			array(
-				'name'   => '_' . self::$post_type_slug . '_is_online', // _wsuwp_hrs_courses_is_online
-				'single' => true,
-				'type'   => 'boolean',
-			),
-			array(
-				'name'   => '_' . self::$post_type_slug . '_presenter', // _wsuwp_hrs_courses_presenter
-				'single' => true,
-				'type'   => 'string',
-			),
+				'object_subtype' => self::$post_type_slug,
+				'show_in_rest'   => true,
+				'single'         => true,
+				'type'           => 'string',
+				'auth_callback'  => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
 		);
-
-		foreach ( $protected_meta as $meta ) {
-			register_meta(
-				'post',
-				$meta['name'],
-				array(
-					'object_subtype' => self::$post_type_slug,
-					'show_in_rest'   => true,
-					'single'         => $meta['single'],
-					'type'           => $meta['type'],
-					'auth_callback'  => function() {
-						return current_user_can( 'edit_posts' );
-					},
-				)
-			);
-		}
+		register_meta(
+			'post',
+			'_' . self::$post_type_slug . '_location', // _wsuwp_hrs_courses_location
+			array(
+				'object_subtype' => self::$post_type_slug,
+				'show_in_rest'   => true,
+				'single'         => true,
+				'type'           => 'string',
+				'auth_callback'  => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+		register_meta(
+			'post',
+			'_' . self::$post_type_slug . '_presenter', // _wsuwp_hrs_courses_presenter
+			array(
+				'object_subtype' => self::$post_type_slug,
+				'show_in_rest'   => true,
+				'single'         => true,
+				'type'           => 'string',
+				'auth_callback'  => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
 	}
 
 	/**
@@ -395,16 +406,22 @@ class WSUWP_HRS_Courses {
 	}
 
 	/**
+	 * Loads custom templates for Courses display.
 	 *
 	 * @since 0.4.0
 	 *
 	 * @param string $template Path to the template. See locate_template().
 	 * @return string Path to the custom template.
 	 */
-	public function load_taxonomy_template( $template ) {
+	public function load_template( $template ) {
 		if ( is_tax( 'learning_program' ) || is_tax( 'course_tag' ) ) {
-			$template = dirname( $this->basename ) . '/templates/taxonomy-archive.php';
+			$template = dirname( $this->basename ) . '/templates/archive.php';
 		}
+
+		if ( is_post_type_archive( self::$post_type_slug ) ) {
+			$template = dirname( $this->basename ) . '/templates/archive.php';
+		}
+
 		return $template;
 	}
 

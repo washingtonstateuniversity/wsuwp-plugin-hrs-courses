@@ -18,6 +18,21 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.4.0-beta1 (:construction: WIP 2019-05-30)
+
+### Added
+
+- :sparkles: Two new blocks: one to handle a course video link URL and the other to handle an online course link URL.
+- Custom taxonomy archive page template.
+
+### Changed
+
+- Revert meta registration function `register_courses_meta` to a more standard format.
+- Update archive template filter callback to use general Courses archive template.
+- :truck: Rename 'taxonomy-archive.php' to 'archive.php' and update to handle all courses archive content display.
+- Add labels to dynamic blocks rendered output.
+- Decouple the course URL values from the course location metadata.
+
 ## 0.3.0 (2019-05-28)
 
 ### Added

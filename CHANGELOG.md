@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-beta1 (:construction: WIP 2019-05-30)
+## 0.4.0-beta2 (:construction: WIP 2019-05-30)
 
 ### Added
 
@@ -27,6 +27,8 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Update `.gitattributes` with another export-ignore rule to skip exporting the postCSS config file.
+- Remove "private" flag from `package.json`.
 - Revert meta registration function `register_courses_meta` to a more standard format.
 - Update archive template filter callback to use general Courses archive template.
 - :truck: Rename 'taxonomy-archive.php' to 'archive.php' and update to handle all courses archive content display.

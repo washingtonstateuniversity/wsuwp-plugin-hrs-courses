@@ -218,7 +218,7 @@ function save() {
 /*! exports provided: name, category, attributes, default */
 /***/ (function(module) {
 
-module.exports = {"name":"hrscourses/course-location","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_location"},"onlineValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_online"},"onlineValueToggle":{"type":"boolean","default":false,"source":"meta","meta":"_wsuwp_hrs_courses_is_online"}}};
+module.exports = {"name":"hrscourses/course-location","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_location"}}};
 
 /***/ }),
 
@@ -240,36 +240,14 @@ __webpack_require__.r(__webpack_exports__);
  * WordPress dependencies
  */
 var __ = wp.i18n.__;
-var Fragment = wp.element.Fragment;
-var _wp$components = wp.components,
-    Dashicon = _wp$components.Dashicon,
-    IconButton = _wp$components.IconButton,
-    PanelBody = _wp$components.PanelBody,
-    ToggleControl = _wp$components.ToggleControl;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    RichText = _wp$blockEditor.RichText,
-    URLInput = _wp$blockEditor.URLInput;
+var RichText = wp.blockEditor.RichText;
 function CourseLocationEdit(_ref) {
   var attributes = _ref.attributes,
       className = _ref.className,
-      setAttributes = _ref.setAttributes,
-      isSelected = _ref.isSelected;
+      setAttributes = _ref.setAttributes;
   var blockValue = attributes.blockValue,
-      onlineValue = attributes.onlineValue,
-      onlineValueToggle = attributes.onlineValueToggle,
       placeholder = attributes.placeholder;
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-    title: __('Online Location Settings', 'wsuwp-hrs-courses')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
-    label: __('Online Location Available', 'wsuwp-hrs-courses'),
-    checked: onlineValueToggle,
-    onChange: function onChange(checked) {
-      return setAttributes({
-        onlineValueToggle: checked
-      });
-    }
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: className
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: 'components-base-control'
@@ -286,25 +264,7 @@ function CourseLocationEdit(_ref) {
       });
     },
     formattingControls: ['bold', 'italic']
-  })), onlineValueToggle && isSelected && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("form", {
-    className: "block-library-button__inline-link",
-    onSubmit: function onSubmit(event) {
-      return event.preventDefault();
-    }
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Dashicon, {
-    icon: "media-video"
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInput, {
-    value: onlineValue,
-    onChange: function onChange(value) {
-      return setAttributes({
-        onlineValue: value
-      });
-    }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(IconButton, {
-    icon: "editor-break",
-    label: __('Apply course URL'),
-    type: "submit"
-  })));
+  }));
 }
 
 /***/ }),
@@ -372,6 +332,160 @@ __webpack_require__.r(__webpack_exports__);
  */
 function save() {
   return null;
+}
+
+/***/ }),
+
+/***/ "./src/_js/blocks/courseonline/block.json":
+/*!************************************************!*\
+  !*** ./src/_js/blocks/courseonline/block.json ***!
+  \************************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = {"name":"hrscourses/course-online","category":"common","attributes":{"onlineLearningUrl":{"type":"string","source":"attribute","selector":"a","attribute":"href"},"onlineLearningLink":{"type":"string","default":"Online Learning"}}};
+
+/***/ }),
+
+/***/ "./src/_js/blocks/courseonline/edit.js":
+/*!*********************************************!*\
+  !*** ./src/_js/blocks/courseonline/edit.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseLocationEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    URLInput = _wp$blockEditor.URLInput;
+function CourseLocationEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var onlineLearningUrl = attributes.onlineLearningUrl,
+      onlineLearningLink = attributes.onlineLearningLink;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Online Course Settings', 'wsuwp-hrs-courses')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: __('Online Course Link Text', 'wsuwp-hrs-courses'),
+    help: __('Enter link text here to override the default online course URL link text.', 'wsuwp-hrs-courses'),
+    value: onlineLearningLink,
+    onChange: function onChange(value) {
+      return setAttributes({
+        onlineLearningLink: value
+      });
+    }
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Online course URL'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInput, {
+    autoFocus: false // eslint-disable-line jsx-a11y/no-autofocus
+    ,
+    value: onlineLearningUrl,
+    onChange: function onChange(value) {
+      return setAttributes({
+        onlineLearningUrl: value
+      });
+    }
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/_js/blocks/courseonline/index.js":
+/*!**********************************************!*\
+  !*** ./src/_js/blocks/courseonline/index.js ***!
+  \**********************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/_js/blocks/courseonline/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/_js/blocks/courseonline/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/_js/blocks/courseonline/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/_js/blocks/courseonline/save.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Online URL'),
+  category: category,
+  description: __('The URLs for an online course.'),
+  icon: 'location-alt',
+  keywords: [__('link')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/_js/blocks/courseonline/save.js":
+/*!*********************************************!*\
+  !*** ./src/_js/blocks/courseonline/save.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var RichText = wp.blockEditor.RichText;
+function save(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className;
+  var onlineLearningUrl = attributes.onlineLearningUrl,
+      onlineLearningLink = attributes.onlineLearningLink;
+
+  if (!onlineLearningUrl) {
+    return null;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    tagName: "a",
+    className: "".concat(className, " course-recorded-video__link"),
+    href: onlineLearningUrl,
+    value: onlineLearningLink
+  });
 }
 
 /***/ }),
@@ -501,6 +615,160 @@ function save() {
 
 /***/ }),
 
+/***/ "./src/_js/blocks/coursevideo/block.json":
+/*!***********************************************!*\
+  !*** ./src/_js/blocks/coursevideo/block.json ***!
+  \***********************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = {"name":"hrscourses/course-video","category":"common","attributes":{"recordedVideoUrl":{"type":"string","source":"attribute","selector":"a","attribute":"href"},"recordedVideoLink":{"type":"string","default":"Video Recording"}}};
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursevideo/edit.js":
+/*!********************************************!*\
+  !*** ./src/_js/blocks/coursevideo/edit.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseLocationEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    URLInput = _wp$blockEditor.URLInput;
+function CourseLocationEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var recordedVideoUrl = attributes.recordedVideoUrl,
+      recordedVideoLink = attributes.recordedVideoLink;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Course Video Settings', 'wsuwp-hrs-courses')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: __('Course Video Link Text', 'wsuwp-hrs-courses'),
+    help: __('Enter link text here to override the default video URL link text.', 'wsuwp-hrs-courses'),
+    value: recordedVideoLink,
+    onChange: function onChange(value) {
+      return setAttributes({
+        recordedVideoLink: value
+      });
+    }
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course video URL', 'wsuwp-hrs-courses'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInput, {
+    autoFocus: false // eslint-disable-line jsx-a11y/no-autofocus
+    ,
+    value: recordedVideoUrl,
+    onChange: function onChange(value) {
+      return setAttributes({
+        recordedVideoUrl: value
+      });
+    }
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursevideo/index.js":
+/*!*********************************************!*\
+  !*** ./src/_js/blocks/coursevideo/index.js ***!
+  \*********************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/_js/blocks/coursevideo/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/_js/blocks/coursevideo/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/_js/blocks/coursevideo/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/_js/blocks/coursevideo/save.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Video URL'),
+  category: category,
+  description: __('The URLs for a course video.'),
+  icon: 'location-alt',
+  keywords: [__('media')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/_js/blocks/coursevideo/save.js":
+/*!********************************************!*\
+  !*** ./src/_js/blocks/coursevideo/save.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var RichText = wp.blockEditor.RichText;
+function save(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className;
+  var recordedVideoUrl = attributes.recordedVideoUrl,
+      recordedVideoLink = attributes.recordedVideoLink;
+
+  if (!recordedVideoUrl) {
+    return null;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    tagName: "a",
+    className: "".concat(className, " course-recorded-video__link"),
+    href: recordedVideoUrl,
+    value: recordedVideoLink
+  });
+}
+
+/***/ }),
+
 /***/ "./src/_js/blocks/index.js":
 /*!*********************************!*\
   !*** ./src/_js/blocks/index.js ***!
@@ -514,6 +782,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coursedate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coursedate */ "./src/_js/blocks/coursedate/index.js");
 /* harmony import */ var _courselocation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./courselocation */ "./src/_js/blocks/courselocation/index.js");
 /* harmony import */ var _coursepresenter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coursepresenter */ "./src/_js/blocks/coursepresenter/index.js");
+/* harmony import */ var _coursevideo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coursevideo */ "./src/_js/blocks/coursevideo/index.js");
+/* harmony import */ var _courseonline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./courseonline */ "./src/_js/blocks/courseonline/index.js");
 /**
  * WordPress dependencies
  */
@@ -521,6 +791,8 @@ var registerBlockType = wp.blocks.registerBlockType;
 /**
  * Internal dependencies
  */
+
+
 
 
 
@@ -537,7 +809,7 @@ var registerBlockType = wp.blocks.registerBlockType;
  */
 
 var registerCoursesBlocks = function registerCoursesBlocks() {
-  [_coursedate__WEBPACK_IMPORTED_MODULE_0__, _courselocation__WEBPACK_IMPORTED_MODULE_1__, _coursepresenter__WEBPACK_IMPORTED_MODULE_2__].forEach(function (block) {
+  [_coursedate__WEBPACK_IMPORTED_MODULE_0__, _courselocation__WEBPACK_IMPORTED_MODULE_1__, _coursepresenter__WEBPACK_IMPORTED_MODULE_2__, _coursevideo__WEBPACK_IMPORTED_MODULE_3__, _courseonline__WEBPACK_IMPORTED_MODULE_4__].forEach(function (block) {
     if (!block) {
       return;
     }

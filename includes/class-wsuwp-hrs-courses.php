@@ -77,6 +77,9 @@ class WSUWP_HRS_Courses {
 	private function includes() {
 		// Functions to handle rendering and formatting.
 		require __DIR__ . '/render-functions.php';
+
+		// Functions to modify WordPress defaults using hooks.
+		require __DIR__ . '/template-functions.php';
 	}
 
 	/**
@@ -93,8 +96,6 @@ class WSUWP_HRS_Courses {
 		add_action( 'init', array( $this, 'register_dynamic_render_callbacks' ) );
 		add_action( 'after_setup_theme', array( $this, 'maybe_flush_rewrite_rules' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'taxonomy_template', array( $this, 'load_template' ) );
-		add_filter( 'archive_template', array( $this, 'load_template' ) );
 	}
 
 	/**
@@ -404,25 +405,4 @@ class WSUWP_HRS_Courses {
 			);
 		}
 	}
-
-	/**
-	 * Loads custom templates for Courses display.
-	 *
-	 * @since 0.4.0
-	 *
-	 * @param string $template Path to the template. See locate_template().
-	 * @return string Path to the custom template.
-	 */
-	public function load_template( $template ) {
-		if ( is_tax( 'learning_program' ) || is_tax( 'course_tag' ) ) {
-			$template = dirname( $this->basename ) . '/templates/archive.php';
-		}
-
-		if ( is_post_type_archive( self::$post_type_slug ) ) {
-			$template = dirname( $this->basename ) . '/templates/archive.php';
-		}
-
-		return $template;
-	}
-
 }

@@ -8,7 +8,6 @@
  * @since 0.3.0
  */
 namespace WSUWP\HRS\Courses\Render;
-use WSUWP\HRS\Courses\Setup;
 
 /**
  * Sanitizes a block name.

@@ -68,3 +68,17 @@ function modify_nav_menu_classes( $classes, $item, $args ) {
 	return $classes;
 }
 add_filter( 'nav_menu_css_class', __NAMESPACE__ . '\modify_nav_menu_classes', 15, 3 );
+
+/**
+ * Removes the post date element from courses posts.
+ *
+ * @since 0.4.0
+ */
+function filter_courses_date( $post_date ) {
+	if ( Setup\WSUWP_HRS_Courses::$post_type_slug === get_post_type() ) {
+		return;
+	}
+
+	return $post_date;
+}
+add_filter( 'wsuwp_hrs_post_time_html', __NAMESPACE__ . '\filter_courses_date', 10, 1 );

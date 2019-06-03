@@ -25,6 +25,7 @@ get_header();
 			);
 			?>
 		</h1>
+		<?php if ( is_tax() ) {	the_archive_description(); } ?>
 	</header>
 
 	<?php

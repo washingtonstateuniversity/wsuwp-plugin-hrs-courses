@@ -82,3 +82,18 @@ function filter_courses_date( $post_date ) {
 	return $post_date;
 }
 add_filter( 'wsuwp_hrs_post_time_html', __NAMESPACE__ . '\filter_courses_date', 10, 1 );
+
+/**
+ * Modifies the archive description output on courses taxonomy archive pages.
+ *
+ * @since 0.4.0
+ *
+ * @param string $description The archive description to be displayed.
+ * @return string The modified archive description HTML to be displayed.
+ */
+function courses_archive_description( $description ) {
+	if ( is_tax( 'course_tag' ) || is_tax( 'learning_program' ) ) {
+		return str_replace( '<p>', '<p class="meta">', $description );
+	}
+}
+add_filter( 'get_the_archive_description', __NAMESPACE__ . '\courses_archive_description', 10, 1 );

@@ -70,7 +70,7 @@ function render_block_hrscourses_course_date_time( $attributes, $content ) {
  * @return string The formatted HTML for display.
  */
 function render_block_hrscourses_course_location( $attributes, $content ) {
-	$location  = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_location', true );
+	$location = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_location', true );
 
 	if ( $location ) {
 		return sprintf(

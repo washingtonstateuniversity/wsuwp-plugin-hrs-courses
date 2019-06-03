@@ -253,7 +253,7 @@ class WSUWP_HRS_Courses {
 								'core/button',
 								array(
 									'text'      => 'Enroll',
-									'className' => 'is-style-outline'
+									'className' => 'is-style-outline',
 								),
 							),
 						),

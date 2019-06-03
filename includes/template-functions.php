@@ -54,7 +54,7 @@ function modify_nav_menu_classes( $classes, $item, $args ) {
 			is_tax( 'course_tag' ) ||
 			is_tax( 'learning_program' )
 		) {
-			if ( 'News' === $item->title ) {
+			if ( get_option( 'page_for_posts' ) === $item->object_id ) {
 				$classes = array();
 			}
 		}

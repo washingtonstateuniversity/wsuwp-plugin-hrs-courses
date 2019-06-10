@@ -1,0 +1,11 @@
+.block-editor .wp-block-hrscourses-latest-courses {
+	padding-left: 2.5em;
+}
+
+.block-editor .wp-block-hrscourses-latest-courses.is-grid {
+	padding-left: 0;
+}
+
+.wp-block-hrscourses-latest-courses li a > div {
+	display: inline;
+}

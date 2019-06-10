@@ -28,7 +28,13 @@ function render_block_latest_courses( $attributes ) {
 	);
 
 	if ( isset( $attributes['learningPrograms'] ) ) {
-		$args['category'] = $attributes['learningPrograms'];
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'learning_program',
+				'field'    => 'slug',
+				'terms'    => $attributes['learningPrograms'],
+			)
+		);
 	}
 
 	$recent_courses = get_posts( $args );

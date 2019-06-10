@@ -18,15 +18,28 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-beta2 (:construction: WIP 2019-05-30)
+## 0.4.0-beta4 (:construction: WIP 2019-06-10)
 
 ### Added
 
+- :art: Primary CSS files for the frontend and the editor.
+- :sparkles: New block to display a dynamic list of the latest published courses, modeled on the core latest posts block.
+- File `includes/blocks.php` to handle dynamic block registration files.
+- Webpack build plugin to move block server-side rendering functions into place.
+- :heavy_plus_sign: Add npm development dependencies: lodash, classnames, and the now-published @wordpress/dependency-extraction-webpack-plugin (to replace the manually installed version).
+- Function to modify the archive description output on courses taxonomy pages.
+- Function to remove the post date HTML element from Course posts.
+- :sparkles: Function to modify the WP nav menu classes for the Course post type.
+- File to handle modifying default WordPress template functions.
 - :sparkles: Two new blocks: one to handle a course video link URL and the other to handle an online course link URL.
 - Custom taxonomy archive page template.
 
 ### Changed
 
+- Move dynamic block server-side rendering functions into dedicated files inside the block source directories.
+- :truck: Revise `/src` directory structure to better allow block CSS to live alongside other block files.
+- :wrench: Expand the css lint and build tasks to include css files in any 'src' directory (to allow bundling block css with other block files).
+- Move template functions from the main setup class to newly added `template-functions.php`.
 - Update `.gitattributes` with another export-ignore rule to skip exporting the postCSS config file.
 - Remove "private" flag from `package.json`.
 - Revert meta registration function `register_courses_meta` to a more standard format.
@@ -34,6 +47,10 @@ Changelog formatting (http://semver.org/):
 - :truck: Rename 'taxonomy-archive.php' to 'archive.php' and update to handle all courses archive content display.
 - Add labels to dynamic blocks rendered output.
 - Decouple the course URL values from the course location metadata.
+
+### Removed
+
+- :fire: Close #1 remove manually installed version of the `@wordpress/dependency-extraction-webpack-plugin` npm package and replace it with the now published version of the same.
 
 ## 0.3.0 (2019-05-28)
 

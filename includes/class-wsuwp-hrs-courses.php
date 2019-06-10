@@ -75,10 +75,8 @@ class WSUWP_HRS_Courses {
 	 * @access private
 	 */
 	private function includes() {
-		// Functions to handle rendering and formatting.
+		require __DIR__ . '/blocks.php';
 		require __DIR__ . '/render-functions.php';
-
-		// Functions to modify WordPress defaults using hooks.
 		require __DIR__ . '/template-functions.php';
 	}
 
@@ -93,9 +91,9 @@ class WSUWP_HRS_Courses {
 		add_action( 'init', array( $this, 'register_courses_taxonomies' ), 0 );
 		add_action( 'init', array( $this, 'register_courses_post_type' ) );
 		add_action( 'init', array( $this, 'register_courses_meta' ) );
-		add_action( 'init', array( $this, 'register_dynamic_render_callbacks' ) );
 		add_action( 'after_setup_theme', array( $this, 'maybe_flush_rewrite_rules' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_scripts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_scripts' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
 	}
 
 	/**
@@ -262,7 +260,7 @@ class WSUWP_HRS_Courses {
 						'core/column',
 						array( 'className' => 'course-meta' ),
 						array(
-							array( 'hrscourses/course-date-time' ),
+							array( 'hrscourses/course-datetime' ),
 							array( 'hrscourses/course-location' ),
 							array( 'hrscourses/course-presenter' ),
 							array( 'hrscourses/course-online' ),
@@ -349,60 +347,46 @@ class WSUWP_HRS_Courses {
 	}
 
 	/**
-	 * Enqueues the plugin block editor scripts for this post type only.
+	 * Enqueues the plugin editor scripts.
+	 *
+	 * @since 0.1.0
+	 */
+	public function enqueue_editor_scripts() {
+		wp_enqueue_script(
+			'wsuwp-hrs-courses-script',
+			plugins_url( 'build/index.js', $this->basename ),
+			array(
+				'wp-blocks',
+				'wp-block-editor',
+				'wp-components',
+				'wp-element',
+				'wp-i18n',
+				'wp-data',
+				'wp-date',
+				'wp-api-fetch',
+				'wp-url',
+			),
+			get_plugin_data( $this->basename )['Version']
+		);
+
+		wp_enqueue_style(
+			'wsuwp-hrs-courses-editor-style',
+			plugins_url( 'build/editor.css', $this->basename ),
+			array(),
+			get_plugin_data( $this->basename )['Version']
+		);
+	}
+
+	/**
+	 * Enqueues scripts for the frontend and the editor.
 	 *
 	 * @since 0.1.0
 	 */
 	public function enqueue_scripts() {
-		global $post;
-
-		if ( self::$post_type_slug === $post->post_type ) {
-			wp_enqueue_script(
-				'wsuwp-hrs-courses-script',
-				plugins_url( 'build/index.js', $this->basename ),
-				array(
-					'wp-blocks',
-					'wp-block-editor',
-					'wp-components',
-					'wp-element',
-					'wp-i18n',
-				)
-			);
-		}
-	}
-
-	/**
-	 * Sets up rendering callbacks for the Courses dynamic blocks.
-	 *
-	 * Because these are dynamic blocks they doesn’t use default block save
-	 * implementation through the JS client. Instead they use a server component
-	 * to render the output. The contents on the front end depend this function
-	 * called by the `render_callback` property of `register_block_type`.
-	 * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/creating-dynamic-blocks/ Documentation on dynamic blocks.
-	 *
-	 * @since 0.3.0
-	 */
-	public function register_dynamic_render_callbacks() {
-		$block_names = array(
-			'hrscourses/course-date-time',
-			'hrscourses/course-location',
-			'hrscourses/course-presenter',
+		wp_enqueue_style(
+			'wsuwp-hrs-courses-style',
+			plugins_url( 'build/style.css', $this->basename ),
+			array()
 		);
-
-		/*
-		 * Registers a render callback for each dynamic block in block_names[]
-		 * with the callback function name formatted by converting the name to
-		 * lowercase and replacing non-alphanumeric characters and underscores
-		 * with underscores. For example, "example/wp-block-02" would become:
-		 * "render_block_example_wp_block_02".
-		 */
-		foreach ( $block_names as $name ) {
-			register_block_type(
-				$name,
-				array(
-					'render_callback' => 'WSUWP\HRS\Courses\Render\render_block_' . Render\sanitize_block_name( $name ),
-				)
-			);
-		}
 	}
 }

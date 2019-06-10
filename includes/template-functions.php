@@ -75,7 +75,7 @@ add_filter( 'nav_menu_css_class', __NAMESPACE__ . '\modify_nav_menu_classes', 15
  * @since 0.4.0
  */
 function filter_courses_date( $post_date ) {
-	if ( Setup\WSUWP_HRS_Courses::$post_type_slug === get_post_type() ) {
+	if ( get_post_type() === Setup\WSUWP_HRS_Courses::$post_type_slug ) {
 		return;
 	}
 

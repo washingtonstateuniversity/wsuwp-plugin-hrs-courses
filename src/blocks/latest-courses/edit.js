@@ -132,11 +132,8 @@ class LatestCoursesEdit extends Component {
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ coursesToShow }
-						categoriesList={ taxLearningProgramsList }
-						selectedCategoryId={ learningPrograms }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { learningPrograms: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { coursesToShow: value } ) }
 					/>
 					{ postLayout === 'grid' &&
@@ -257,11 +254,10 @@ class LatestCoursesEdit extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { coursesToShow, order, orderBy, learningPrograms } = props.attributes;
+	const { coursesToShow, order, orderBy } = props.attributes;
 	const { getEntityRecords } = select( 'core' );
 
 	const latestCoursesQuery = pickBy( {
-		learningPrograms,
 		order,
 		orderby: orderBy,
 		per_page: coursesToShow,

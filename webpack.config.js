@@ -2,7 +2,7 @@
  * External dependencies
  */
 const { BundleAnalyzerPlugin } = require( 'webpack-bundle-analyzer' );
-const path = require( 'path' );
+const { resolve, sep } = require( 'path' );
 
 /**
  * WordPress dependencies
@@ -15,11 +15,11 @@ const mode = isProduction ? 'production' : 'development';
 const config = {
 	mode,
 	entry: {
-		index: path.resolve( process.cwd(), 'src/_js', 'index.js' ),
+		index: resolve( process.cwd(), 'src/', 'index.js' ),
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve( process.cwd(), 'build' ),
+		path: resolve( process.cwd(), 'build' ),
 	},
 	resolve: {
 		alias: {

@@ -33,7 +33,7 @@ function render_block_latest_courses( $attributes ) {
 				'taxonomy' => 'learning_program',
 				'field'    => 'slug',
 				'terms'    => $attributes['learningPrograms'],
-			)
+			),
 		);
 	}
 

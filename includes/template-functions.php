@@ -46,7 +46,7 @@ add_filter( 'archive_template', __NAMESPACE__ . '\load_template' );
  * @return string[] Array of CSS classes for the nav menu item.
  */
 function modify_nav_menu_classes( $classes, $item, $args ) {
-	if ( in_array( $args->menu, array( 'site', 'offsite' ) ) ) {
+	if ( in_array( $args->menu, array( 'site', 'offsite' ), true ) ) {
 		// Remove the "active" class from the blog home page for Courses CPT.
 		if (
 			is_singular( Setup\WSUWP_HRS_Courses::$post_type_slug ) ||

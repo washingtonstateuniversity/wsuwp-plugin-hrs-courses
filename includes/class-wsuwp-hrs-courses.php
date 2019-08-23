@@ -362,7 +362,6 @@ class WSUWP_HRS_Courses {
 				'wp-element',
 				'wp-i18n',
 				'wp-data',
-				'wp-date',
 				'wp-api-fetch',
 				'wp-url',
 			),

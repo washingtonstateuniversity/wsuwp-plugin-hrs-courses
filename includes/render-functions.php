@@ -39,69 +39,41 @@ function sanitize_block_name( $name ) {
 }
 
 /**
- * Renders the HRS Courses datetime post meta for display.
+ * Displays the post archive page navigation.
  *
- * @since 0.3.0
+ * Retrieves and displays the pagination navigation section on archive type
+ * pages such as a taxonomy archives page.
  *
- * @param array $attributes Optional. An array of block attributes passed from `register_block_type`.
- * @param array $content    Optional. Content value(s) passed from `register_block_type`.
- * @return string The formatted HTML for display.
+ * @since 0.4.0
  */
-function render_block_hrscourses_course_date_time( $attributes, $content ) {
-	$datetime = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_datetime', true );
-
-	if ( $datetime ) {
-		return sprintf( '<p class="wp-block-hrscourses-course-date-time">%s</p>', $datetime );
-	}
-
-	return;
-}
-
-/**
- * Renders the HRS Courses location post meta for display.
- *
- * @since 0.3.0
- *
- * @param array $attributes Optional. An array of block attributes passed from `register_block_type`.
- * @param array $content    Optional. Content value(s) passed from `register_block_type`.
- * @return string The formatted HTML for display.
- */
-function render_block_hrscourses_course_location( $attributes, $content ) {
-	$post_id   = get_the_ID();
-	$location  = get_post_meta( $post_id, '_wsuwp_hrs_courses_location', true );
-	$is_online = get_post_meta( $post_id, '_wsuwp_hrs_courses_is_online', true );
-	$url       = get_post_meta( $post_id, '_wsuwp_hrs_courses_online', true );
-
-	if ( $location ) {
-		$location_string = sprintf( '<p class="course-location">%s</p>', $location );
-	}
-
-	if ( $is_online && $url ) {
-		$url_string = sprintf( '<p class="course-url"><a href="%1$s">%2$s</a></p>', esc_url( $url ), __( 'View course online', 'wsuwp-hrs-courses' ) );
-	}
-
-	return sprintf(
-		'<div class="wp-block-hrscourses-course-location">%1$s%2$s</div>',
-		( ! empty( $location_string ) ) ? $location_string : '',
-		( ! empty( $url_string ) ) ? $url_string : ''
+function archive_pagination( $total_pages = '' ) {
+	$args = array(
+		'base'               => str_replace( 99164, '%#%', esc_url( get_pagenum_link( 99164 ) ) ),
+		'format'             => 'page/%#%',
+		'type'               => 'list',
+		'current'            => max( 1, get_query_var( 'paged' ) ),
+		'prev_text'          => 'Previous <span class="screen-reader-text">page</span>',
+		'next_text'          => 'Next <span class="screen-reader-text">page</span>',
+		'before_page_number' => '<span class="screen-reader-text">Page </span>',
 	);
-}
 
-/**
- * Renders the HRS Courses presenter post meta for display.
- *
- * @since 0.3.0
- *
- * @param array $attributes Optional. An array of block attributes passed from `register_block_type`.
- * @param array $content    Optional. Content value(s) passed from `register_block_type`.
- * @return string The formatted HTML for display.
- */
-function render_block_hrscourses_course_presenter( $attributes, $content ) {
-	$presenter = get_post_meta( get_the_ID(), '_wsuwp_hrs_courses_presenter', true );
-
-	if ( $presenter ) {
-		return sprintf( '<p class="wp-block-hrscourses-course-presenter">%s</p>', $presenter );
+	if ( '' !== $total_pages ) {
+		$args['total'] = $total_pages;
 	}
 
-	return;
+	$pagination = paginate_links( $args );
+
+	if ( ! empty( $pagination ) ) {
+		?>
+		<footer class="article-footer">
+			<section class="row single pager prevnext gutter pad-ends">
+				<div class="column one">
+					<nav class="navigation pagination" role="navigation" aria-label="Pagination navigation">
+						<?php echo wp_kses_post( $pagination ); ?>
+					</nav>
+				</div>
+			</section>
+		</footer>
+		<?php
+	}
 }

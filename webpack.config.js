@@ -2,7 +2,9 @@
  * External dependencies
  */
 const { BundleAnalyzerPlugin } = require( 'webpack-bundle-analyzer' );
-const path = require( 'path' );
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const { escapeRegExp } = require( 'lodash' );
+const { resolve, sep } = require( 'path' );
 
 /**
  * WordPress dependencies
@@ -15,11 +17,11 @@ const mode = isProduction ? 'production' : 'development';
 const config = {
 	mode,
 	entry: {
-		index: path.resolve( process.cwd(), 'src/_js', 'index.js' ),
+		index: resolve( process.cwd(), 'src/', 'index.js' ),
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve( process.cwd(), 'build' ),
+		path: resolve( process.cwd(), 'build' ),
 	},
 	resolve: {
 		alias: {
@@ -51,6 +53,13 @@ const config = {
 		// WP_BUNDLE_ANALYZER global variable enables utility that represents
 		// bundle content as a convenient interactive zoomable treemap.
 		process.env.WP_BUNDLE_ANALYZER && new BundleAnalyzerPlugin(),
+		new CopyWebpackPlugin( [
+			{
+				from: './src/blocks/**/index.php',
+				test: new RegExp( `([\\w-]+)${ escapeRegExp( sep ) }index\\.php$` ),
+				to: 'blocks/[1].php',
+			},
+		] ),
 		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 	].filter( Boolean ),
 	stats: {

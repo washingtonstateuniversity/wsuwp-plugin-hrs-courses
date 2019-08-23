@@ -29,7 +29,7 @@ function register_dynamic_blocks() {
 		'course-datetime.php'  => 'hrscourses/course-datetime',
 		'course-location.php'  => 'hrscourses/course-location',
 		'course-presenter.php' => 'hrscourses/course-presenter',
-		'list-courses.php'   => 'hrscourses/list-courses',
+		'list-courses.php'     => 'hrscourses/list-courses',
 	);
 
 	foreach ( $block_names as $file => $block_name ) {

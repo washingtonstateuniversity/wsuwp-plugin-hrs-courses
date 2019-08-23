@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames';
 import { isUndefined, pickBy } from 'lodash';
 
 /**
@@ -11,30 +10,23 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const apiFetch = wp.apiFetch;
 const { addQueryArgs } = wp.url;
-const {
-	Component,
-	RawHTML,
-} = wp.element;
+const { Component } = wp.element;
 const {
 	InspectorControls,
 	BlockControls,
 } = wp.blockEditor;
 const {
+	Disabled,
 	PanelBody,
 	Placeholder,
 	QueryControls,
 	RangeControl,
 	Spinner,
-	TreeSelect,
 	ToggleControl,
 	Toolbar,
 	RadioControl,
+	ServerSideRender,
 } = wp.components;
-const {
-	dateI18n,
-	format,
-	__experimentalGetSettings,
-} = wp.date;
 
 /**
  * Module constants
@@ -169,11 +161,6 @@ class ListCoursesEdit extends Component {
 			);
 		}
 
-		// Removing courses from display should be instant.
-		const displayPosts = ListCourses.length > coursesToShow ?
-			ListCourses.slice( 0, coursesToShow ) :
-			ListCourses;
-
 		const layoutControls = [
 			{
 				icon: 'list-view',
@@ -189,69 +176,15 @@ class ListCoursesEdit extends Component {
 			},
 		];
 
-		const dateFormat = __experimentalGetSettings().formats.date; // eslint-disable-line no-restricted-syntax
-
 		return (
 			<>
 				{ inspectorControls }
 				<BlockControls>
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
-				<ul
-					className={ classnames( this.props.className, {
-						'wp-block-latest-posts__list': true,
-						'is-grid': postLayout === 'grid',
-						'has-dates': displayPostDate,
-						[ `columns-${ columns }` ]: postLayout === 'grid',
-					} ) }
-				>
-					{ displayPosts.map( ( post, i ) => {
-						const titleTrimmed = post.title.rendered.trim();
-						let excerpt = post.excerpt.rendered;
-						if ( post.excerpt.raw === '' ) {
-							excerpt = post.content.raw;
-						}
-						const excerptElement = document.createElement( 'div' );
-						excerptElement.innerHTML = excerpt;
-						excerpt = excerptElement.textContent || excerptElement.innerText || '';
-						return (
-							<li key={ i }>
-								<a href={ post.link } target="_blank" rel="noreferrer noopener">
-									{ titleTrimmed ? (
-										<RawHTML>
-											{ titleTrimmed }
-										</RawHTML>
-									) :
-										__( '(Untitled)' )
-									}
-								</a>
-								{ displayPostDate && post.date_gmt &&
-									<time dateTime={ format( 'c', post.date_gmt ) } className="wp-block-latest-posts__post-date">
-										{ dateI18n( dateFormat, post.date_gmt ) }
-									</time>
-								}
-								{ displayCourseContent && displayCourseContentRadio === 'excerpt' &&
-								<div className="wp-block-latest-posts__post-excerpt">
-									<RawHTML key="html">
-										{
-											excerptLength < excerpt.trim().split( ' ' ).length ?
-												excerpt.trim().split( ' ', excerptLength ).join( ' ' ) + ' ... <a href=' + post.link + 'target="_blank" rel="noopener noreferrer">Read More</a>' :
-												excerpt.trim().split( ' ', excerptLength ).join( ' ' )
-										}
-									</RawHTML>
-								</div>
-								}
-								{ displayCourseContent && displayCourseContentRadio === 'full_post' &&
-								<div className="wp-block-latest-posts__post-full-content">
-									<RawHTML key="html">
-										{ post.content.raw.trim() }
-									</RawHTML>
-								</div>
-								}
-							</li>
-						);
-					} ) }
-				</ul>
+				<Disabled>
+					<ServerSideRender block="hrscourses/list-courses" attributes={ attributes } />
+				</Disabled>
 			</>
 		);
 	}

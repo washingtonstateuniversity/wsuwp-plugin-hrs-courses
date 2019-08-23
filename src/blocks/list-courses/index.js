@@ -19,7 +19,7 @@ const {
 export { name };
 
 export const settings = {
-	title: __( 'Latest Courses' ),
+	title: __( 'List Courses' ),
 	category,
 	description: __( 'Display a list of the most recent courses.' ),
 	icon: 'location-alt',

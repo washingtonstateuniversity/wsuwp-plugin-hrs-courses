@@ -1,0 +1,58 @@
+.wp-block-hrscourses-list-courses.alignleft {
+
+	/*rtl:ignore*/
+	margin-right: 2em;
+}
+
+.wp-block-hrscourses-list-courses.alignright {
+
+	/*rtl:ignore*/
+	margin-left: 2em;
+}
+
+.wp-block-hrscourses-list-courses.is-grid {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+}
+
+.wp-block-hrscourses-list-courses.is-grid li {
+	list-style: none;
+	margin: 0 16px 16px 0;
+	width: 100%;
+}
+
+@media (min-width: 600px) {
+
+	.wp-block-hrscourses-list-courses.columns-2 li {
+		width: calc((100% / 2) - 16px);
+	}
+
+	.wp-block-hrscourses-list-courses.columns-3 li {
+		width: calc((100% / 3) - 16px);
+	}
+
+	.wp-block-hrscourses-list-courses.columns-4 li {
+		width: calc((100% / 4) - 16px);
+	}
+
+	.wp-block-hrscourses-list-courses.columns-5 li {
+		width: calc((100% / 5) - 16px);
+	}
+
+	.wp-block-hrscourses-list-courses.columns-6 li {
+		width: calc((100% / 6) - 16px);
+	}
+
+}
+
+.wp-block-hrscourses-list-courses__post-date {
+	display: block;
+	color: #6c7781;
+	font-size: inherit; /* 13px */
+}
+
+.wp-block-hrscourses-list-courses__post-excerpt {
+	margin-top: 8px;
+	margin-bottom: 16px;
+}

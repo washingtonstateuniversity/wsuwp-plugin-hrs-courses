@@ -111,7 +111,7 @@ add_filter( 'get_the_archive_description', __NAMESPACE__ . '\courses_archive_des
  */
 function filter_courses_content( $content ) {
 	if ( get_post_type() !== Setup\WSUWP_HRS_Courses::$post_type_slug ) {
-		return;
+		return $content;
 	}
 
 	if ( false !== strpos( $content, 'Enroll</a>' ) ) {

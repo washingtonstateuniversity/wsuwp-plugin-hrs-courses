@@ -41,15 +41,26 @@ get_header();
 						<p class="course-title">
 							<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 						</p>
+						<div class="article-taxonomy--primary">
+							<?php
+							echo get_the_term_list(
+								get_the_ID(),
+								'learning_program',
+								__( '<ul><li><em>Part of the Learning Program:</em> ', 'wsuwp-hrs-courses' ),
+								' ',
+								'</li></ul>'
+							);
+							?>
+						</div>
 					</header>
 					<div class="article-content">
 						<?php the_content(); ?>
 					</div>
 				</article>
-			<?php
+				<?php
+			}
 		}
-	}
-	?>
+		?>
 	</section>
 	<?php Render\archive_pagination(); ?>
 	<?php get_template_part( 'parts/footers' ); ?>

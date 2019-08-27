@@ -14,7 +14,6 @@ get_header();
 ?>
 
 <main id="wsuwp-main" class="wsuwp-courses-archive">
-
 	<header class="page-header">
 		<h1>
 			<?php
@@ -31,34 +30,40 @@ get_header();
 		}
 		?>
 	</header>
-
-	<?php
-	if ( have_posts() ) {
-		while ( have_posts() ) {
-			the_post();
-			?>
-			<section class="row single gutter pad-bottom courses-archive">
-				<div class="column one courses-list">
-					<article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-content' ); ?>>
-						<header class="article-header">
-							<p class="article-title">
-								<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-							</p>
-						</header>
-						<div class="article-content">
-							<?php the_content(); ?>
+	<section class="row single gutter courses-archive">
+		<?php
+		if ( have_posts() ) {
+			while ( have_posts() ) {
+				the_post();
+				?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-content column one' ); ?>>
+					<header class="article-header">
+						<p class="course-title">
+							<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+						</p>
+						<div class="article-taxonomy--primary">
+							<?php
+							echo get_the_term_list(
+								get_the_ID(),
+								'learning_program',
+								__( '<ul><li><em>Part of the Learning Program:</em> ', 'wsuwp-hrs-courses' ),
+								' ',
+								'</li></ul>'
+							);
+							?>
 						</div>
-					</article>
-				</div>
-			</section>
-			<?php
+					</header>
+					<div class="article-content">
+						<?php the_content(); ?>
+					</div>
+				</article>
+				<?php
+			}
 		}
-	}
-
-	Render\archive_pagination();
-
-	get_template_part( 'parts/footers' );
-	?>
+		?>
+	</section>
+	<?php Render\archive_pagination(); ?>
+	<?php get_template_part( 'parts/footers' ); ?>
 
 </main><!--/#page-->
 

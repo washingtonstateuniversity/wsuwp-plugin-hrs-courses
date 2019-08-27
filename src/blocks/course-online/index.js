@@ -9,6 +9,7 @@ const { __ } = wp.i18n;
 import edit from './edit';
 import metadata from './block.json';
 import save from './save';
+import icon from './icon';
 
 const {
 	name,
@@ -22,7 +23,7 @@ export const settings = {
 	title: __( 'Course Online URL' ),
 	category,
 	description: __( 'The URLs for an online course.' ),
-	icon: 'location-alt',
+	icon,
 	keywords: [ __( 'link' ) ],
 	attributes,
 	edit,

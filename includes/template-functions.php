@@ -9,6 +9,7 @@
  */
 namespace WSUWP\HRS\Courses\Templates;
 use WSUWP\HRS\Courses\Setup;
+use WSUWP\HRS\Courses\Icons;
 
 /**
  * Loads custom templates for Courses display.
@@ -97,3 +98,37 @@ function courses_archive_description( $description ) {
 	}
 }
 add_filter( 'get_the_archive_description', __NAMESPACE__ . '\courses_archive_description', 10, 1 );
+
+/**
+ * Filters the post content of Courses custom post types.
+ *
+ * Adds more useful information to the "Enroll" link text (specifically, the course
+ * title) for screen reader applications.
+ *
+ * @since 0.4.0
+ *
+ * @param $string $content The content of the current post.
+ * @return $string The maybe modified content of the current Course post.
+ */
+function filter_courses_content( $content ) {
+	if ( get_post_type() !== Setup\WSUWP_HRS_Courses::$post_type_slug ) {
+		return $content;
+	}
+
+	if ( false !== strpos( $content, 'Enroll</a>' ) ) {
+		$replace = 'Enroll<span class="screen-reader-text"> in ' . get_the_title() . '</span></a>';
+		$content = str_replace( 'Enroll</a>', $replace, $content );
+	}
+
+	if ( false !== strpos( $content, 'course-documents' ) ) {
+		$icon    = Icons\SVG_Icons::get_svg( 'ui', 'attachment' );
+		$content = preg_replace(
+			'/<li>(.*?<a.*?[\.pdf\.ppt\.pptx]".*?>)/',
+			'<li>$1' . $icon,
+			$content
+		);
+	}
+
+	return $content;
+}
+add_filter( 'the_content', __NAMESPACE__ . '\filter_courses_content', 1, 20 );

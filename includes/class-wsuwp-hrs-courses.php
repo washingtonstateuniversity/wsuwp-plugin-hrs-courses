@@ -78,6 +78,7 @@ class WSUWP_HRS_Courses {
 		require __DIR__ . '/blocks.php';
 		require __DIR__ . '/render-functions.php';
 		require __DIR__ . '/template-functions.php';
+		require __DIR__ . '/class-svg-icons.php';
 	}
 
 	/**

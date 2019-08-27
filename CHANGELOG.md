@@ -18,10 +18,12 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.4.0-rc.1 (:construction: WIP 2019-08-23)
+## 0.4.0 (2019-08-27)
 
 ### Added
 
+- :sparkles: Class to handle inserting inline SVG markup for icons.
+- :milky_way: Content filter to make "Enroll" button links more accessible by automatically adding "... in {{ course title }}" to the link as screen-reader-accessible text.
 - :art: Primary CSS files for the frontend and the editor.
 - :sparkles: New block to display a dynamic list of the published courses, modeled on the core latest posts block.
 - File `includes/blocks.php` to handle dynamic block registration files.
@@ -36,6 +38,11 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- :art: Finish initial version of the `list-courses` block styles and style variants.
+- `list-courses` block: Use "(No title)" instead of "(Untitled)" when the title is missing, add a class to the course title, and remove the "Read more" link from the excerpt.
+- Add SVG icons to the `course-online` and `course-video` block saved output to display on the front end.
+- Use dedicated files to handle `course-online` and `course-video` block editor icons.
+- Archive view: Add Learning Program(s) if assigned.
 - :alembic: Switch to using `ServerSideRender` for the 'list courses' block until taxonomy queries are available in the `getEntityRecords` post query method.
 - :arrow_up: wp-coding-standards/wpcs Composer package to 2.1.1.
 - :arrow_up: @wordpress/babel-preset-default to 4.4.0
@@ -44,7 +51,7 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: @wordpress/jest-preset-default to 4.3.0
 - :arrow_up: @wordpress/npm-package-json-lint-config to 2.1.0
 - :arrow_up: copy-webpack-plugin to 5.0.4
-- :arrow_up: eslint to 6.2.1
+- :arrow_up: eslint to 6.2.2
 - :arrow_up: jest to 24.9.0
 - :arrow_up: jest-puppeteer to 4.3.0
 - :arrow_up: lodash to 4.17.15
@@ -55,7 +62,7 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: rimraf to 3.0.0
 - :arrow_up: stylelint to 10.1.0
 - :arrow_up: thread-loader to 2.1.3
-- :arrow_up: webpack to 4.39.2
+- :arrow_up: webpack to 4.39.3
 - :arrow_up: webpack-bundle-analyzer to 3.4.1
 - :arrow_up: webpack-cli to 3.3.7
 - Move dynamic block server-side rendering functions into dedicated files inside the block source directories.

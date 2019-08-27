@@ -1,97 +1,70 @@
-sudo: false
+# Travis CI configuration
+# @link https://travis-ci.org/
+# WSUWP Plugin HRS Courses
+# @link https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses
+
 language: php
 
+dist: trusty
+
 # Cache some data across builds for performance.
+# https://docs.travis-ci.com/user/caching/
 cache:
   apt: true
+  npm: true
   directories:
-    - node_modules
-    - vendor
+    # Cache directory for older Composer versions.
     - $HOME/.composer/cache
+    # Cache directory for more recent Composer versions.
+    - $HOME/.cache/composer/files
 
-notifications:
-  email:
-    on_success: never
-    on_failure: change
-  slack:
-    on_pull_requests: true
-    on_success: change
-    on_failure: always
-    on_start: never
-    on_cancel: always
-    rooms:
-      - wsu-ucomm:n2TLZRJd84rMOMbkKthSEMgS
+# PHP versions to build on.
+php:
+  - 7.3
+  - 7.2
+  - 7.1
+  - 5.6
+
+env:
+  global:
+    - WP_VERSION=5.0
+    - WP_MULTISITE=0
+    - LINT=1
 
 branches:
   only:
     - master
 
-matrix:
-  include:
-    - php: 7.1
-      env: WP_VERSION=nightly
-    - php: 7.0
-      env: WP_VERSION=latest
-    - php: 5.6
-      env: WP_TRAVISCI=phpcs
+sudo: false
+
+before_install:
+  # Speed up build time by disabling Xdebug.
+  - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
+  # Make sure NPM is installed
+  - npm i -g npm
+
+install:
+  - cd $TRAVIS_BUILD_DIR
+  # Install PHP_CodeSniffer and WP Coding Standards
+  - if [[ "$LINT" == "1" ]]; then composer install --no-suggest; fi
+  # Workaround for an outdated dependency only showing during Travis build.
+  - if [[ "$LINT" == "1" ]]; then npm install har-validator@latest --save-dev; fi
+  # NPM install for ci environments @link https://docs.npmjs.com/cli/ci.html
+  - if [[ "$LINT" == "1" ]]; then npm ci; fi
 
 before_script:
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - phpenv config-rm xdebug.ini
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-      if [[ ${TRAVIS_PHP_VERSION:0:2} == "5." ]]; then
-        composer global require "phpunit/phpunit=4.8.*"
-      else
-        composer global require "phpunit/phpunit=5.7.*"
-      fi
-    fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      composer global require wp-coding-standards/wpcs
-      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
-    fi
-  - mysql --version
-  - phpenv versions
-  - php --version
+  # Refresh path following CodeSniffer install.
+  - phpenv rehash;
 
 script:
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      phpunit --version
-      phpunit
-      WP_MULTISITE=1 phpunit
-    fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
-    fi
+  # Search theme for PHP syntax errors @see https://github.com/WordPress/twentynineteen/
+  # The usage of bash + || exit 1 is to ensure xargs does not exit on first error.
+  - find . \( -name '*.php' \) -not -path "./vendor/*" | xargs -n1 bash -c 'php -lf $0 || exit 1'
+  # Search for PHP, JS, and CSS errors with linting and coding standards checks.
+  # Then test building the production version of the theme.
+  - if [[ "$LINT" == "1" ]]; then npm run build; fi
 
-# If the plugin has any JavaScript or CSS that should be processed,
-# add the below to their respective sections so that Grunt is installed
-# and all default tasks are run.
-#
-# To the matrix:
-#
-#  - php: 7.0
-#    env: WP_TRAVISCI=grunt
-#
-# To before_script:
-#
-#  - npm --version
-#  - node --version
-#  - nvm install stable
-#  - npm install -g grunt-cli
-#  - npm install
-#  - npm prune
-#  - npm --version
-#  - node --version
-#
-# To script:
-#
-#  - |
-#    if [[ "$WP_TRAVISCI" == "grunt" ]] ; then
-#      grunt --version
-#      grunt default
-#    fi
+notifications:
+  email:
+    on_success: never
+    on_failure: change

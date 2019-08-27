@@ -1,5 +1,7 @@
 # WSUWP HRS Courses
 
+[![Build Status](https://travis-ci.org/washingtonstateuniversity/wsuwp-plugin-hrs-courses.svg?branch=master)](https://travis-ci.org/washingtonstateuniversity/wsuwp-plugin-hrs-courses)
+
 This plugin creates a Courses custom post type for [WSU Human Resource Services](https://hrs.wsu.edu/). It uses a custom archive and single template to display Course pages, and includes template tags and shortcodes for listing Courses anywhere on the site, filtered by elements such as author, category, or other taxonomy.
 
 ### Bugs and/or Fixes for WSUP HRS Courses

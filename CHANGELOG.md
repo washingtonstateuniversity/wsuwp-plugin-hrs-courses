@@ -18,6 +18,20 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.5.0 (2019-08-27)
+
+### Fixed
+
+- :pencil2: Typo in README.
+
+### Changed
+
+- Include build status icon link in README.
+
+### Added
+
+- :construction_worker: Update Travis CI build system with basic tests :white_check_mark:
+
 ## 0.4.0 (2019-08-27)
 
 ### Added

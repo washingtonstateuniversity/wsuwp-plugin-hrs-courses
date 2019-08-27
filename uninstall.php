@@ -15,6 +15,7 @@
  * @package WSUWP_HRS_Courses
  * @since 0.1.0
  */
+
 namespace WSUWP\HRS\Courses\Uninstall;
 use WSUWP\HRS\Courses\Setup;
 
@@ -61,7 +62,7 @@ function hrs_get_post_ids( $limit = 800 ) {
  *       hrs_get_post_ids. Need to find a way to delete more without
  *       introducing timeout errors.
  */
-private function delete_hrs_courses_posts() {
+function delete_hrs_courses_posts() {
 	// Get the HRS Courses post ID list
 	$id_list = $this->hrs_get_post_ids();
 

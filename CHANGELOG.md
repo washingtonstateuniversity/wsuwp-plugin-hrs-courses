@@ -22,6 +22,7 @@ Changelog formatting (http://semver.org/):
 
 ### Fixed
 
+- :green_heart: Misidentified non-class function in `uninstall.php`.
 - :pencil2: Typo in README.
 
 ### Changed

@@ -9,6 +9,7 @@
  */
 namespace WSUWP\HRS\Courses\Templates;
 use WSUWP\HRS\Courses\Setup;
+use WSUWP\HRS\Courses\Icons;
 
 /**
  * Loads custom templates for Courses display.
@@ -117,6 +118,15 @@ function filter_courses_content( $content ) {
 	if ( false !== strpos( $content, 'Enroll</a>' ) ) {
 		$replace = 'Enroll<span class="screen-reader-text"> in ' . get_the_title() . '</span></a>';
 		$content = str_replace( 'Enroll</a>', $replace, $content );
+	}
+
+	if ( false !== strpos( $content, 'course-documents' ) ) {
+		$icon    = Icons\SVG_Icons::get_svg( 'ui', 'attachment' );
+		$content = preg_replace(
+			'/<li>(.*?<a.*?[\.pdf\.ppt\.pptx]".*?>)/',
+			'<li>$1' . $icon,
+			$content
+		);
 	}
 
 	return $content;

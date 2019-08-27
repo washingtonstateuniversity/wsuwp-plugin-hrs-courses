@@ -55,10 +55,10 @@ function render_block_list_courses( $attributes ) {
 	foreach ( $recent_courses as $course ) {
 		$title = get_the_title( $course );
 		if ( ! $title ) {
-			$title = __( '(Untitled)', 'wsuwp-hrs-courses' );
+			$title = __( '(No title)', 'wsuwp-hrs-courses' );
 		}
 		$list_items_markup .= sprintf(
-			'<li><a href="%1$s">%2$s</a>',
+			'<li><p class="course-title"><a href="%1$s">%2$s</a></p>',
 			esc_url( get_permalink( $course ) ),
 			$title
 		);
@@ -80,25 +80,14 @@ function render_block_list_courses( $attributes ) {
 			$trimmed_excerpt = esc_html( wp_trim_words( $course_excerpt, $excerpt_length, ' &hellip; ' ) );
 
 			$list_items_markup .= sprintf(
-				'<div class="wp-block-hrscourses-list-courses__post-excerpt">%1$s',
+				'<div class="wp-block-hrscourses-list-courses__post-excerpt">%1$s</div>',
 				$trimmed_excerpt
 			);
-
-			if ( strpos( $trimmed_excerpt, ' &hellip; ' ) !== false ) {
-				$list_items_markup .= sprintf(
-					'<a href="%1$s">%2$s</a></div>',
-					esc_url( get_permalink( $course ) ),
-					__( 'Read More' )
-				);
-			} else {
-				$list_items_markup .= sprintf(
-					'</div>'
-				);
-			}
 		}
 
 		if ( isset( $attributes['displayCourseContent'] ) && $attributes['displayCourseContent']
-			&& isset( $attributes['displayCourseContentRadio'] ) && 'full_post' === $attributes['displayCourseContentRadio'] ) {
+			&& isset( $attributes['displayCourseContentRadio'] ) && 'full_post' === $attributes['displayCourseContentRadio']
+		) {
 			$list_items_markup .= sprintf(
 				'<div class=".wp-block-hrscourses-list-courses__full_content">%1$s</div>',
 				wp_kses_post( html_entity_decode( $course->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )

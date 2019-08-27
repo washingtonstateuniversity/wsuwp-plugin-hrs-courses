@@ -6,4 +6,4 @@ This plugin creates a Courses custom post type for [WSU Human Resource Services]
 
 Please submit bugs and/or fixes to: <https://github.com/washingtonstateuniversity/wsuwp-hrs-courses/issues>. Please read (and adhere to) the guidelines for contributions detailed in [CONTRIBUTING.md](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/master/CONTRIBUTING.md).
 
-To view release & update notes, read the [CHANGELOG.md]https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/master/CHANGELOG.md).
+To view release & update notes, read the [CHANGELOG.md](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/master/CHANGELOG.md).

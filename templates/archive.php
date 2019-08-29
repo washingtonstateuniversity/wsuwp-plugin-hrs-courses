@@ -24,14 +24,13 @@ get_header();
 			);
 			?>
 		</h1>
+	</header>
+	<section class="row single gutter courses-archive">
 		<?php
 		if ( is_tax() ) {
 			the_archive_description();
 		}
-		?>
-	</header>
-	<section class="row single gutter courses-archive">
-		<?php
+
 		if ( have_posts() ) {
 			while ( have_posts() ) {
 				the_post();

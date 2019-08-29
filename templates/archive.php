@@ -46,7 +46,7 @@ get_header();
 							echo get_the_term_list(
 								get_the_ID(),
 								'learning_program',
-								__( '<ul><li><em>Part of the Learning Program:</em> ', 'wsuwp-hrs-courses' ),
+								__( '<ul><li>', 'wsuwp-hrs-courses' ),
 								' ',
 								'</li></ul>'
 							);

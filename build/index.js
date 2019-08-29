@@ -1,1 +1,1602 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=17)}([function(e,t){!function(){e.exports=this.wp.element}()},function(e){e.exports=JSON.parse('{"name":"hrscourses/course-datetime","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_datetime"}}}')},function(e){e.exports=JSON.parse('{"name":"hrscourses/course-location","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_location"}}}')},function(e){e.exports=JSON.parse('{"name":"hrscourses/course-presenter","category":"common","attributes":{"blockValue":{"type":"string","source":"meta","meta":"_wsuwp_hrs_courses_presenter"}}}')},function(e){e.exports=JSON.parse('{"name":"hrscourses/course-video","category":"common","attributes":{"recordedVideoUrl":{"type":"string","source":"attribute","selector":"a","attribute":"href"},"recordedVideoLink":{"type":"string","default":"Video Recording"}}}')},function(e){e.exports=JSON.parse('{"name":"hrscourses/course-online","category":"common","attributes":{"onlineLearningUrl":{"type":"string","source":"attribute","selector":"a","attribute":"href"},"onlineLearningLink":{"type":"string","default":"Online Learning"}}}')},function(e){e.exports=JSON.parse('{"name":"hrscourses/list-courses","category":"widgets","supports":{"align":true,"html":false}}')},function(e,t){!function(){e.exports=this.lodash}()},function(e,t){function n(){return e.exports=n=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},n.apply(this,arguments)}e.exports=n},function(e,t){e.exports=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}},function(e,t){function n(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}e.exports=function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}},function(e,t,n){var r=n(14),o=n(15);e.exports=function(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?o(e):t}},function(e,t){function n(t){return e.exports=n=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)},n(t)}e.exports=n},function(e,t,n){var r=n(16);e.exports=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&r(e,t)}},function(e,t){function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function r(t){return"function"==typeof Symbol&&"symbol"===n(Symbol.iterator)?e.exports=r=function(e){return n(e)}:e.exports=r=function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":n(e)},r(t)}e.exports=r},function(e,t){e.exports=function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}},function(e,t){function n(t,r){return e.exports=n=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},n(t,r)}e.exports=n},function(e,t,n){"use strict";n.r(t);var r={};n.r(r),n.d(r,"name",function(){return b}),n.d(r,"settings",function(){return g});var o={};n.r(o),n.d(o,"name",function(){return j}),n.d(o,"settings",function(){return C});var c={};n.r(c),n.d(c,"name",function(){return V}),n.d(c,"settings",function(){return T});var a={};n.r(a),n.d(a,"name",function(){return Z}),n.d(a,"settings",function(){return te});var s={};n.r(s),n.d(s,"name",function(){return we}),n.d(s,"settings",function(){return Ee});var i={};n.r(i),n.d(i,"name",function(){return bt}),n.d(i,"settings",function(){return gt});var l=n(0),u=wp.i18n.__,p=wp.blockEditor.RichText;var m=n(1);var d=wp.i18n.__,b=m.name,f=m.category,h=m.attributes,g={title:d("Course Date and Time"),category:f,description:d("The date and/or time of the course."),icon:"calendar-alt",keywords:[d("courses")],attributes:h,edit:function(e){var t=e.attributes,n=e.className,r=e.setAttributes,o=t.blockValue,c=t.placeholder;return Object(l.createElement)("div",{className:n},Object(l.createElement)("div",{className:"components-base-control"},Object(l.createElement)("p",{className:"components-base-control__label"},u("Course date"))),Object(l.createElement)(p,{label:u("Course date and time"),placeholder:c||u("Add date and / or time…"),keepPlaceholderOnFocus:!0,value:o,onChange:function(e){return r({blockValue:e})},formattingControls:[]}))},save:function(){return null}},y=wp.i18n.__,v=wp.blockEditor.RichText;var w=n(2);var O=wp.i18n.__,j=w.name,E=w.category,x=w.attributes,C={title:O("Course Location"),category:E,description:O("The meeting location of the course."),icon:"location-alt",keywords:[O("location")],attributes:x,edit:function(e){var t=e.attributes,n=e.className,r=e.setAttributes,o=t.blockValue,c=t.placeholder;return Object(l.createElement)("div",{className:n},Object(l.createElement)("div",{className:"components-base-control"},Object(l.createElement)("p",{className:"components-base-control__label"},y("Course location"))),Object(l.createElement)(v,{label:y("Course location"),placeholder:c||y("Add location…","wsuwp-hrs-courses"),keepPlaceholderOnFocus:!0,value:o,onChange:function(e){return r({blockValue:e})},formattingControls:["bold","italic"]}))},save:function(){return null}},_=wp.i18n.__,k=wp.blockEditor.RichText;var L=n(3);var S=wp.i18n.__,V=L.name,N=L.category,P=L.attributes,T={title:S("Course Presenter(s)"),category:N,description:S("The course presenter(s)."),icon:"id",keywords:[S("courses"),S("people"),S("presenters")],attributes:P,edit:function(e){var t=e.attributes,n=e.className,r=e.setAttributes,o=t.blockValue,c=t.placeholder;return Object(l.createElement)("div",{className:n},Object(l.createElement)("div",{className:"components-base-control"},Object(l.createElement)("p",{className:"components-base-control__label"},_("Course presenter(s)"))),Object(l.createElement)(k,{label:_("Course date and time"),placeholder:c||_("Add presenter(s)…"),keepPlaceholderOnFocus:!0,value:o,onChange:function(e){return r({blockValue:e})},formattingControls:["bold"]}))},save:function(){return null}},R=wp.i18n.__,H=wp.element.Fragment,M=wp.components,U=M.PanelBody,B=M.TextControl,A=wp.blockEditor,z=A.InspectorControls,F=A.URLInput;var D=n(4),I=wp.blockEditor.RichText,G=wp.components,J=G.Path,q=G.SVG;var Q=wp.components,W=Q.Path,K=Q.SVG,X=Object(l.createElement)(K,{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},Object(l.createElement)(W,{fill:"none",d:"M0 0h24v24H0V0z"}),Object(l.createElement)(W,{d:"M4 6.47L5.76 10H20v8H4V6.47M22 4h-4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4z"})),Y=wp.i18n.__,Z=D.name,$=D.category,ee=D.attributes,te={title:Y("Course Video URL"),category:$,description:Y("The URLs for a course video."),icon:X,keywords:[Y("media")],attributes:ee,edit:function(e){var t=e.attributes,n=e.className,r=e.setAttributes,o=t.recordedVideoUrl,c=t.recordedVideoLink;return Object(l.createElement)(H,null,Object(l.createElement)(z,null,Object(l.createElement)(U,{title:R("Course Video Settings","wsuwp-hrs-courses")},Object(l.createElement)(B,{label:R("Course Video Link Text","wsuwp-hrs-courses"),help:R("Enter link text here to override the default video URL link text.","wsuwp-hrs-courses"),value:c,onChange:function(e){return r({recordedVideoLink:e})}}))),Object(l.createElement)("div",{className:n},Object(l.createElement)("div",{className:"components-base-control"},Object(l.createElement)("p",{className:"components-base-control__label"},R("Course video URL","wsuwp-hrs-courses"))),Object(l.createElement)(F,{autoFocus:!1,value:o,onChange:function(e){return r({recordedVideoUrl:e})}})))},save:function(e){var t=e.attributes,n=e.className,r=t.recordedVideoUrl,o=t.recordedVideoLink;return r?Object(l.createElement)("p",{className:n},Object(l.createElement)(q,{className:"svg-icon",viewBox:"0 0 24 24",width:"24",height:"24",xmlns:"http://www.w3.org/2000/svg"},Object(l.createElement)(J,{fill:"none",d:"M0 0h24v24H0V0z"}),Object(l.createElement)(J,{d:"M4 6.47L5.76 10H20v8H4V6.47M22 4h-4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4z"})),Object(l.createElement)(I.Content,{tagName:"a",className:"course-recorded-video__link",href:r,value:o})):null}},ne=wp.i18n.__,re=wp.element.Fragment,oe=wp.components,ce=oe.PanelBody,ae=oe.TextControl,se=wp.blockEditor,ie=se.InspectorControls,le=se.URLInput;var ue=n(5),pe=wp.blockEditor.RichText,me=wp.components,de=me.Path,be=me.SVG;var fe=wp.components,he=fe.Path,ge=fe.SVG,ye=Object(l.createElement)(ge,{viewBox:"0 0 20 20",xmlns:"http://www.w3.org/2000/svg"},Object(l.createElement)(he,{d:"M3 3h14c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm13 2H4v8h12V5zm-3 1H5v4zm6 11v-1H1v1c0 .6.5 1 1.1 1h15.8c.6 0 1.1-.4 1.1-1z"})),ve=wp.i18n.__,we=ue.name,Oe=ue.category,je=ue.attributes,Ee={title:ve("Course Online URL"),category:Oe,description:ve("The URLs for an online course."),icon:ye,keywords:[ve("link")],attributes:je,edit:function(e){var t=e.attributes,n=e.className,r=e.setAttributes,o=t.onlineLearningUrl,c=t.onlineLearningLink;return Object(l.createElement)(re,null,Object(l.createElement)(ie,null,Object(l.createElement)(ce,{title:ne("Online Course Settings","wsuwp-hrs-courses")},Object(l.createElement)(ae,{label:ne("Online Course Link Text","wsuwp-hrs-courses"),help:ne("Enter link text here to override the default online course URL link text.","wsuwp-hrs-courses"),value:c,onChange:function(e){return r({onlineLearningLink:e})}}))),Object(l.createElement)("div",{className:n},Object(l.createElement)("div",{className:"components-base-control"},Object(l.createElement)("p",{className:"components-base-control__label"},ne("Online course URL"))),Object(l.createElement)(le,{autoFocus:!1,value:o,onChange:function(e){return r({onlineLearningUrl:e})}})))},save:function(e){var t=e.attributes,n=e.className,r=t.onlineLearningUrl,o=t.onlineLearningLink;return r?Object(l.createElement)("p",{className:n},Object(l.createElement)(be,{class:"svg-icon",viewBox:"0 0 20 20",width:"24",height:"24",xmlns:"http://www.w3.org/2000/svg"},Object(l.createElement)(de,{d:"M3 3h14c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm13 2H4v8h12V5zm-3 1H5v4zm6 11v-1H1v1c0 .6.5 1 1.1 1h15.8c.6 0 1.1-.4 1.1-1z"})),Object(l.createElement)(pe.Content,{tagName:"a",class:"course-recorded-video__link",href:r,value:o})):null}},xe=n(8),Ce=n.n(xe),_e=n(9),ke=n.n(_e),Le=n(10),Se=n.n(Le),Ve=n(11),Ne=n.n(Ve),Pe=n(12),Te=n.n(Pe),Re=n(13),He=n.n(Re),Me=n(7),Ue=wp.i18n.__,Be=wp.data.withSelect,Ae=wp.apiFetch,ze=wp.url.addQueryArgs,Fe=wp.element.Component,De=wp.blockEditor,Ie=De.InspectorControls,Ge=De.BlockControls,Je=wp.components,qe=Je.Disabled,Qe=Je.PanelBody,We=Je.Placeholder,Ke=Je.QueryControls,Xe=Je.RangeControl,Ye=Je.Spinner,Ze=Je.ToggleControl,$e=Je.Toolbar,et=Je.RadioControl,tt=Je.ServerSideRender,nt={per_page:-1},rt=function(e){function t(){var e;return ke()(this,t),(e=Ne()(this,Te()(t).apply(this,arguments))).state={taxLearningProgramsList:[]},e}return He()(t,e),Se()(t,[{key:"componentDidMount",value:function(){var e=this;this.isStillMounted=!0,this.fetchRequest=Ae({path:ze("/wp/v2/learning_program",nt)}).then(function(t){e.isStillMounted&&e.setState({taxLearningProgramsList:t})}).catch(function(){e.isStillMounted&&e.setState({taxLearningProgramsList:[]})})}},{key:"componentWillUnmount",value:function(){this.isStillMounted=!1}},{key:"render",value:function(){var e=this.props,t=e.attributes,n=e.setAttributes,r=e.ListCourses,o=this.state.taxLearningProgramsList,c=t.displayCourseContentRadio,a=t.displayCourseContent,s=t.displayPostDate,i=t.postLayout,u=t.columns,p=t.order,m=t.orderBy,d=t.learningPrograms,b=t.coursesToShow,f=t.excerptLength,h=Object(l.createElement)(Ie,null,Object(l.createElement)(Qe,{title:Ue("Course Content Settings")},Object(l.createElement)(Ze,{label:Ue("Display course content"),checked:a,onChange:function(e){return n({displayCourseContent:e})}}),a&&Object(l.createElement)(et,{label:"Show:",selected:c,options:[{label:"Excerpt",value:"excerpt"},{label:"Full post",value:"full_post"}],onChange:function(e){return n({displayCourseContentRadio:e})}}),a&&"excerpt"===c&&Object(l.createElement)(Xe,{label:Ue("Max number of words in excerpt"),value:f,onChange:function(e){return n({excerptLength:e})},min:10,max:100})),Object(l.createElement)(Qe,{title:Ue("Post Meta Settings")},Object(l.createElement)(Ze,{label:Ue("Display post date"),checked:s,onChange:function(e){return n({displayPostDate:e})}})),Object(l.createElement)(Qe,{title:Ue("Sorting and Filtering")},Object(l.createElement)(Ke,Ce()({order:p,orderBy:m},{numberOfItems:b,categoriesList:o,selectedCategoryId:d,onCategoryChange:function(e){return n({learningPrograms:""!==e?e:void 0})},onOrderChange:function(e){return n({order:e})},onOrderByChange:function(e){return n({orderBy:e})},onNumberOfItemsChange:function(e){return n({coursesToShow:e})}})),"grid"===i&&Object(l.createElement)(Xe,{label:Ue("Columns"),value:u,onChange:function(e){return n({columns:e})},min:2,max:g?Math.min(6,r.length):6,required:!0}))),g=Array.isArray(r)&&r.length;if(!g)return Object(l.createElement)(l.Fragment,null,h,Object(l.createElement)(We,{icon:"admin-post",label:Ue("List Courses")},Array.isArray(r)?Ue("No courses found."):Object(l.createElement)(Ye,null)));var y=[{icon:"list-view",title:Ue("List View"),onClick:function(){return n({postLayout:"list"})},isActive:"list"===i},{icon:"grid-view",title:Ue("Grid View"),onClick:function(){return n({postLayout:"grid"})},isActive:"grid"===i}];return Object(l.createElement)(l.Fragment,null,h,Object(l.createElement)(Ge,null,Object(l.createElement)($e,{controls:y})),Object(l.createElement)(qe,null,Object(l.createElement)(tt,{block:"hrscourses/list-courses",attributes:t})))}}]),t}(Fe),ot=Be(function(e,t){var n=t.attributes,r=n.coursesToShow,o=n.order,c=n.orderBy,a=n.learningPrograms;return{ListCourses:(0,e("core").getEntityRecords)("postType","wsuwp_hrs_courses",Object(Me.pickBy)({learningPrograms:a,order:o,orderby:c,per_page:r},function(e){return!Object(Me.isUndefined)(e)}))}})(rt),ct=wp.components,at=ct.Path,st=ct.Rect,it=ct.SVG,lt=Object(l.createElement)(it,{viewBox:"0 0 24 24",xmlns:"http://www.w3.org/2000/svg"},Object(l.createElement)(at,{d:"M0,0h24v24H0V0z",fill:"none"}),Object(l.createElement)(st,{x:"11",y:"7",width:"6",height:"2"}),Object(l.createElement)(st,{x:"11",y:"11",width:"6",height:"2"}),Object(l.createElement)(st,{x:"11",y:"15",width:"6",height:"2"}),Object(l.createElement)(st,{x:"7",y:"7",width:"2",height:"2"}),Object(l.createElement)(st,{x:"7",y:"11",width:"2",height:"2"}),Object(l.createElement)(st,{x:"7",y:"15",width:"2",height:"2"}),Object(l.createElement)(at,{d:"M20.1,3H3.9C3.4,3,3,3.4,3,3.9v16.2C3,20.5,3.4,21,3.9,21h16.2c0.4,0,0.9-0.5,0.9-0.9V3.9C21,3.4,20.5,3,20.1,3z M19,19H5V5h14V19z"})),ut=n(6);var pt=wp.i18n,mt=pt.__,dt=pt._x,bt=ut.name,ft=ut.category,ht=ut.supports,gt={title:mt("List Courses"),category:ft,description:mt("Display a list of the most recent courses."),icon:lt,keywords:[mt("recent posts")],supports:ht,styles:[{name:"default",label:dt("Default","block style"),isDefault:!0},{name:"bulleted",label:dt("Bullets","block style")}],edit:ot,save:function(){return null}},yt=wp.blocks.registerBlockType;[r,o,c,a,s,i].forEach(function(e){if(e){var t=e.settings,n=e.name;yt(n,t)}})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/extends.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/extends.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _extends() {
+  module.exports = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+module.exports = _extends;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/inherits.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ../helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
+/***/ "./src/blocks/course-datetime/block.json":
+/*!***********************************************!*\
+  !*** ./src/blocks/course-datetime/block.json ***!
+  \***********************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrscourses/course-datetime\",\"category\":\"common\",\"attributes\":{\"blockValue\":{\"type\":\"string\",\"source\":\"meta\",\"meta\":\"_wsuwp_hrs_courses_datetime\"}}}");
+
+/***/ }),
+
+/***/ "./src/blocks/course-datetime/edit.js":
+/*!********************************************!*\
+  !*** ./src/blocks/course-datetime/edit.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseDateEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var RichText = wp.blockEditor.RichText;
+function CourseDateEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var blockValue = attributes.blockValue,
+      placeholder = attributes.placeholder;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course date'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    label: __('Course date and time'),
+    placeholder: placeholder || __('Add date and / or time…'),
+    keepPlaceholderOnFocus: true,
+    value: blockValue,
+    onChange: function onChange(value) {
+      return setAttributes({
+        blockValue: value
+      });
+    },
+    formattingControls: []
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-datetime/index.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/course-datetime/index.js ***!
+  \*********************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/course-datetime/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/course-datetime/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/course-datetime/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/course-datetime/save.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Date and Time'),
+  category: category,
+  description: __('The date and/or time of the course.'),
+  icon: 'calendar-alt',
+  keywords: [__('courses')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/course-datetime/save.js":
+/*!********************************************!*\
+  !*** ./src/blocks/course-datetime/save.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-location/block.json":
+/*!***********************************************!*\
+  !*** ./src/blocks/course-location/block.json ***!
+  \***********************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrscourses/course-location\",\"category\":\"common\",\"attributes\":{\"blockValue\":{\"type\":\"string\",\"source\":\"meta\",\"meta\":\"_wsuwp_hrs_courses_location\"}}}");
+
+/***/ }),
+
+/***/ "./src/blocks/course-location/edit.js":
+/*!********************************************!*\
+  !*** ./src/blocks/course-location/edit.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseLocationEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var RichText = wp.blockEditor.RichText;
+function CourseLocationEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var blockValue = attributes.blockValue,
+      placeholder = attributes.placeholder;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course location'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    label: __('Course location'),
+    placeholder: placeholder || __('Add location…', 'wsuwp-hrs-courses'),
+    keepPlaceholderOnFocus: true,
+    value: blockValue,
+    onChange: function onChange(value) {
+      return setAttributes({
+        blockValue: value
+      });
+    },
+    formattingControls: ['bold', 'italic']
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-location/index.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/course-location/index.js ***!
+  \*********************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/course-location/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/course-location/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/course-location/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/course-location/save.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Location'),
+  category: category,
+  description: __('The meeting location of the course.'),
+  icon: 'location-alt',
+  keywords: [__('location')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/course-location/save.js":
+/*!********************************************!*\
+  !*** ./src/blocks/course-location/save.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-online/block.json":
+/*!*********************************************!*\
+  !*** ./src/blocks/course-online/block.json ***!
+  \*********************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrscourses/course-online\",\"category\":\"common\",\"attributes\":{\"onlineLearningUrl\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"onlineLearningLink\":{\"type\":\"string\",\"default\":\"Online Learning\"}}}");
+
+/***/ }),
+
+/***/ "./src/blocks/course-online/edit.js":
+/*!******************************************!*\
+  !*** ./src/blocks/course-online/edit.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseLocationEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    URLInput = _wp$blockEditor.URLInput;
+function CourseLocationEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var onlineLearningUrl = attributes.onlineLearningUrl,
+      onlineLearningLink = attributes.onlineLearningLink;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Online Course Settings', 'wsuwp-hrs-courses')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: __('Online Course Link Text', 'wsuwp-hrs-courses'),
+    help: __('Enter link text here to override the default online course URL link text.', 'wsuwp-hrs-courses'),
+    value: onlineLearningLink,
+    onChange: function onChange(value) {
+      return setAttributes({
+        onlineLearningLink: value
+      });
+    }
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Online course URL'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInput, {
+    autoFocus: false // eslint-disable-line jsx-a11y/no-autofocus
+    ,
+    value: onlineLearningUrl,
+    onChange: function onChange(value) {
+      return setAttributes({
+        onlineLearningUrl: value
+      });
+    }
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-online/icon.js":
+/*!******************************************!*\
+  !*** ./src/blocks/course-online/icon.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$components = wp.components,
+    Path = _wp$components.Path,
+    SVG = _wp$components.SVG;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SVG, {
+  viewBox: "0 0 20 20",
+  xmlns: "http://www.w3.org/2000/svg"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+  d: "M3 3h14c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm13 2H4v8h12V5zm-3 1H5v4zm6 11v-1H1v1c0 .6.5 1 1.1 1h15.8c.6 0 1.1-.4 1.1-1z"
+})));
+
+/***/ }),
+
+/***/ "./src/blocks/course-online/index.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/course-online/index.js ***!
+  \*******************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/course-online/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/course-online/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/course-online/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/course-online/save.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icon */ "./src/blocks/course-online/icon.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Online URL'),
+  category: category,
+  description: __('The URLs for an online course.'),
+  icon: _icon__WEBPACK_IMPORTED_MODULE_3__["default"],
+  keywords: [__('link')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/course-online/save.js":
+/*!******************************************!*\
+  !*** ./src/blocks/course-online/save.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var RichText = wp.blockEditor.RichText;
+var _wp$components = wp.components,
+    Path = _wp$components.Path,
+    SVG = _wp$components.SVG;
+function save(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className;
+  var onlineLearningUrl = attributes.onlineLearningUrl,
+      onlineLearningLink = attributes.onlineLearningLink;
+
+  if (!onlineLearningUrl) {
+    return null;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SVG, {
+    class: "svg-icon",
+    viewBox: "0 0 20 20",
+    width: "24",
+    height: "24",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+    d: "M3 3h14c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm13 2H4v8h12V5zm-3 1H5v4zm6 11v-1H1v1c0 .6.5 1 1.1 1h15.8c.6 0 1.1-.4 1.1-1z"
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    tagName: "a",
+    class: "course-recorded-video__link",
+    href: onlineLearningUrl,
+    value: onlineLearningLink
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-presenter/block.json":
+/*!************************************************!*\
+  !*** ./src/blocks/course-presenter/block.json ***!
+  \************************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrscourses/course-presenter\",\"category\":\"common\",\"attributes\":{\"blockValue\":{\"type\":\"string\",\"source\":\"meta\",\"meta\":\"_wsuwp_hrs_courses_presenter\"}}}");
+
+/***/ }),
+
+/***/ "./src/blocks/course-presenter/edit.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/course-presenter/edit.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CoursePresenterEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var RichText = wp.blockEditor.RichText;
+function CoursePresenterEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var blockValue = attributes.blockValue,
+      placeholder = attributes.placeholder;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course presenter(s)'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    label: __('Course date and time'),
+    placeholder: placeholder || __('Add presenter(s)…'),
+    keepPlaceholderOnFocus: true,
+    value: blockValue,
+    onChange: function onChange(value) {
+      return setAttributes({
+        blockValue: value
+      });
+    },
+    formattingControls: ['bold']
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-presenter/index.js":
+/*!**********************************************!*\
+  !*** ./src/blocks/course-presenter/index.js ***!
+  \**********************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/course-presenter/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/course-presenter/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/course-presenter/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/course-presenter/save.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Presenter(s)'),
+  category: category,
+  description: __('The course presenter(s).'),
+  icon: 'id',
+  keywords: [__('courses'), __('people'), __('presenters')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/course-presenter/save.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/course-presenter/save.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-video/block.json":
+/*!********************************************!*\
+  !*** ./src/blocks/course-video/block.json ***!
+  \********************************************/
+/*! exports provided: name, category, attributes, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrscourses/course-video\",\"category\":\"common\",\"attributes\":{\"recordedVideoUrl\":{\"type\":\"string\",\"source\":\"attribute\",\"selector\":\"a\",\"attribute\":\"href\"},\"recordedVideoLink\":{\"type\":\"string\",\"default\":\"Video Recording\"}}}");
+
+/***/ }),
+
+/***/ "./src/blocks/course-video/edit.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/course-video/edit.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CourseLocationEdit; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+var Fragment = wp.element.Fragment;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    URLInput = _wp$blockEditor.URLInput;
+function CourseLocationEdit(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className,
+      setAttributes = _ref.setAttributes;
+  var recordedVideoUrl = attributes.recordedVideoUrl,
+      recordedVideoLink = attributes.recordedVideoLink;
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Fragment, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+    title: __('Course Video Settings', 'wsuwp-hrs-courses')
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    label: __('Course Video Link Text', 'wsuwp-hrs-courses'),
+    help: __('Enter link text here to override the default video URL link text.', 'wsuwp-hrs-courses'),
+    value: recordedVideoLink,
+    onChange: function onChange(value) {
+      return setAttributes({
+        recordedVideoLink: value
+      });
+    }
+  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: 'components-base-control'
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "components-base-control__label"
+  }, __('Course video URL', 'wsuwp-hrs-courses'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(URLInput, {
+    autoFocus: false // eslint-disable-line jsx-a11y/no-autofocus
+    ,
+    value: recordedVideoUrl,
+    onChange: function onChange(value) {
+      return setAttributes({
+        recordedVideoUrl: value
+      });
+    }
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/course-video/icon.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/course-video/icon.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$components = wp.components,
+    Path = _wp$components.Path,
+    SVG = _wp$components.SVG;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+  fill: "none",
+  d: "M0 0h24v24H0V0z"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+  d: "M4 6.47L5.76 10H20v8H4V6.47M22 4h-4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4z"
+})));
+
+/***/ }),
+
+/***/ "./src/blocks/course-video/index.js":
+/*!******************************************!*\
+  !*** ./src/blocks/course-video/index.js ***!
+  \******************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/course-video/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/course-video/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/course-video/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/course-video/save.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icon */ "./src/blocks/course-video/icon.js");
+/**
+ * WordPress dependencies
+ */
+var __ = wp.i18n.__;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_1__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_1__.category,
+    attributes = _block_json__WEBPACK_IMPORTED_MODULE_1__.attributes;
+
+var settings = {
+  title: __('Course Video URL'),
+  category: category,
+  description: __('The URLs for a course video.'),
+  icon: _icon__WEBPACK_IMPORTED_MODULE_3__["default"],
+  keywords: [__('media')],
+  attributes: attributes,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/course-video/save.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/course-video/save.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var RichText = wp.blockEditor.RichText;
+var _wp$components = wp.components,
+    Path = _wp$components.Path,
+    SVG = _wp$components.SVG;
+function save(_ref) {
+  var attributes = _ref.attributes,
+      className = _ref.className;
+  var recordedVideoUrl = attributes.recordedVideoUrl,
+      recordedVideoLink = attributes.recordedVideoLink;
+
+  if (!recordedVideoUrl) {
+    return null;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: className
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SVG, {
+    className: 'svg-icon',
+    viewBox: "0 0 24 24",
+    width: "24",
+    height: "24",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+    fill: "none",
+    d: "M0 0h24v24H0V0z"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+    d: "M4 6.47L5.76 10H20v8H4V6.47M22 4h-4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4z"
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    tagName: "a",
+    className: 'course-recorded-video__link',
+    href: recordedVideoUrl,
+    value: recordedVideoLink
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/blocks/index.js":
+/*!*****************************!*\
+  !*** ./src/blocks/index.js ***!
+  \*****************************/
+/*! exports provided: registerCoursesBlocks */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerCoursesBlocks", function() { return registerCoursesBlocks; });
+/* harmony import */ var _course_datetime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./course-datetime */ "./src/blocks/course-datetime/index.js");
+/* harmony import */ var _course_location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./course-location */ "./src/blocks/course-location/index.js");
+/* harmony import */ var _course_presenter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./course-presenter */ "./src/blocks/course-presenter/index.js");
+/* harmony import */ var _course_video__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./course-video */ "./src/blocks/course-video/index.js");
+/* harmony import */ var _course_online__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./course-online */ "./src/blocks/course-online/index.js");
+/* harmony import */ var _list_courses__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./list-courses */ "./src/blocks/list-courses/index.js");
+/**
+ * WordPress dependencies
+ */
+var registerBlockType = wp.blocks.registerBlockType;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+
+
+/**
+ * Function to register WSUWP HRS Courses blocks.
+ *
+ * @example
+ * ```js
+ * import { registerCoursesBlocks } from './blocks';
+ *
+ * registerCoursesBlocks();
+ * ```
+ */
+
+var registerCoursesBlocks = function registerCoursesBlocks() {
+  [_course_datetime__WEBPACK_IMPORTED_MODULE_0__, _course_location__WEBPACK_IMPORTED_MODULE_1__, _course_presenter__WEBPACK_IMPORTED_MODULE_2__, _course_video__WEBPACK_IMPORTED_MODULE_3__, _course_online__WEBPACK_IMPORTED_MODULE_4__, _list_courses__WEBPACK_IMPORTED_MODULE_5__].forEach(function (block) {
+    if (!block) {
+      return;
+    }
+
+    var settings = block.settings,
+        name = block.name;
+    registerBlockType(name, settings);
+  });
+};
+
+/***/ }),
+
+/***/ "./src/blocks/list-courses/block.json":
+/*!********************************************!*\
+  !*** ./src/blocks/list-courses/block.json ***!
+  \********************************************/
+/*! exports provided: name, category, supports, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"hrscourses/list-courses\",\"category\":\"widgets\",\"supports\":{\"align\":true,\"html\":false}}");
+
+/***/ }),
+
+/***/ "./src/blocks/list-courses/edit.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/list-courses/edit.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
+
+
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var withSelect = wp.data.withSelect;
+var apiFetch = wp.apiFetch;
+var addQueryArgs = wp.url.addQueryArgs;
+var Component = wp.element.Component;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    BlockControls = _wp$blockEditor.BlockControls;
+var _wp$components = wp.components,
+    Disabled = _wp$components.Disabled,
+    PanelBody = _wp$components.PanelBody,
+    Placeholder = _wp$components.Placeholder,
+    QueryControls = _wp$components.QueryControls,
+    RangeControl = _wp$components.RangeControl,
+    Spinner = _wp$components.Spinner,
+    ToggleControl = _wp$components.ToggleControl,
+    Toolbar = _wp$components.Toolbar,
+    RadioControl = _wp$components.RadioControl,
+    ServerSideRender = _wp$components.ServerSideRender;
+/**
+ * Module constants
+ */
+
+var LEARNING_PROGRAMS_LIST_QUERY = {
+  per_page: -1
+};
+var MAX_POST_COLUMNS = 6;
+
+var ListCoursesEdit =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(ListCoursesEdit, _Component);
+
+  function ListCoursesEdit() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, ListCoursesEdit);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(ListCoursesEdit).apply(this, arguments));
+    _this.state = {
+      taxLearningProgramsList: []
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(ListCoursesEdit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.isStillMounted = true;
+      this.fetchRequest = apiFetch({
+        path: addQueryArgs("/wp/v2/learning_program", LEARNING_PROGRAMS_LIST_QUERY)
+      }).then(function (taxLearningProgramsList) {
+        if (_this2.isStillMounted) {
+          _this2.setState({
+            taxLearningProgramsList: taxLearningProgramsList
+          });
+        }
+      }).catch(function () {
+        if (_this2.isStillMounted) {
+          _this2.setState({
+            taxLearningProgramsList: []
+          });
+        }
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.isStillMounted = false;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes,
+          ListCourses = _this$props.ListCourses;
+      var taxLearningProgramsList = this.state.taxLearningProgramsList;
+      var displayCourseContentRadio = attributes.displayCourseContentRadio,
+          displayCourseContent = attributes.displayCourseContent,
+          displayPostDate = attributes.displayPostDate,
+          postLayout = attributes.postLayout,
+          columns = attributes.columns,
+          order = attributes.order,
+          orderBy = attributes.orderBy,
+          learningPrograms = attributes.learningPrograms,
+          coursesToShow = attributes.coursesToShow,
+          excerptLength = attributes.excerptLength;
+      var inspectorControls = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
+        title: __('Course Content Settings')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ToggleControl, {
+        label: __('Display course content'),
+        checked: displayCourseContent,
+        onChange: function onChange(value) {
+          return setAttributes({
+            displayCourseContent: value
+          });
+        }
+      }), displayCourseContent && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RadioControl, {
+        label: "Show:",
+        selected: displayCourseContentRadio,
+        options: [{
+          label: 'Excerpt',
+          value: 'excerpt'
+        }, {
+          label: 'Full post',
+          value: 'full_post'
+        }],
+        onChange: function onChange(value) {
+          return setAttributes({
+            displayCourseContentRadio: value
+          });
+        }
+      }), displayCourseContent && displayCourseContentRadio === 'excerpt' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RangeControl, {
+        label: __('Max number of words in excerpt'),
+        value: excerptLength,
+        onChange: function onChange(value) {
+          return setAttributes({
+            excerptLength: value
+          });
+        },
+        min: 10,
+        max: 100
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
+        title: __('Post Meta Settings')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ToggleControl, {
+        label: __('Display post date'),
+        checked: displayPostDate,
+        onChange: function onChange(value) {
+          return setAttributes({
+            displayPostDate: value
+          });
+        }
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
+        title: __('Sorting and Filtering')
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(QueryControls, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+        order: order,
+        orderBy: orderBy
+      }, {
+        numberOfItems: coursesToShow,
+        categoriesList: taxLearningProgramsList,
+        selectedCategoryId: learningPrograms,
+        onCategoryChange: function onCategoryChange(value) {
+          return setAttributes({
+            learningPrograms: '' !== value ? value : undefined
+          });
+        },
+        onOrderChange: function onOrderChange(value) {
+          return setAttributes({
+            order: value
+          });
+        },
+        onOrderByChange: function onOrderByChange(value) {
+          return setAttributes({
+            orderBy: value
+          });
+        },
+        onNumberOfItemsChange: function onNumberOfItemsChange(value) {
+          return setAttributes({
+            coursesToShow: value
+          });
+        }
+      })), postLayout === 'grid' && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(RangeControl, {
+        label: __('Columns'),
+        value: columns,
+        onChange: function onChange(value) {
+          return setAttributes({
+            columns: value
+          });
+        },
+        min: 2,
+        max: !hasPosts ? MAX_POST_COLUMNS : Math.min(MAX_POST_COLUMNS, ListCourses.length),
+        required: true
+      })));
+      var hasPosts = Array.isArray(ListCourses) && ListCourses.length;
+
+      if (!hasPosts) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Placeholder, {
+          icon: "admin-post",
+          label: __('List Courses')
+        }, !Array.isArray(ListCourses) ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Spinner, null) : __('No courses found.')));
+      }
+
+      var layoutControls = [{
+        icon: 'list-view',
+        title: __('List View'),
+        onClick: function onClick() {
+          return setAttributes({
+            postLayout: 'list'
+          });
+        },
+        isActive: postLayout === 'list'
+      }, {
+        icon: 'grid-view',
+        title: __('Grid View'),
+        onClick: function onClick() {
+          return setAttributes({
+            postLayout: 'grid'
+          });
+        },
+        isActive: postLayout === 'grid'
+      }];
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, inspectorControls, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Toolbar, {
+        controls: layoutControls
+      })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(ServerSideRender, {
+        block: "hrscourses/list-courses",
+        attributes: attributes
+      })));
+    }
+  }]);
+
+  return ListCoursesEdit;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(function (select, props) {
+  var _props$attributes = props.attributes,
+      coursesToShow = _props$attributes.coursesToShow,
+      order = _props$attributes.order,
+      orderBy = _props$attributes.orderBy,
+      learningPrograms = _props$attributes.learningPrograms;
+
+  var _select = select('core'),
+      getEntityRecords = _select.getEntityRecords;
+
+  var ListCoursesQuery = Object(lodash__WEBPACK_IMPORTED_MODULE_7__["pickBy"])({
+    learningPrograms: learningPrograms,
+    order: order,
+    orderby: orderBy,
+    per_page: coursesToShow
+  }, function (value) {
+    return !Object(lodash__WEBPACK_IMPORTED_MODULE_7__["isUndefined"])(value);
+  });
+  return {
+    ListCourses: getEntityRecords('postType', 'wsuwp_hrs_courses', ListCoursesQuery)
+  };
+})(ListCoursesEdit));
+
+/***/ }),
+
+/***/ "./src/blocks/list-courses/icon.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/list-courses/icon.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * WordPress dependencies
+ */
+var _wp$components = wp.components,
+    Path = _wp$components.Path,
+    Rect = _wp$components.Rect,
+    SVG = _wp$components.SVG;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SVG, {
+  viewBox: "0 0 24 24",
+  xmlns: "http://www.w3.org/2000/svg"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+  d: "M0,0h24v24H0V0z",
+  fill: "none"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rect, {
+  x: "11",
+  y: "7",
+  width: "6",
+  height: "2"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rect, {
+  x: "11",
+  y: "11",
+  width: "6",
+  height: "2"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rect, {
+  x: "11",
+  y: "15",
+  width: "6",
+  height: "2"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rect, {
+  x: "7",
+  y: "7",
+  width: "2",
+  height: "2"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rect, {
+  x: "7",
+  y: "11",
+  width: "2",
+  height: "2"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Rect, {
+  x: "7",
+  y: "15",
+  width: "2",
+  height: "2"
+}), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Path, {
+  d: "M20.1,3H3.9C3.4,3,3,3.4,3,3.9v16.2C3,20.5,3.4,21,3.9,21h16.2c0.4,0,0.9-0.5,0.9-0.9V3.9C21,3.4,20.5,3,20.1,3z M19,19H5V5h14V19z"
+})));
+
+/***/ }),
+
+/***/ "./src/blocks/list-courses/index.js":
+/*!******************************************!*\
+  !*** ./src/blocks/list-courses/index.js ***!
+  \******************************************/
+/*! exports provided: name, settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/list-courses/edit.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon */ "./src/blocks/list-courses/icon.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/list-courses/block.json");
+var _block_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./block.json */ "./src/blocks/list-courses/block.json", 1);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/list-courses/save.js");
+/**
+ * WordPress dependencies
+ */
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    _x = _wp$i18n._x;
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+var name = _block_json__WEBPACK_IMPORTED_MODULE_2__.name,
+    category = _block_json__WEBPACK_IMPORTED_MODULE_2__.category,
+    supports = _block_json__WEBPACK_IMPORTED_MODULE_2__.supports;
+
+var settings = {
+  title: __('List Courses'),
+  category: category,
+  description: __('Display a list of the most recent courses.'),
+  icon: _icon__WEBPACK_IMPORTED_MODULE_1__["default"],
+  keywords: [__('recent posts')],
+  supports: supports,
+  styles: [{
+    name: 'default',
+    label: _x('Default', 'block style'),
+    isDefault: true
+  }, {
+    name: 'bulleted',
+    label: _x('Bullets', 'block style')
+  }],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/blocks/list-courses/save.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/list-courses/save.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
+/*
+ * No data is saved to the block. Data is saved to post meta via attributes.
+ *
+ * Because this is similar to a dynamic block it doesn’t need to override the
+ * default save implementation on the client. Instead, it needs a server
+ * component. The contents in the front of your site depend on the function
+ * called by the `render_callback` property of `register_block_type`.
+ */
+function save() {
+  return null;
+}
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks */ "./src/blocks/index.js");
+/**
+ * Internal dependencies
+ */
+
+Object(_blocks__WEBPACK_IMPORTED_MODULE_0__["registerCoursesBlocks"])();
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!******************************************!*\
+  !*** external {"this":["wp","element"]} ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "lodash":
+/*!**********************************!*\
+  !*** external {"this":"lodash"} ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["lodash"]; }());
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map

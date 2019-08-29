@@ -18,6 +18,18 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 0.6.0-alpha.1 (:construction: 2019-08-29)
+
+### Fixed
+
+- Fix #8 Fix taxonomy description styling to better handle multiple paragraphs.
+- Fix #10 Restore default link styling in the course documents lists.
+- Fix #9 Remove the "Part of the Learning Program" lead-in text.
+
+### Changed
+
+- :truck: Move non-block styles out of the `list-courses` block style file.
+
 ## 0.5.0 (2019-08-27)
 
 ### Fixed

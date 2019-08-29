@@ -89,7 +89,7 @@ function render_block_list_courses( $attributes ) {
 			&& isset( $attributes['displayCourseContentRadio'] ) && 'full_post' === $attributes['displayCourseContentRadio']
 		) {
 			$list_items_markup .= sprintf(
-				'<div class=".wp-block-hrscourses-list-courses__full_content">%1$s</div>',
+				'<div class="wp-block-hrscourses-list-courses__full_content">%1$s</div>',
 				wp_kses_post( html_entity_decode( $course->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
 			);
 		}

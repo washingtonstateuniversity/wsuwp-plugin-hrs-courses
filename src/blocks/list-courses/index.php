@@ -88,9 +88,12 @@ function render_block_list_courses( $attributes ) {
 		if ( isset( $attributes['displayCourseContent'] ) && $attributes['displayCourseContent']
 			&& isset( $attributes['displayCourseContentRadio'] ) && 'full_post' === $attributes['displayCourseContentRadio']
 		) {
+			$full_content = apply_filters( Setup\WSUWP_HRS_Courses::$post_type_slug . '_documents_list', $course->post_content );
+			$full_content = apply_filters( Setup\WSUWP_HRS_Courses::$post_type_slug . '_enroll_link', $full_content );
+
 			$list_items_markup .= sprintf(
 				'<div class="wp-block-hrscourses-list-courses__full_content">%1$s</div>',
-				wp_kses_post( html_entity_decode( $course->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
+				$full_content
 			);
 		}
 

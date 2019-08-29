@@ -106,8 +106,7 @@ svg.svg-icon {
 }
 
 .wsuwp_hrs_courses .course-documents a {
-	border: none;
-	display: block;
+	display: inline-block;
 	margin-right: 2em;
 }
 

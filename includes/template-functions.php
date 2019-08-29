@@ -123,8 +123,8 @@ function filter_courses_content( $content ) {
 	if ( false !== strpos( $content, 'course-documents' ) ) {
 		$icon    = Icons\SVG_Icons::get_svg( 'ui', 'attachment' );
 		$content = preg_replace(
-			'/<li>(.*?<a.*?[\.pdf\.ppt\.pptx]".*?>)/',
-			'<li>$1' . $icon,
+			'/<li>(.*?)(<a.*?[\.pdf\.ppt\.pptx]".*?>)/',
+			'<li>$1' . $icon . '$2',
 			$content
 		);
 	}

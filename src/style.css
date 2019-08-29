@@ -6,26 +6,6 @@ svg.svg-icon {
 	fill: currentColor;
 }
 
-.wsuwp_hrs_courses .svg-icon {
-	margin-right: 0.24em;
-	padding-right: 0.12em;
-	vertical-align: bottom;
-}
-
-.wsuwp_hrs_courses .course-documents {
-	display: flex;
-	list-style: none;
-	padding: 0 0 1em;
-}
-
-.wsuwp_hrs_courses .course-documents a {
-	margin-right: 2em;
-}
-
-.wsuwp_hrs_courses .course-meta .label {
-	font-weight: 600;
-}
-
 .wsuwp-courses-archive .taxonomy-description {
 	padding-left: 2rem;
 	max-width: 45em;

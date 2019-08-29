@@ -25,3 +25,8 @@ svg.svg-icon {
 .wsuwp_hrs_courses .course-meta .label {
 	font-weight: 600;
 }
+
+.wsuwp-courses-archive .taxonomy-description {
+	padding-left: 2rem;
+	max-width: 45em;
+}

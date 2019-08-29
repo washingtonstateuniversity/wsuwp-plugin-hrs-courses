@@ -94,7 +94,7 @@ add_filter( 'wsuwp_hrs_post_time_html', __NAMESPACE__ . '\filter_courses_date', 
  */
 function courses_archive_description( $description ) {
 	if ( is_tax( 'course_tag' ) || is_tax( 'learning_program' ) ) {
-		return str_replace( '<p>', '<p class="meta">', $description );
+		return str_replace( '<p>', '<p class="taxonomy-description">', $description );
 	}
 }
 add_filter( 'get_the_archive_description', __NAMESPACE__ . '\courses_archive_description', 10, 1 );

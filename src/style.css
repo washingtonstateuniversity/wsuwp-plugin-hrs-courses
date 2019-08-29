@@ -1,1 +1,28 @@
+@import "./global/_variables.css";
 @import "./blocks/style.css";
+
+svg.svg-icon {
+	transition: fill 0.3s ease;
+	fill: currentColor;
+}
+
+.wsuwp_hrs_courses .svg-icon {
+	margin-right: 0.24em;
+	padding-right: 0.12em;
+	vertical-align: bottom;
+}
+
+.wsuwp_hrs_courses .course-documents {
+	display: flex;
+	list-style: none;
+	padding: 0 0 1em;
+}
+
+.wsuwp_hrs_courses .course-documents a {
+	display: inline-block;
+	margin-right: 2em;
+}
+
+.wsuwp_hrs_courses .course-meta .label {
+	font-weight: 600;
+}

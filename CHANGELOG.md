@@ -18,10 +18,12 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-alpha.1 (:construction: 2019-08-29)
+## 0.6.0-alpha.2 (:construction: 2019-08-29)
 
 ### Fixed
 
+- Fix output of `list-courses` full content display option to match the standard archive display. The `wp_kses_post` function was stripping out SVG icons. Switch to a set of custom filters instead.
+- :art: Handle default state (without a "has style" modifier) of the `list-courses` block.
 - Fix #8 Fix taxonomy description styling to better handle multiple paragraphs.
 - Fix #10 Restore default link styling in the course documents lists.
 - Fix #9 Remove the "Part of the Learning Program" lead-in text.
@@ -29,6 +31,11 @@ Changelog formatting (http://semver.org/):
 ### Changed
 
 - :truck: Move non-block styles out of the `list-courses` block style file.
+
+### Added
+
+- Custom filter 'wsuwp_hrs_courses_enroll_link' to allow modifying the "Enroll" link HTML.
+- Custom filter 'wsuwp_hrs_courses_documents_list' to allow modifying the course document list HTML.
 
 ## 0.5.0 (2019-08-27)
 

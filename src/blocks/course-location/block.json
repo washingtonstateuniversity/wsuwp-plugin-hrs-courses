@@ -9,7 +9,7 @@
 		},
 		"displayValue": {
 			"type": "string",
-			"source": "text",
+			"source": "html",
 			"selector": ".course-location"
 		}
 	}

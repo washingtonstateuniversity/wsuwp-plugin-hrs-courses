@@ -10,23 +10,26 @@ export default function CoursePresenterEdit( {
 	setAttributes,
 } ) {
 	const {
-		blockValue,
+		presenterMetaValue,
+		displayValue, /* eslint-disable-line no-unused-vars */
 		placeholder,
 	} = attributes;
 
 	return (
 		<div className={ className }>
 			<div className={ 'components-base-control' }>
-				<p className="components-base-control__label">
-					{ __( 'Course presenter(s)' ) }
-				</p>
+				<span className="components-base-control__label">
+					{ __( 'Presenter: ' ) }
+				</span>
 			</div>
 			<RichText
-				label={ __( 'Course date and time' ) }
+				tagName="span"
+				className="course-presenter"
+				label={ __( 'Course presenter' ) }
 				placeholder={ placeholder || __( 'Add presenter(s)…' ) }
 				keepPlaceholderOnFocus={ true }
-				value={ blockValue }
-				onChange={ ( value ) => setAttributes( { blockValue: value } ) }
+				value={ presenterMetaValue }
+				onChange={ ( value ) => setAttributes( { presenterMetaValue: value, displayValue: value } ) }
 				formattingControls={ [ 'bold' ] }
 			/>
 		</div>

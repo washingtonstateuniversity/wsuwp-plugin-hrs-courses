@@ -2,10 +2,15 @@
 	"name": "hrscourses/course-presenter",
 	"category": "common",
 	"attributes": {
-		"blockValue": {
+		"presenterMetaValue": {
 			"type": "string",
 			"source": "meta",
 			"meta": "_wsuwp_hrs_courses_presenter"
+		},
+		"displayValue": {
+			"type": "string",
+			"source": "text",
+			"selector": ".course-presenter"
 		}
 	}
 }

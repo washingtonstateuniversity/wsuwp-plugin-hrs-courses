@@ -2,10 +2,15 @@
 	"name": "hrscourses/course-location",
 	"category": "common",
 	"attributes": {
-		"blockValue": {
+		"locationMetaValue": {
 			"type": "string",
 			"source": "meta",
 			"meta": "_wsuwp_hrs_courses_location"
+		},
+		"displayValue": {
+			"type": "string",
+			"source": "text",
+			"selector": ".course-location"
 		}
 	}
 }

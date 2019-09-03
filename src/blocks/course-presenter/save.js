@@ -1,11 +1,26 @@
-/*
- * No data is saved to the block. Data is saved to post meta via attributes.
- *
- * Because this is similar to a dynamic block it doesn’t need to override the
- * default save implementation on the client. Instead, it needs a server
- * component. The contents in the front of your site depend on the function
- * called by the `render_callback` property of `register_block_type`.
+/**
+ * WordPress dependencies
  */
-export default function save() {
-	return null;
+const { __ } = wp.i18n;
+const { RichText } = wp.blockEditor;
+
+export default function save( { attributes, className } ) {
+	const {	displayValue } = attributes;
+
+	if ( ! displayValue ) {
+		return null;
+	}
+
+	return (
+		<p className={ className }>
+			<span className="label">
+				{ __( 'Presenter: ' ) }
+			</span>
+			<RichText.Content
+				tagName="span"
+				className="course-presenter"
+				value={ displayValue }
+			/>
+		</p>
+	);
 }

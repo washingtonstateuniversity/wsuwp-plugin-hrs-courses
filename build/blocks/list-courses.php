@@ -7,7 +7,6 @@
  */
 namespace WSUWP\HRS\Courses\Blocks\list_courses;
 use WSUWP\HRS\Courses\Setup;
-use WSUWP\HRS\Courses\Blocks\course_datetime;
 
 /**
  * Renders the `hrscourses/list-courses` dynamic block contents.

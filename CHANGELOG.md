@@ -18,10 +18,13 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-alpha.2 (:construction: 2019-08-29)
+## 0.6.0-alpha.3 (:construction: 2019-09-03)
 
 ### Fixed
 
+- :bug: Use 'html' instead of 'text' as source attribute for `course-presenter` and `course-location` blocks to allow saving formatting markup.
+- Fix #12 Convert dynamic blocks that are children of a dynamic block into static blocks so they display in parent block.
+- :bug: Don't exit early out of dynamic block registration loop if an individual file isn't found, continue processing the rest.
 - Fix output of `list-courses` full content display option to match the standard archive display. The `wp_kses_post` function was stripping out SVG icons. Switch to a set of custom filters instead.
 - :art: Handle default state (without a "has style" modifier) of the `list-courses` block.
 - Fix #8 Fix taxonomy description styling to better handle multiple paragraphs.
@@ -30,12 +33,17 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Modify `course-datetime`, `course-location`, and `course-presenter` blocks to save the block values as both post meta and post content to avoid the need for server-side rendering. This helps to address #12.
 - :truck: Move non-block styles out of the `list-courses` block style file.
 
 ### Added
 
 - Custom filter 'wsuwp_hrs_courses_enroll_link' to allow modifying the "Enroll" link HTML.
 - Custom filter 'wsuwp_hrs_courses_documents_list' to allow modifying the course document list HTML.
+
+### Removed
+
+- :fire: Server-side render methods for the `course-datetime`, `course-location`, and `course-presenter` blocks.
 
 ## 0.5.0 (2019-08-27)
 

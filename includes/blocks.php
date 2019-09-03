@@ -34,7 +34,7 @@ function register_dynamic_blocks() {
 
 	foreach ( $block_names as $file => $block_name ) {
 		if ( ! file_exists( $blocks_dir . $file ) ) {
-			return;
+			continue;
 		}
 
 		require $blocks_dir . $file;

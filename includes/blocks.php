@@ -26,7 +26,6 @@ function register_dynamic_blocks() {
 	}
 
 	$block_names = array(
-		'course-datetime.php'  => 'hrscourses/course-datetime',
 		'course-location.php'  => 'hrscourses/course-location',
 		'course-presenter.php' => 'hrscourses/course-presenter',
 		'list-courses.php'     => 'hrscourses/list-courses',

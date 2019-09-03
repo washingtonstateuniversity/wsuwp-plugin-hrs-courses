@@ -25,11 +25,7 @@ function register_dynamic_blocks() {
 		return;
 	}
 
-	$block_names = array(
-		'course-location.php'  => 'hrscourses/course-location',
-		'course-presenter.php' => 'hrscourses/course-presenter',
-		'list-courses.php'     => 'hrscourses/list-courses',
-	);
+	$block_names = array( 'list-courses.php' => 'hrscourses/list-courses' );
 
 	foreach ( $block_names as $file => $block_name ) {
 		if ( ! file_exists( $blocks_dir . $file ) ) {

@@ -6,7 +6,16 @@ svg.svg-icon {
 	fill: currentColor;
 }
 
-.wsuwp-courses-archive .taxonomy-description {
-	padding-left: 2rem;
+.wsuwp-courses-archive .courses-archive-frontmatter {
+	background-color: var(--body-background-color);
+	overflow: hidden;
+	padding: 0 2rem;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter h3 {
+	font-size: var(--font-size-3);
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .taxonomy-description {
 	max-width: 45em;
 }

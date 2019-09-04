@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WSUWP HRS Courses
-Version: 0.6.0-alpha.3
+Version: 0.6.0-alpha.4
 Description: A plugin to create a Course custom post type for WSU Human Resource Services.
 Author: Adam Turner, washingtonstateuniversity
 Author URI: https://hrs.wsu.edu/

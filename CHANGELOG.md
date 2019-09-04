@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-alpha.4 (:construction: 2019-09-04)
+## 0.6.0-alpha.5 (:construction: 2019-09-04)
 
 ### Fixed
 
@@ -51,6 +51,7 @@ Changelog formatting (http://semver.org/):
 
 ### Removed
 
+- :construction_worker: Drop support for PHP versions less than 7.0 and update CI tests to match.
 - :fire: Server-side render methods for the `course-datetime`, `course-location`, and `course-presenter` blocks.
 
 ## 0.5.0 (2019-08-27)

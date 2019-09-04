@@ -77,3 +77,38 @@ function archive_pagination( $total_pages = '' ) {
 		<?php
 	}
 }
+
+/**
+ * Displays a list of all terms in a given taxonomy as a linked list.
+ *
+ * @since 0.6.0
+ *
+ * @param string $taxonomy The taxonomy to display a terms list for.
+ */
+function the_taxonomy_nav_list( $taxonomy ) {
+	if ( ! isset( $taxonomy ) ) {
+		return;
+	}
+
+	$terms    = get_terms( array( 'taxonomy' => esc_attr( $taxonomy ) ) );
+	$tax_obj  = get_taxonomy( $taxonomy );
+	$tax_name = $tax_obj->labels->singular_name ?? '(No name)';
+
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+		$terms_list = '';
+
+		foreach ( $terms as $term ) {
+			$terms_list .= sprintf(
+				'<li><a href="%1$s">%2$s</a></li>',
+				esc_url( get_term_link( $term ) ),
+				esc_html( $term->name )
+			);
+		}
+
+		printf(
+			'<div class="wp-block-column"><h3>%1$s</h3><ul>%2$s</ul></div>',
+			__( 'Browse by ' ) . esc_html( $tax_name ),
+			$terms_list
+		);
+	}
+}

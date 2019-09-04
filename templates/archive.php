@@ -18,19 +18,32 @@ get_header();
 		<h1>
 			<?php
 			printf(
-				/* translators: the HRS news archive title: 1: the taxonomy name */
+				/* translators: the HRS news archive title: 1: the taxonomy name if it exists or the word "All" */
 				esc_html__( '%s Courses', 'wsuwp-hrs-courses' ),
-				single_term_title( '', false )
+				single_term_title( '', false ) ?? 'All'
 			);
 			?>
 		</h1>
 	</header>
 	<section class="row single gutter courses-archive">
-		<?php
-		if ( is_tax() ) {
-			the_archive_description();
-		}
 
+		<div class="courses-archive-frontmatter">
+			<?php
+			if ( is_tax() ) {
+				the_archive_description();
+			} else {
+				?>
+				<h2>Find a Course</h2>
+				<div class="wp-block-columns has-2-columns">
+					<?php Render\the_taxonomy_nav_list( 'course_tag' ); ?>
+					<?php Render\the_taxonomy_nav_list( 'learning_program' ); ?>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+
+		<?php
 		if ( have_posts() ) {
 			while ( have_posts() ) {
 				the_post();

@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-alpha.5 (:construction: 2019-09-04)
+## 0.6.0-alpha.6 (:construction: 2019-09-04)
 
 ### Fixed
 
@@ -33,6 +33,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Move "Enroll" button in the single Course block template outside the sidebar block so that it will always be last in the DOM order.
 - Add frontmatter to the courses archive template to either contain the taxonomy description or display a "find a course" section with features to help users search/browse for courses. Uses the new `\the_taxonomy_nav_list` function.
 - Filter the HRS Courses post type archive query to display all courses on the main archive page and sort them alphabetically starting with 'A'.
 - Modify `course-datetime`, `course-location`, and `course-presenter` blocks to save the block values as both post meta and post content to avoid the need for server-side rendering. This helps to address #12.

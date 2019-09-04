@@ -248,13 +248,6 @@ class WSUWP_HRS_Courses {
 									'className'   => 'course-documents',
 								),
 							),
-							array(
-								'core/button',
-								array(
-									'text'      => 'Enroll',
-									'className' => 'is-style-outline',
-								),
-							),
 						),
 					),
 					array(
@@ -268,6 +261,13 @@ class WSUWP_HRS_Courses {
 							array( 'hrscourses/course-video' ),
 						),
 					),
+				),
+			),
+			array(
+				'core/button',
+				array(
+					'text'      => 'Enroll',
+					'className' => 'is-style-outline',
 				),
 			),
 		);

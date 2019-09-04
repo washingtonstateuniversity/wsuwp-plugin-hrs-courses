@@ -12,6 +12,28 @@ use WSUWP\HRS\Courses\Setup;
 use WSUWP\HRS\Courses\Icons;
 
 /**
+ * Modifies the query properties for the courses archive page.
+ *
+ * @since 0.6.0
+ *
+ * @param WP_Query $query The WP_Query instance, passed by reference.
+ */
+function modify_courses_archive_query( $query ) {
+	// Make sure it isn't an admin query, is a main front-end query, and
+	if ( ! is_admin() && $query->is_main_query() ) {
+		if ( $query->is_post_type_archive( Setup\WSUWP_HRS_Courses::$post_type_slug ) ) {
+			// Change the query to display X posts per page.
+			$query->set( 'posts_per_page', -1 );
+
+			// Order by title in ascending order.
+			$query->set( 'orderby', 'title' );
+			$query->set( 'order', 'ASC' );
+		}
+	}
+}
+add_action( 'pre_get_posts', __NAMESPACE__ . '\modify_courses_archive_query' );
+
+/**
  * Loads custom templates for Courses display.
  *
  * @since 0.4.0

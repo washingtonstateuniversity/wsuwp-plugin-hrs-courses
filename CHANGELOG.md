@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 0.6.0-alpha.6 (:construction: 2019-09-04)
+## 1.0.0-alpha.1 (:construction: 2019-09-05)
 
 ### Fixed
 
@@ -33,6 +33,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Modify the archive template to handle display of search results as well as the standard archive and taxonomy archive display.
 - Move "Enroll" button in the single Course block template outside the sidebar block so that it will always be last in the DOM order.
 - Add frontmatter to the courses archive template to either contain the taxonomy description or display a "find a course" section with features to help users search/browse for courses. Uses the new `\the_taxonomy_nav_list` function.
 - Filter the HRS Courses post type archive query to display all courses on the main archive page and sort them alphabetically starting with 'A'.
@@ -43,9 +44,11 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: @wordpress/eslint-plugin 2.4.0 -> 3.0.0
 - :arrow_up: @wordpress/jest-preset-default 4.3.0 -> 5.1.0
 - :arrow_up: eslint 6.2.2 -> 6.3.0
+- :arrow_up: webpack-cli 3.3.7 -> 3.3.8
 
 ### Added
 
+- :sparkles: Close #11 Allow searching all courses with custom search form and results page.
 - Function to display a list of all the terms with attached posts for a given taxonomy, formatted as an unordered list with a heading.
 - Custom filter 'wsuwp_hrs_courses_enroll_link' to allow modifying the "Enroll" link HTML.
 - Custom filter 'wsuwp_hrs_courses_documents_list' to allow modifying the course document list HTML.

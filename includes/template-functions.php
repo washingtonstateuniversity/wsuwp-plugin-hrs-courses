@@ -29,6 +29,11 @@ function modify_courses_archive_query( $query ) {
 			$query->set( 'orderby', 'title' );
 			$query->set( 'order', 'ASC' );
 		}
+
+		// Redirect the search template to the custom post archive template.
+		if ( $query->is_search() && Setup\WSUWP_HRS_Courses::$post_type_slug === $query->get( 'post_type' ) ) {
+			add_filter( 'search_template', __NAMESPACE__ . '\load_template' );
+		}
 	}
 }
 add_action( 'pre_get_posts', __NAMESPACE__ . '\modify_courses_archive_query' );

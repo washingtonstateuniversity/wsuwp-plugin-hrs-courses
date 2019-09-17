@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 1.0.0-beta.1 (:construction: 2019-09-17)
+## 1.0.0-beta.2 (:construction: 2019-09-17)
 
 ### Fixed
 
@@ -33,11 +33,13 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Move uninstall methods from a dedicated file into a class method hooked to `register_uninstall_hook`.
 - Modify the archive template to handle display of search results as well as the standard archive and taxonomy archive display.
 - Move "Enroll" button in the single Course block template outside the sidebar block so that it will always be last in the DOM order.
 - Add frontmatter to the courses archive template to either contain the taxonomy description or display a "find a course" section with features to help users search/browse for courses. Uses the new `\the_taxonomy_nav_list` function.
 - Filter the HRS Courses post type archive query to display all courses on the main archive page and sort them alphabetically starting with 'A'.
 - Modify `course-datetime`, `course-location`, and `course-presenter` blocks to save the block values as both post meta and post content to avoid the need for server-side rendering. This helps to address #12.
+- Restore `.gitignore` to version control.
 - :truck: Move non-block styles out of the `list-courses` block style file.
 - :arrow_up: @wordpress/babel-preset-default 4.4.0 -> 4.5.0
 - :arrow_up: @wordpress/dependency-extraction-webpack-plugin 1.1.0 -> 1.2.0

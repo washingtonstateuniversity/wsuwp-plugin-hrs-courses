@@ -139,6 +139,43 @@ class WSUWP_HRS_Courses {
 	}
 
 	/**
+	 * Uninstalls the HRS Courses plugin.
+	 *
+	 * Uninstall will remove all options and delete all posts created by the HRS
+	 * Courses custom post type plugin. Do not need to flush cache/temp or
+	 * permalinks here, as that will have already been done on deactivation.
+	 * Uses `get_posts()` and `wp_trash_post()` to do the heavy lifting.
+	 *
+	 * Note: `get_posts()` does not return posts with of auto_draft type, so
+	 * currently these methods will not delete any from the database.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function hrs_courses_uninstall() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
+		// Remove options if not already gone.
+		if ( get_option( 'hrs-courses-plugin-activated' ) ) {
+			delete_option( 'hrs-courses-plugin-activated' );
+		}
+
+		// Get all HRS Courses as an array of post objects.
+		$courses = get_posts(
+			array(
+				'post_type'   => self::$post_type_slug,
+				'numberposts' => -1,
+			)
+		);
+
+		// Move all HRS Courses posts to the trash.
+		foreach ( $courses as $course ) {
+			wp_trash_post( $course->ID );
+		}
+	}
+
+	/**
 	 * Creates the HRS Courses taxonomies.
 	 *
 	 * A callback on the `init` hook with a high priority of '0' to help make

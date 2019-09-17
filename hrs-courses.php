@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WSUWP HRS Courses
-Version: 1.0.0-beta.1
+Version: 1.0.0-beta.2
 Description: A plugin to create a Course custom post type for WSU Human Resource Services.
 Author: Adam Turner, washingtonstateuniversity
 Author URI: https://hrs.wsu.edu/
@@ -29,6 +29,7 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\load_hrs_courses' );
 // Flush rules on activation and clean up on deactivation.
 register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_activate' ) );
 register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_deactivate' ) );
+register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_uninstall' ) );
 
 /**
  * Creates an instance of the HRS Courses class.

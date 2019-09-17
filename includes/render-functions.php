@@ -112,3 +112,28 @@ function the_taxonomy_nav_list( $taxonomy ) {
 		);
 	}
 }
+
+/**
+ * Displays the Courses search form.
+ *
+ * @since 0.6.0
+ */
+function get_courses_search_form() {
+	// Retrieve the default search form.
+	$default_form = get_search_form(
+		array(
+			'echo'       => false,
+			'aria_label' => 'Courses search',
+		)
+	);
+
+	// Remove the closing `<form>` tag to allow additions and modify submit button text.
+	$form = str_replace( '</form>', '', $default_form );
+	$form = str_replace( 'value="Search"', 'value="Search Courses"', $form );
+
+	printf(
+		'%1$s<input type="hidden" value="%2$s" name="post_type" /></form>',
+		$form,
+		esc_attr( Setup\WSUWP_HRS_Courses::$post_type_slug )
+	);
+}

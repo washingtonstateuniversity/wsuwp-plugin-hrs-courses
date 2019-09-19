@@ -139,6 +139,36 @@ class WSUWP_HRS_Courses {
 	}
 
 	/**
+	 * Uninstalls the HRS Courses plugin.
+	 *
+	 * Uninstall will remove all options and delete all posts created by the HRS
+	 * Courses custom post type plugin. Do not need to flush cache/temp or
+	 * permalinks here, as that will have already been done on deactivation.
+	 * Uses `get_posts()` and `wp_trash_post()` to do the heavy lifting.
+	 *
+	 * Note: `get_posts()` does not return posts with of auto_draft type, so
+	 * currently these methods will not delete any from the database.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function hrs_courses_uninstall() {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
+		// Remove options if not already gone.
+		if ( get_option( 'hrs-courses-plugin-activated' ) ) {
+			delete_option( 'hrs-courses-plugin-activated' );
+		}
+
+		// Move all HRS Courses posts to the trash.
+		self::remove_courses_posts();
+
+		// Delete all terms and taxonomies.
+		self::remove_taxonomies();
+	}
+
+	/**
 	 * Creates the HRS Courses taxonomies.
 	 *
 	 * A callback on the `init` hook with a high priority of '0' to help make
@@ -197,6 +227,38 @@ class WSUWP_HRS_Courses {
 		);
 
 		register_taxonomy( 'learning_program', self::$post_type_slug, $args );
+	}
+
+	/**
+	 * Deletes all HRS Courses custom taxonomies and terms.
+	 *
+	 * @since 1.0.0
+	 */
+	private static function remove_taxonomies() {
+		global $wpdb;
+
+		// Retrieve the term and taxonomy IDs.
+		$terms = $wpdb->get_results(
+			$wpdb->prepare(
+				"
+				SELECT term_id, term_taxonomy_id
+				FROM $wpdb->term_taxonomy
+				WHERE taxonomy IN ( %s, %s )
+				",
+				array(
+					'course_tag',
+					'learning_program',
+				)
+			)
+		);
+
+		// Delete all data for each term and taxonomy.
+		foreach ( $terms as $term ) {
+			$wpdb->delete( $wpdb->term_relationships, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
+			$wpdb->delete( $wpdb->term_taxonomy, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
+			$wpdb->delete( $wpdb->terms, array( 'term_id' => $term->term_id ) );
+			$wpdb->delete( $wpdb->termmeta, array( 'term_id' => $term->term_id ) );
+		}
 	}
 
 	/**
@@ -298,6 +360,32 @@ class WSUWP_HRS_Courses {
 		);
 
 		register_post_type( self::$post_type_slug, $args );
+	}
+
+	/**
+	 * Moves all HRS Courses custom post types to the Trash.
+	 *
+	 * Uses a direct MySQL command with the $wpdb object in order to prevent
+	 * memory-based timeouts when trying to trash many posts.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return int|false The number of rows affected by the query or false if a MySQL error is encountered.
+	 */
+	private static function remove_courses_posts() {
+		global $wpdb;
+
+		return $wpdb->query(
+			$wpdb->prepare(
+				"
+				UPDATE `$wpdb->posts`
+				SET `post_status` = %s
+				WHERE `post_type` = %s
+				",
+				'trash',
+				self::$post_type_slug
+			)
+		);
 	}
 
 	/**

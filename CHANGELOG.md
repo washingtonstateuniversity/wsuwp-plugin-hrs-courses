@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 1.0.0-beta.2 (:construction: 2019-09-17)
+## 1.0.0-rc.1 (:construction: 2019-09-19)
 
 ### Fixed
 
@@ -33,6 +33,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- Use `$wpdb` methods to trash Courses CPTs on uninstall instead of `get_posts()` and `wp_trash_post()`. The get posts -> trash posts approach can use a lot of memory if there are a lot of posts and cause a significant slowdown.
 - Move uninstall methods from a dedicated file into a class method hooked to `register_uninstall_hook`.
 - Modify the archive template to handle display of search results as well as the standard archive and taxonomy archive display.
 - Move "Enroll" button in the single Course block template outside the sidebar block so that it will always be last in the DOM order.
@@ -41,15 +42,21 @@ Changelog formatting (http://semver.org/):
 - Modify `course-datetime`, `course-location`, and `course-presenter` blocks to save the block values as both post meta and post content to avoid the need for server-side rendering. This helps to address #12.
 - Restore `.gitignore` to version control.
 - :truck: Move non-block styles out of the `list-courses` block style file.
-- :arrow_up: @wordpress/babel-preset-default 4.4.0 -> 4.5.0
-- :arrow_up: @wordpress/dependency-extraction-webpack-plugin 1.1.0 -> 1.2.0
+- :arrow_up: @wordpress/babel-preset-default 4.4.0 -> 4.6.0
+- :arrow_up: @wordpress/eslint-plugin 3.0.0 -> 3.1.0
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin 1.1.0 -> 2.0.0
 - :arrow_up: @wordpress/eslint-plugin 2.4.0 -> 3.0.0
 - :arrow_up: @wordpress/jest-preset-default 4.3.0 -> 5.1.0
-- :arrow_up: eslint 6.2.2 -> 6.3.0
-- :arrow_up: webpack-cli 3.3.7 -> 3.3.8
+- :arrow_up: eslint 6.2.2 -> 6.4.0
+- :arrow_up: puppeteer 1.19.0 -> 1.20.0
+- :arrow_up: stylelint 10.1.0 -> 11.0.0
+- :arrow_up: webpack 4.39.3 -> 4.40.2
+- :arrow_up: webpack-bundle-analyzer 3.4.1 -> 3.5.0
+- :arrow_up: webpack-cli 3.3.7 -> 3.3.9
 
 ### Added
 
+- Uninstall method to remove all Courses custom taxonomies and terms.
 - :sparkles: Close #11 Allow searching all courses with custom search form and results page.
 - Function to display a list of all the terms with attached posts for a given taxonomy, formatted as an unordered list with a heading.
 - Custom filter 'wsuwp_hrs_courses_enroll_link' to allow modifying the "Enroll" link HTML.

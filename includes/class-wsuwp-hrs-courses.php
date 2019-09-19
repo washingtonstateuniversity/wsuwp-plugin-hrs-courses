@@ -163,6 +163,9 @@ class WSUWP_HRS_Courses {
 
 		// Move all HRS Courses posts to the trash.
 		self::remove_courses_posts();
+
+		// Delete all terms and taxonomies.
+		self::remove_taxonomies();
 	}
 
 	/**
@@ -224,6 +227,38 @@ class WSUWP_HRS_Courses {
 		);
 
 		register_taxonomy( 'learning_program', self::$post_type_slug, $args );
+	}
+
+	/**
+	 * Deletes all HRS Courses custom taxonomies and terms.
+	 *
+	 * @since 1.0.0
+	 */
+	private static function remove_taxonomies() {
+		global $wpdb;
+
+		// Retrieve the term and taxonomy IDs.
+		$terms = $wpdb->get_results(
+			$wpdb->prepare(
+				"
+				SELECT term_id, term_taxonomy_id
+				FROM $wpdb->term_taxonomy
+				WHERE taxonomy IN ( %s, %s )
+				",
+				array(
+					'course_tag',
+					'learning_program',
+				)
+			)
+		);
+
+		// Delete all data for each term and taxonomy.
+		foreach ( $terms as $term ) {
+			$wpdb->delete( $wpdb->term_relationships, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
+			$wpdb->delete( $wpdb->term_taxonomy, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
+			$wpdb->delete( $wpdb->terms, array( 'term_id' => $term->term_id ) );
+			$wpdb->delete( $wpdb->termmeta, array( 'term_id' => $term->term_id ) );
+		}
 	}
 
 	/**

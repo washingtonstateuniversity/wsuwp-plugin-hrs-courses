@@ -18,7 +18,7 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 1.0.0-rc.1 (:construction: 2019-09-19)
+## 1.0.0-rc.2 (:construction: 2019-09-19)
 
 ### Fixed
 
@@ -33,6 +33,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
+- :memo: Close #16 Completed README file with description, installation and management instructions, and developer info.
 - Use `$wpdb` methods to trash Courses CPTs on uninstall instead of `get_posts()` and `wp_trash_post()`. The get posts -> trash posts approach can use a lot of memory if there are a lot of posts and cause a significant slowdown.
 - Move uninstall methods from a dedicated file into a class method hooked to `register_uninstall_hook`.
 - Modify the archive template to handle display of search results as well as the standard archive and taxonomy archive display.
@@ -56,6 +57,7 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
+- :white_check_mark: Github issue and pull request templates.
 - Uninstall method to remove all Courses custom taxonomies and terms.
 - :sparkles: Close #11 Allow searching all courses with custom search form and results page.
 - Function to display a list of all the terms with attached posts for a given taxonomy, formatted as an unordered list with a heading.

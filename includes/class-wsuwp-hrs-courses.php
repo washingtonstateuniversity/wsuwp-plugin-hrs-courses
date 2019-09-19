@@ -161,18 +161,8 @@ class WSUWP_HRS_Courses {
 			delete_option( 'hrs-courses-plugin-activated' );
 		}
 
-		// Get all HRS Courses as an array of post objects.
-		$courses = get_posts(
-			array(
-				'post_type'   => self::$post_type_slug,
-				'numberposts' => -1,
-			)
-		);
-
 		// Move all HRS Courses posts to the trash.
-		foreach ( $courses as $course ) {
-			wp_trash_post( $course->ID );
-		}
+		self::remove_courses_posts();
 	}
 
 	/**
@@ -335,6 +325,32 @@ class WSUWP_HRS_Courses {
 		);
 
 		register_post_type( self::$post_type_slug, $args );
+	}
+
+	/**
+	 * Moves all HRS Courses custom post types to the Trash.
+	 *
+	 * Uses a direct MySQL command with the $wpdb object in order to prevent
+	 * memory-based timeouts when trying to trash many posts.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return int|false The number of rows affected by the query or false if a MySQL error is encountered.
+	 */
+	private static function remove_courses_posts() {
+		global $wpdb;
+
+		return $wpdb->query(
+			$wpdb->prepare(
+				"
+				UPDATE `$wpdb->posts`
+				SET `post_status` = %s
+				WHERE `post_type` = %s
+				",
+				'trash',
+				self::$post_type_slug
+			)
+		);
 	}
 
 	/**

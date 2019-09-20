@@ -52,7 +52,7 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: puppeteer 1.19.0 -> 1.20.0
 - :arrow_up: stylelint 10.1.0 -> 11.0.0
 - :arrow_up: webpack 4.39.3 -> 4.40.2
-- :arrow_up: webpack-bundle-analyzer 3.4.1 -> 3.5.0
+- :arrow_up: webpack-bundle-analyzer 3.5.0 -> 3.5.1
 - :arrow_up: webpack-cli 3.3.7 -> 3.3.9
 
 ### Added

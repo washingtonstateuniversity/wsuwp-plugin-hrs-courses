@@ -18,6 +18,29 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.0.1 (2020-01-06)
+
+### Changed
+
+- Increment "tested up to" to WordPress 5.2.3.
+- Update stylelint config to ignore underscore errors because the block editor uses them.
+- :arrow_up: squizlabs/php_codesniffer
+- :arrow_up: wp-coding-standards/wpcs
+- :arrow_up: @wordpress/babel-preset-default
+- :arrow_up: @wordpress/dependency-extraction-webpack-plugin
+- :arrow_up: @wordpress/eslint-plugin
+- :arrow_up: @wordpress/jest-preset-default
+- :arrow_up: copy-webpack-plugin
+- :arrow_up: eslint
+- :arrow_up: jest-puppeteer
+- :arrow_up: npm-package-json-lint
+- :arrow_up: puppeteer
+- :arrow_up: stylelint
+- :arrow_up: stylelint-config-wordpress
+- :arrow_up: webpack
+- :arrow_up: webpack-bundle-analyzer
+- :arrow_up: webpack-cli
+
 ## 1.0.0 (2019-09-20)
 
 ### Fixed

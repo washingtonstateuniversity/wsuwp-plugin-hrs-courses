@@ -476,5 +476,15 @@ class WSUWP_HRS_Courses {
 			plugins_url( 'build/style.css', $this->basename ),
 			array()
 		);
+
+		if ( is_post_type_archive( self::$post_type_slug ) ) {
+			wp_enqueue_script(
+				self::$post_type_slug . '-menu-toggle',
+				plugins_url( 'build/menu.js', $this->basename ),
+				array(),
+				get_plugin_data( $this->basename )['Version'],
+				true
+			);
+		}
 	}
 }

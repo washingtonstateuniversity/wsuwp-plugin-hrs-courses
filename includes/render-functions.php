@@ -96,6 +96,11 @@ function the_taxonomy_nav_list( $taxonomy ) {
 
 	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 		$terms_list = '';
+		$data_attr  = '';
+
+		if ( 7 < count( $terms ) ) {
+			$data_attr = ' data-collapse-menu="true" data-menu-title="' . esc_attr( $tax_name ) . '"';
+		}
 
 		foreach ( $terms as $term ) {
 			$terms_list .= sprintf(
@@ -106,8 +111,9 @@ function the_taxonomy_nav_list( $taxonomy ) {
 		}
 
 		printf(
-			'<div class="wp-block-column"><h3>%1$s</h3><ul>%2$s</ul></div>',
+			'<div class="wp-block-column"><h3>%1$s</h3><ul%2$s>%3$s</ul></div>',
 			__( 'Browse by ' ) . esc_html( $tax_name ),
+			$data_attr,
 			$terms_list
 		);
 	}

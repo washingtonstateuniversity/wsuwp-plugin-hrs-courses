@@ -18,6 +18,17 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.1.0-rc.1 (2020-01-14)
+
+### Fixed
+
+- :art: Adjust breaking on long inline list items to improve readability.
+
+### Added
+
+- :art: Styles and icons to handle expanding and contracting expandable lists.
+- :sparkles: JavaScript class for converting long lists into expandable lists.
+
 ## 1.0.1 (2020-01-06)
 
 ### Changed

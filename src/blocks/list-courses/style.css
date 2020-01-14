@@ -93,6 +93,7 @@
 	display: flex;
 	list-style: none;
 	padding: 0;
+	word-break: keep-all;
 }
 
 .wp-block-hrscourses-list-courses .course-documents a,

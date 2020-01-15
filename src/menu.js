@@ -2,6 +2,7 @@
 
 /**
  * Creates a new ExpandableNavMenu element.
+ *
  * @class
  */
 class ExpandableNavMenu {
@@ -42,7 +43,9 @@ class ExpandableNavMenu {
 }
 
 /**
+ * Sets up and activates a new expanding/collapsing menu.
  *
+ * @class
  */
 class Expander {
 	constructor( menu ) {

@@ -18,16 +18,29 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 1.1.0-rc.1 (2020-01-14)
+## 1.1.0-rc.2 (2020-01-14)
 
 ### Fixed
 
+- :warning: Fix phpcs linter errors following rules update.
 - :art: Adjust breaking on long inline list items to improve readability.
+
+### Changed
+
+- :wrench: Update phpcs linting rules
+- :arrow_up: wp-coding-standards/wpcs
+- :arrow_up: @wordpress/babel-preset-default
+- :arrow_up: postcss-cli
+- :arrow_up: stylelint
 
 ### Added
 
 - :art: Styles and icons to handle expanding and contracting expandable lists.
 - :sparkles: JavaScript class for converting long lists into expandable lists.
+- :heavy_plus_sign: phpcompatibility/php-compatibility Composer dev dependency.
+- :heavy_plus_sign: squizlabs/php_codesniffer Composer dev dependency.
+- :heavy_plus_sign: sirbrillig/phpcs-variable-analysis Composer dev dependency to sniff unused variables.
+- :heavy_plus_sign: roave/security-advisories Composer dev dependency to monitor Composer dependency security.
 
 ## 1.0.1 (2020-01-06)
 

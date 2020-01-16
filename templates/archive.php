@@ -7,6 +7,7 @@
  * @package WSUWP_HRS_Courses
  * @since 0.4.0
  */
+
 namespace WSUWP\HRS\Courses\Templates\Archive;
 use WSUWP\HRS\Courses\Setup;
 use WSUWP\HRS\Courses\Render;
@@ -88,7 +89,7 @@ get_header();
 			<article class="archive-content column one">
 				<header class="article-header">
 					<h2>
-						<?php esc_html_e( 'We couldn&rsquo;t find any courses matching:', 'hrs-wsu-edu' ); ?>
+						<?php esc_html_e( 'We couldn&rsquo;t find any courses matching:', 'wsuwp-hrs-courses' ); ?>
 						<span class="search-query"><?php echo get_search_query(); ?></span>
 					</h2>
 				</header>

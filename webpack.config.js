@@ -18,6 +18,7 @@ const config = {
 	mode,
 	entry: {
 		index: resolve( process.cwd(), 'src/', 'index.js' ),
+		menu: resolve( process.cwd(), 'src/', 'menu.js' ),
 	},
 	output: {
 		filename: '[name].js',
@@ -58,6 +59,12 @@ const config = {
 				from: './src/blocks/**/index.php',
 				test: new RegExp( `([\\w-]+)${ escapeRegExp( sep ) }index\\.php$` ),
 				to: 'blocks/[1].php',
+			},
+		] ),
+		new CopyWebpackPlugin( [
+			{
+				from: './src/icons/**/*',
+				to: 'icons/[name].[ext]',
 			},
 		] ),
 		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),

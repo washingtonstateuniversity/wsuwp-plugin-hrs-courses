@@ -33,3 +33,103 @@ svg.svg-icon {
 	margin-top: 0.5rem;
 	padding: 0.4rem 1rem;
 }
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu {
+	animation-duration: 200ms;
+	animation-timing-function: step-end;
+	background: #fff;
+	border-radius: 3px;
+	contain: content;
+	position: absolute;
+	pointer-events: none;
+	opacity: 0;
+	overflow: hidden;
+	transform-origin: top left;
+	will-change: transform;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-contents {
+	animation-duration: 200ms;
+	animation-timing-function: step-end;
+	contain: content;
+	transform-origin: top left;
+	will-change: transform;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-toggle {
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-transform: none;
+	width: 100%;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-title {
+	display: inline-block;
+	font-size: var(--font-size-2);
+	font-weight: 400;
+	line-height: normal;
+	margin: 0;
+	padding: 8px 12px;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-title::after {
+	background-image: url(../build/icons/arrow-dropdown.svg);
+	background-position: center 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: "";
+	display: inline-block;
+	height: 24px;
+	margin: 0 0 -5px 0;
+	width: 24px;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-title:hover::after,
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-title:focus::after,
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-expanded .menu-title::after {
+	background-image: url(../build/icons/arrow-dropdown-crimson.svg);
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-items {
+	list-style: none;
+	margin: 0;
+	padding: 0 3rem 1.4rem 1rem;
+	position: relative;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-active {
+	opacity: 1;
+	pointer-events: auto;
+	z-index: 1;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-expanded {
+	animation-name: menuExpandAnimation;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.09);
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-expanded .menu-toggle {
+	background: #fff;
+	color: #c60c30;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-expanded .menu-title::after {
+	transform: rotate(180deg);
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-contents-expanded {
+	animation-name: menuExpandContentsAnimation;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-collapsed {
+	animation-name: menuCollapseAnimation;
+}
+
+.wsuwp-courses-archive .courses-archive-frontmatter .menu-contents-collapsed {
+	animation-name: menuCollapseContentsAnimation;
+}

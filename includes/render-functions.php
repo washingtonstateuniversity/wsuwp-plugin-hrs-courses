@@ -7,6 +7,7 @@
  * @package WSUWP_HRS_Courses
  * @since 0.3.0
  */
+
 namespace WSUWP\HRS\Courses\Render;
 use WSUWP\HRS\Courses\Setup;
 
@@ -45,6 +46,8 @@ function sanitize_block_name( $name ) {
  * pages such as a taxonomy archives page.
  *
  * @since 0.4.0
+ *
+ * @param int $total_pages Optional. The total number of pages, default is the value of WP_Query's `max_num_pages` or 1.
  */
 function archive_pagination( $total_pages = '' ) {
 	$args = array(
@@ -96,6 +99,11 @@ function the_taxonomy_nav_list( $taxonomy ) {
 
 	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 		$terms_list = '';
+		$data_attr  = '';
+
+		if ( 7 < count( $terms ) ) {
+			$data_attr = ' data-collapse-menu="true" data-menu-title="' . esc_attr( $tax_name ) . '"';
+		}
 
 		foreach ( $terms as $term ) {
 			$terms_list .= sprintf(
@@ -106,8 +114,9 @@ function the_taxonomy_nav_list( $taxonomy ) {
 		}
 
 		printf(
-			'<div class="wp-block-column"><h3>%1$s</h3><ul>%2$s</ul></div>',
-			__( 'Browse by ' ) . esc_html( $tax_name ),
+			'<div class="wp-block-column"><h3>%1$s</h3><ul%2$s>%3$s</ul></div>',
+			__( 'Browse by ', 'wsuwp-hrs-courses' ) . esc_html( $tax_name ),
+			$data_attr,
 			$terms_list
 		);
 	}

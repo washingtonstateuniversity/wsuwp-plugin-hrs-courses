@@ -1,16 +1,19 @@
 <?php
-/*
-Plugin Name: WSUWP HRS Courses
-Version: 1.0.1
-Description: A plugin to create a Course custom post type for WSU Human Resource Services.
-Author: Adam Turner, washingtonstateuniversity
-Author URI: https://hrs.wsu.edu/
-Plugin URI: https://github.com/washingtonstateuniversity/wsuwp-hrs-courses
-Text Domain: wsuwp-hrs-courses
-Requires at least: 5.0
-Tested up to: 5.3.2
-Requires PHP: 7.0
-*/
+/**
+ * Plugin Name: WSUWP HRS Courses
+ * Version: 1.1.0-rc.2
+ * Description: A plugin to create a Course custom post type for WSU Human Resource Services.
+ * Author: Adam Turner, washingtonstateuniversity
+ * Author URI: https://hrs.wsu.edu/
+ * Plugin URI: https://github.com/washingtonstateuniversity/wsuwp-hrs-courses
+ * Text Domain: wsuwp-hrs-courses
+ * Requires at least: 5.0
+ * Tested up to: 5.3.2
+ * Requires PHP: 7.0
+ *
+ * @package WSUWP_HRS_Courses
+ */
+
 namespace WSUWP\HRS\Courses;
 
 // If this file is called directly, abort.
@@ -40,4 +43,6 @@ register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Cour
  */
 function load_hrs_courses() {
 	$wsuwp_hrs_courses = Setup\WSUWP_HRS_Courses::get_instance( __FILE__ );
+
+	return $wsuwp_hrs_courses;
 }

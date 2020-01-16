@@ -5,6 +5,7 @@
  * @package WSUWP_HRS_Courses
  * @since 0.1.0
  */
+
 namespace WSUWP\HRS\Courses\Setup;
 use WSUWP\HRS\Courses\Render;
 
@@ -41,6 +42,7 @@ class WSUWP_HRS_Courses {
 	 *
 	 * @since 0.1.0
 	 *
+	 * @param string $file The __FILE__ value of the main plugin file.
 	 * @return object The HRS Courses object
 	 */
 	public static function get_instance( $file ) {
@@ -265,6 +267,7 @@ class WSUWP_HRS_Courses {
 	 * Registers the HRS Courses post type.
 	 *
 	 * Also defined the Courses post type block template.
+	 *
 	 * @see https://developer.wordpress.org/block-editor/developers/block-api/block-templates/
 	 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/block-templates/
 	 *
@@ -476,5 +479,15 @@ class WSUWP_HRS_Courses {
 			plugins_url( 'build/style.css', $this->basename ),
 			array()
 		);
+
+		if ( is_post_type_archive( self::$post_type_slug ) ) {
+			wp_enqueue_script(
+				self::$post_type_slug . '-menu-toggle',
+				plugins_url( 'build/menu.js', $this->basename ),
+				array(),
+				get_plugin_data( $this->basename )['Version'],
+				true
+			);
+		}
 	}
 }

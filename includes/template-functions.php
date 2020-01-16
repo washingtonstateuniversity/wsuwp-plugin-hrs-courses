@@ -7,6 +7,7 @@
  * @package WSUWP_HRS_Courses
  * @since 0.4.0
  */
+
 namespace WSUWP\HRS\Courses\Templates;
 use WSUWP\HRS\Courses\Setup;
 use WSUWP\HRS\Courses\Icons;
@@ -19,7 +20,7 @@ use WSUWP\HRS\Courses\Icons;
  * @param WP_Query $query The WP_Query instance, passed by reference.
  */
 function modify_courses_archive_query( $query ) {
-	// Make sure it isn't an admin query, is a main front-end query, and
+	// Make sure it isn't an admin query and is a main front-end query.
 	if ( ! is_admin() && $query->is_main_query() ) {
 		if ( $query->is_post_type_archive( Setup\WSUWP_HRS_Courses::$post_type_slug ) ) {
 			// Change the query to display X posts per page.
@@ -101,6 +102,8 @@ add_filter( 'nav_menu_css_class', __NAMESPACE__ . '\modify_nav_menu_classes', 15
  * Removes the post date element from courses posts.
  *
  * @since 0.4.0
+ *
+ * @param string $post_date The date created value for a post in the Loop.
  */
 function filter_courses_date( $post_date ) {
 	if ( get_post_type() === Setup\WSUWP_HRS_Courses::$post_type_slug ) {

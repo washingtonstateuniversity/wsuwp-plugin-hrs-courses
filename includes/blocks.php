@@ -5,6 +5,7 @@
  * @package WSUWP_HRS_Courses
  * @since 0.4.0
  */
+
 namespace WSUWP\HRS\Courses\Blocks;
 
 /**

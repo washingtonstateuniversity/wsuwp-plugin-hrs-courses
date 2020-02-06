@@ -22,7 +22,11 @@ use WSUWP\HRS\Courses\Icons;
 function modify_courses_archive_query( $query ) {
 	// Make sure it isn't an admin query and is a main front-end query.
 	if ( ! is_admin() && $query->is_main_query() ) {
-		if ( $query->is_post_type_archive( Setup\WSUWP_HRS_Courses::$post_type_slug ) ) {
+		if (
+			$query->is_post_type_archive( Setup\WSUWP_HRS_Courses::$post_type_slug ) ||
+			$query->is_tax( 'course_tag' ) ||
+			$query->is_tax( 'learning_program' )
+		) {
 			// Change the query to display X posts per page.
 			$query->set( 'posts_per_page', -1 );
 

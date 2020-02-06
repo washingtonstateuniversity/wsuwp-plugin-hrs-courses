@@ -23,7 +23,7 @@ get_header();
 				printf(
 					/* translators: the HRS news archive title: 1: the taxonomy name if it exists or the word "All" */
 					esc_html__( '%s Courses', 'wsuwp-hrs-courses' ),
-					single_term_title( '', false ) ?? 'All'
+					single_term_title( '', false ) ?? 'All WSU'
 				);
 			} else {
 				printf(

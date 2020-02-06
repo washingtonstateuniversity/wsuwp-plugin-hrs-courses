@@ -18,10 +18,11 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 1.2.0-beta.1 (:construction: 2020-02-04)
+## 1.2.0-rc.1 (:construction: 2020-02-06)
 
 ### Changed
 
+- Change courses archive title to "All WSU Courses".
 - Fix #20, modify Courses taxonomy archive pages to match main Courses archive (display all and order by title).
 - :arrow_up: @wordpress/babel-preset-default => 4.10.0
 - :arrow_up: @wordpress/dependency-extraction-webpack-plugin => 2.2.0
@@ -30,7 +31,7 @@ Changelog formatting (http://semver.org/):
 - :arrow_up: @wordpress/npm-package-json-lint-config => 2.2.0
 - :arrow_up: jest => 25.1.0
 - :arrow_up: npm-package-json-lint => 4.6.0
-- :arrow_up: puppeteer => 2.1.0
+- :arrow_up: puppeteer => 2.1.1
 - :arrow_up: rimraf => 3.0.1
 - :arrow_up: dealerdirect/phpcodesniffer-composer-installer => 0.6.2
 - :arrow_up: squizlabs/php_codesniffer => 3.5.4

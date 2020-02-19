@@ -40,6 +40,11 @@ get_header();
 		if ( is_tax() ) {
 			the_archive_description();
 		} else {
+			$lod_courses_notice_block = get_page_by_title( 'LOD Courses Notice', OBJECT, 'wp_block' );
+			if ( $lod_courses_notice_block ) {
+				$lod_courses_notice_block = do_blocks( $lod_courses_notice_block->post_content );
+				echo wp_kses_post( wptexturize( $lod_courses_notice_block ) );
+			}
 			?>
 			<div class="wp-block-hrs-wsu-edu-callouts courses-archive-frontmatter">
 				<p class="has-large-font-size">Find a Course</p>

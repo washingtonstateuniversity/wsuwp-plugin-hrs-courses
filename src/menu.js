@@ -26,7 +26,9 @@ class ExpandableNavMenu {
 		this._menuContents.appendChild( this._menuToggle );
 		this._menuContents.appendChild( this._list );
 		this._menuToggle.appendChild( this._menuTitle );
-		this._menuTitle.appendChild( document.createTextNode( `${ this._list.dataset.menuTitle }s` ) );
+		this._menuTitle.appendChild(
+			document.createTextNode( `${ this._list.dataset.menuTitle }s` )
+		);
 	}
 
 	_setAttributes() {
@@ -242,18 +244,20 @@ class Expander {
 		return menuEase;
 	}
 
-	_append( {
-		percentage,
-		step,
-		startX,
-		startY,
-		endX,
-		endY,
-		outerAnimation,
-		innerAnimation,
-	} = this._opts ) {
-		const xScale = ( startX + ( ( endX - startX ) * step ) ).toFixed( 5 );
-		const yScale = ( startY + ( ( endY - startY ) * step ) ).toFixed( 5 );
+	_append(
+		{
+			percentage,
+			step,
+			startX,
+			startY,
+			endX,
+			endY,
+			outerAnimation,
+			innerAnimation,
+		} = this._opts
+	) {
+		const xScale = ( startX + ( endX - startX ) * step ).toFixed( 5 );
+		const yScale = ( startY + ( endY - startY ) * step ).toFixed( 5 );
 		const invScaleX = ( 1 / xScale ).toFixed( 5 );
 		const invScaleY = ( 1 / yScale ).toFixed( 5 );
 
@@ -280,7 +284,9 @@ class Expander {
 }
 
 function init() {
-	const lists = document.querySelectorAll( '.courses-archive-frontmatter [data-collapse-menu="true"]' );
+	const lists = document.querySelectorAll(
+		'.courses-archive-frontmatter [data-collapse-menu="true"]'
+	);
 
 	let i = 1;
 	lists.forEach( ( list ) => {

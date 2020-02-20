@@ -11,11 +11,7 @@ import icon from './icon';
 import metadata from './block.json';
 import save from './save';
 
-const {
-	name,
-	category,
-	supports,
-} = metadata;
+const { name, category, supports } = metadata;
 
 export { name };
 
@@ -27,7 +23,11 @@ export const settings = {
 	keywords: [ __( 'recent posts' ) ],
 	supports,
 	styles: [
-		{ name: 'default', label: _x( 'Default', 'block style' ), isDefault: true },
+		{
+			name: 'default',
+			label: _x( 'Default', 'block style' ),
+			isDefault: true,
+		},
 		{ name: 'bulleted', label: _x( 'Bullets', 'block style' ) },
 	],
 	edit,

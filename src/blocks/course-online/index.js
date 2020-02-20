@@ -11,11 +11,7 @@ import metadata from './block.json';
 import save from './save';
 import icon from './icon';
 
-const {
-	name,
-	category,
-	attributes,
-} = metadata;
+const { name, category, attributes } = metadata;
 
 export { name };
 

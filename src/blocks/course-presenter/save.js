@@ -5,7 +5,7 @@ const { __ } = wp.i18n;
 const { RichText } = wp.blockEditor;
 
 export default function save( { attributes, className } ) {
-	const {	displayValue } = attributes;
+	const { displayValue } = attributes;
 
 	if ( ! displayValue ) {
 		return null;
@@ -13,9 +13,7 @@ export default function save( { attributes, className } ) {
 
 	return (
 		<p className={ className }>
-			<span className="label">
-				{ __( 'Presenter: ' ) }
-			</span>
+			<span className="label">{ __( 'Presenter: ' ) }</span>
 			<RichText.Content
 				tagName="span"
 				className="course-presenter"

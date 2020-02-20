@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {	RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 export default function CourseLocationEdit( {
 	attributes,
@@ -11,7 +11,7 @@ export default function CourseLocationEdit( {
 } ) {
 	const {
 		locationMetaValue,
-		displayValue, /* eslint-disable-line no-unused-vars */
+		displayValue /* eslint-disable-line no-unused-vars */,
 		placeholder,
 	} = attributes;
 
@@ -26,10 +26,17 @@ export default function CourseLocationEdit( {
 				tagName="span"
 				classname="course-location"
 				label={ __( 'Course location' ) }
-				placeholder={ placeholder || __( 'Add location…', 'wsuwp-hrs-courses' ) }
+				placeholder={
+					placeholder || __( 'Add location…', 'wsuwp-hrs-courses' )
+				}
 				keepPlaceholderOnFocus={ true }
 				value={ locationMetaValue }
-				onChange={ ( value ) => setAttributes( { locationMetaValue: value, displayValue: value } ) }
+				onChange={ ( value ) =>
+					setAttributes( {
+						locationMetaValue: value,
+						displayValue: value,
+					} )
+				}
 				formattingControls={ [ 'bold', 'italic' ] }
 			/>
 		</div>

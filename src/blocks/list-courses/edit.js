@@ -11,10 +11,7 @@ const { withSelect } = wp.data;
 const apiFetch = wp.apiFetch;
 const { addQueryArgs } = wp.url;
 const { Component } = wp.element;
-const {
-	InspectorControls,
-	BlockControls,
-} = wp.blockEditor;
+const { InspectorControls, BlockControls } = wp.blockEditor;
 const {
 	Disabled,
 	PanelBody,
@@ -47,20 +44,21 @@ class ListCoursesEdit extends Component {
 	componentDidMount() {
 		this.isStillMounted = true;
 		this.fetchRequest = apiFetch( {
-			path: addQueryArgs( `/wp/v2/learning_program`, LEARNING_PROGRAMS_LIST_QUERY ),
-		} ).then(
-			( taxLearningProgramsList ) => {
+			path: addQueryArgs(
+				`/wp/v2/learning_program`,
+				LEARNING_PROGRAMS_LIST_QUERY
+			),
+		} )
+			.then( ( taxLearningProgramsList ) => {
 				if ( this.isStillMounted ) {
 					this.setState( { taxLearningProgramsList } );
 				}
-			}
-		).catch(
-			() => {
+			} )
+			.catch( () => {
 				if ( this.isStillMounted ) {
 					this.setState( { taxLearningProgramsList: [] } );
 				}
-			}
-		);
+			} );
 	}
 
 	componentWillUnmount() {
@@ -89,35 +87,46 @@ class ListCoursesEdit extends Component {
 					<ToggleControl
 						label={ __( 'Display course content' ) }
 						checked={ displayCourseContent }
-						onChange={ ( value ) => setAttributes( { displayCourseContent: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { displayCourseContent: value } )
+						}
 					/>
-					{ displayCourseContent &&
-					<RadioControl
-						label="Show:"
-						selected={ displayCourseContentRadio }
-						options={ [
-							{ label: 'Excerpt', value: 'excerpt' },
-							{ label: 'Full post', value: 'full_post' },
-						] }
-						onChange={ ( value ) => setAttributes( { displayCourseContentRadio: value } ) }
-					/>
-					}
-					{ displayCourseContent && displayCourseContentRadio === 'excerpt' &&
-						<RangeControl
-							label={ __( 'Max number of words in excerpt' ) }
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 10 }
-							max={ 100 }
+					{ displayCourseContent && (
+						<RadioControl
+							label="Show:"
+							selected={ displayCourseContentRadio }
+							options={ [
+								{ label: 'Excerpt', value: 'excerpt' },
+								{ label: 'Full post', value: 'full_post' },
+							] }
+							onChange={ ( value ) =>
+								setAttributes( {
+									displayCourseContentRadio: value,
+								} )
+							}
 						/>
-					}
+					) }
+					{ displayCourseContent &&
+						displayCourseContentRadio === 'excerpt' && (
+							<RangeControl
+								label={ __( 'Max number of words in excerpt' ) }
+								value={ excerptLength }
+								onChange={ ( value ) =>
+									setAttributes( { excerptLength: value } )
+								}
+								min={ 10 }
+								max={ 100 }
+							/>
+						) }
 				</PanelBody>
 
 				<PanelBody title={ __( 'Post Meta Settings' ) }>
 					<ToggleControl
 						label={ __( 'Display post date' ) }
 						checked={ displayPostDate }
-						onChange={ ( value ) => setAttributes( { displayPostDate: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { displayPostDate: value } )
+						}
 					/>
 				</PanelBody>
 
@@ -127,21 +136,41 @@ class ListCoursesEdit extends Component {
 						numberOfItems={ coursesToShow }
 						categoriesList={ taxLearningProgramsList }
 						selectedCategoryId={ learningPrograms }
-						onCategoryChange={ ( value ) => setAttributes( { learningPrograms: '' !== value ? value : undefined } ) }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { coursesToShow: value } ) }
+						onCategoryChange={ ( value ) =>
+							setAttributes( {
+								learningPrograms:
+									'' !== value ? value : undefined,
+							} )
+						}
+						onOrderChange={ ( value ) =>
+							setAttributes( { order: value } )
+						}
+						onOrderByChange={ ( value ) =>
+							setAttributes( { orderBy: value } )
+						}
+						onNumberOfItemsChange={ ( value ) =>
+							setAttributes( { coursesToShow: value } )
+						}
 					/>
-					{ postLayout === 'grid' &&
+					{ postLayout === 'grid' && (
 						<RangeControl
 							label={ __( 'Columns' ) }
 							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { columns: value } )
+							}
 							min={ 2 }
-							max={ ! hasPosts ? MAX_POST_COLUMNS : Math.min( MAX_POST_COLUMNS, ListCourses.length ) }
+							max={
+								! hasPosts
+									? MAX_POST_COLUMNS
+									: Math.min(
+											MAX_POST_COLUMNS,
+											ListCourses.length
+									  )
+							}
 							required
 						/>
-					}
+					) }
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -151,11 +180,15 @@ class ListCoursesEdit extends Component {
 			return (
 				<>
 					{ inspectorControls }
-					<Placeholder icon="admin-post" label={ __( 'List Courses' ) }>
-						{ ! Array.isArray( ListCourses ) ?
-							<Spinner /> :
+					<Placeholder
+						icon="admin-post"
+						label={ __( 'List Courses' ) }
+					>
+						{ ! Array.isArray( ListCourses ) ? (
+							<Spinner />
+						) : (
 							__( 'No courses found.' )
-						}
+						) }
 					</Placeholder>
 				</>
 			);
@@ -183,7 +216,10 @@ class ListCoursesEdit extends Component {
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
 				<Disabled>
-					<ServerSideRender block="hrscourses/list-courses" attributes={ attributes } />
+					<ServerSideRender
+						block="hrscourses/list-courses"
+						attributes={ attributes }
+					/>
 				</Disabled>
 			</>
 		);
@@ -191,17 +227,29 @@ class ListCoursesEdit extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { coursesToShow, order, orderBy, learningPrograms } = props.attributes;
+	const {
+		coursesToShow,
+		order,
+		orderBy,
+		learningPrograms,
+	} = props.attributes;
 	const { getEntityRecords } = select( 'core' );
 
-	const ListCoursesQuery = pickBy( {
-		learningPrograms,
-		order,
-		orderby: orderBy,
-		per_page: coursesToShow,
-	}, ( value ) => ! isUndefined( value ) );
+	const ListCoursesQuery = pickBy(
+		{
+			learningPrograms,
+			order,
+			orderby: orderBy,
+			per_page: coursesToShow,
+		},
+		( value ) => ! isUndefined( value )
+	);
 
 	return {
-		ListCourses: getEntityRecords( 'postType', 'wsuwp_hrs_courses', ListCoursesQuery ),
+		ListCourses: getEntityRecords(
+			'postType',
+			'wsuwp_hrs_courses',
+			ListCoursesQuery
+		),
 	};
 } )( ListCoursesEdit );

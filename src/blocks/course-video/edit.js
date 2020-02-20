@@ -3,34 +3,35 @@
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const {
-	PanelBody,
-	TextControl,
-} = wp.components;
-const {
-	InspectorControls,
-	URLInput,
-} = wp.blockEditor;
+const { PanelBody, TextControl } = wp.components;
+const { InspectorControls, URLInput } = wp.blockEditor;
 
 export default function CourseLocationEdit( {
 	attributes,
 	className,
 	setAttributes,
 } ) {
-	const {
-		recordedVideoUrl,
-		recordedVideoLink,
-	} = attributes;
+	const { recordedVideoUrl, recordedVideoLink } = attributes;
 
 	return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody title={ __( 'Course Video Settings', 'wsuwp-hrs-courses' ) }>
+				<PanelBody
+					title={ __( 'Course Video Settings', 'wsuwp-hrs-courses' ) }
+				>
 					<TextControl
-						label={ __( 'Course Video Link Text', 'wsuwp-hrs-courses' ) }
-						help={ __( 'Enter link text here to override the default video URL link text.', 'wsuwp-hrs-courses' ) }
+						label={ __(
+							'Course Video Link Text',
+							'wsuwp-hrs-courses'
+						) }
+						help={ __(
+							'Enter link text here to override the default video URL link text.',
+							'wsuwp-hrs-courses'
+						) }
 						value={ recordedVideoLink }
-						onChange={ ( value ) => setAttributes( { recordedVideoLink: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { recordedVideoLink: value } )
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -43,7 +44,9 @@ export default function CourseLocationEdit( {
 				<URLInput
 					autoFocus={ false } // eslint-disable-line jsx-a11y/no-autofocus
 					value={ recordedVideoUrl }
-					onChange={ ( value ) => setAttributes( { recordedVideoUrl: value } ) }
+					onChange={ ( value ) =>
+						setAttributes( { recordedVideoUrl: value } )
+					}
 				/>
 			</div>
 		</Fragment>

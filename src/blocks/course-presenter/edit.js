@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {	RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 export default function CoursePresenterEdit( {
 	attributes,
@@ -11,7 +11,7 @@ export default function CoursePresenterEdit( {
 } ) {
 	const {
 		presenterMetaValue,
-		displayValue, /* eslint-disable-line no-unused-vars */
+		displayValue /* eslint-disable-line no-unused-vars */,
 		placeholder,
 	} = attributes;
 
@@ -29,7 +29,12 @@ export default function CoursePresenterEdit( {
 				placeholder={ placeholder || __( 'Add presenter(s)…' ) }
 				keepPlaceholderOnFocus={ true }
 				value={ presenterMetaValue }
-				onChange={ ( value ) => setAttributes( { presenterMetaValue: value, displayValue: value } ) }
+				onChange={ ( value ) =>
+					setAttributes( {
+						presenterMetaValue: value,
+						displayValue: value,
+					} )
+				}
 				formattingControls={ [ 'bold' ] }
 			/>
 		</div>

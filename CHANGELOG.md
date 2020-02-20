@@ -18,11 +18,12 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
-## 1.3.0-rc.1 (:construction: 2020-02-19)
+## 1.3.0-rc.2 (:construction: 2020-02-20)
 
 ### Fixed
 
-- :alien: Fix eslint issues resulting from a change in the WP esling config to use Prettier and modify the spacing and quotation rules.
+- Fix #25 add `os` key in Travis config to specify linux.
+- Fix #26 deprecated `sudo` key in Travis config.
 
 ### Changed
 
@@ -36,7 +37,9 @@ Changelog formatting (http://semver.org/):
 
 ### Added
 
+- :wrench: config file for Prettier package.
 - :wrench: npm `fix` script to auto-fix linting issues.
+- :heavy_plus_sign: prettier@npm:wp-prettier@1.19.1
 
 ## 1.2.0 (2020-02-06)
 

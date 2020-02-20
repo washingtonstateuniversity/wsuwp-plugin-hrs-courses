@@ -41,6 +41,10 @@ Changelog formatting (http://semver.org/):
 - :wrench: npm `fix` script to auto-fix linting issues.
 - :heavy_plus_sign: prettier@npm:wp-prettier@1.19.1
 
+### Removed
+
+- Old workaround from Travis.ci config.
+
 ## 1.2.0 (2020-02-06)
 
 ### Changed

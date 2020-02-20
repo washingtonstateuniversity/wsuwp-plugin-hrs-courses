@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const {	RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 
 export default function CourseDateEdit( {
 	attributes,
@@ -11,7 +11,7 @@ export default function CourseDateEdit( {
 } ) {
 	const {
 		datetimeMetaValue,
-		displayValue, /* eslint-disable-line no-unused-vars */
+		displayValue /* eslint-disable-line no-unused-vars */,
 		placeholder,
 	} = attributes;
 
@@ -29,7 +29,12 @@ export default function CourseDateEdit( {
 				placeholder={ placeholder || __( 'Add date and / or time…' ) }
 				keepPlaceholderOnFocus={ true }
 				value={ datetimeMetaValue }
-				onChange={ ( value ) => setAttributes( { datetimeMetaValue: value, displayValue: value } ) }
+				onChange={ ( value ) =>
+					setAttributes( {
+						datetimeMetaValue: value,
+						displayValue: value,
+					} )
+				}
 				formattingControls={ [] }
 			/>
 		</div>

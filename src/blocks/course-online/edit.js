@@ -3,34 +3,38 @@
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const {
-	PanelBody,
-	TextControl,
-} = wp.components;
-const {
-	InspectorControls,
-	URLInput,
-} = wp.blockEditor;
+const { PanelBody, TextControl } = wp.components;
+const { InspectorControls, URLInput } = wp.blockEditor;
 
 export default function CourseLocationEdit( {
 	attributes,
 	className,
 	setAttributes,
 } ) {
-	const {
-		onlineLearningUrl,
-		onlineLearningLink,
-	} = attributes;
+	const { onlineLearningUrl, onlineLearningLink } = attributes;
 
 	return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody title={ __( 'Online Course Settings', 'wsuwp-hrs-courses' ) }>
+				<PanelBody
+					title={ __(
+						'Online Course Settings',
+						'wsuwp-hrs-courses'
+					) }
+				>
 					<TextControl
-						label={ __( 'Online Course Link Text', 'wsuwp-hrs-courses' ) }
-						help={ __( 'Enter link text here to override the default online course URL link text.', 'wsuwp-hrs-courses' ) }
+						label={ __(
+							'Online Course Link Text',
+							'wsuwp-hrs-courses'
+						) }
+						help={ __(
+							'Enter link text here to override the default online course URL link text.',
+							'wsuwp-hrs-courses'
+						) }
 						value={ onlineLearningLink }
-						onChange={ ( value ) => setAttributes( { onlineLearningLink: value } ) }
+						onChange={ ( value ) =>
+							setAttributes( { onlineLearningLink: value } )
+						}
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -43,7 +47,9 @@ export default function CourseLocationEdit( {
 				<URLInput
 					autoFocus={ false } // eslint-disable-line jsx-a11y/no-autofocus
 					value={ onlineLearningUrl }
-					onChange={ ( value ) => setAttributes( { onlineLearningUrl: value } ) }
+					onChange={ ( value ) =>
+						setAttributes( { onlineLearningUrl: value } )
+					}
 				/>
 			</div>
 		</Fragment>

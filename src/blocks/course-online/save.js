@@ -1,17 +1,11 @@
 /**
  * WordPress dependencies
  */
-const {	RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 const { Path, SVG } = wp.components;
 
-export default function save( {
-	attributes,
-	className,
-} ) {
-	const {
-		onlineLearningUrl,
-		onlineLearningLink,
-	} = attributes;
+export default function save( { attributes, className } ) {
+	const { onlineLearningUrl, onlineLearningLink } = attributes;
 
 	if ( ! onlineLearningUrl ) {
 		return null;

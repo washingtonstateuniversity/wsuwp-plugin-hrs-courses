@@ -1,17 +1,11 @@
 /**
  * WordPress dependencies
  */
-const {	RichText } = wp.blockEditor;
+const { RichText } = wp.blockEditor;
 const { Path, SVG } = wp.components;
 
-export default function save( {
-	attributes,
-	className,
-} ) {
-	const {
-		recordedVideoUrl,
-		recordedVideoLink,
-	} = attributes;
+export default function save( { attributes, className } ) {
+	const { recordedVideoUrl, recordedVideoLink } = attributes;
 
 	if ( ! recordedVideoUrl ) {
 		return null;

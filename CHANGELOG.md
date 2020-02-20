@@ -18,6 +18,33 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.3.0-rc.2 (:construction: 2020-02-20)
+
+### Fixed
+
+- Fix #25 add `os` key in Travis config to specify linux.
+- Fix #26 deprecated `sudo` key in Travis config.
+
+### Changed
+
+- Close #22, fetch and render a reusuable block by name at the start of the courses archive template to provide a space for an optional notice that can be modified from the WP admin area.
+- :arrow_up: @wordpress/eslint-plugin => 4.0.0
+- :arrow_up: rimraf => 3.0.2
+- :arrow_up: stylelint => 13.2.0
+- :arrow_up: webpack => 4.41.6
+- :arrow_up: webpack-cli => 3.3.11
+- :arrow_up: sirbrillig/phpcs-variable-analysis => 2.8.1
+
+### Added
+
+- :wrench: config file for Prettier package.
+- :wrench: npm `fix` script to auto-fix linting issues.
+- :heavy_plus_sign: prettier@npm:wp-prettier@1.19.1
+
+### Removed
+
+- Old workaround from Travis.ci config.
+
 ## 1.2.0 (2020-02-06)
 
 ### Changed

@@ -295,7 +295,7 @@ class WSUWP_HRS_Courses {
 
 		$template = array(
 			array(
-				'hrs-wsu-edu/sidebar',
+				'hrswp/sidebar',
 				array( 'align' => 'wide' ),
 				array(
 					array(

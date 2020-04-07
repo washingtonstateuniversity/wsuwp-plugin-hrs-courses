@@ -18,6 +18,12 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.3.1-beta.1 (:construction: 2020-04-06)
+
+### Changed
+
+- Switch from old Sidebar namespace `hrs-wsu-edu/sidebar` to new version `hrswp/sidebar` in Courses template.
+
 ## 1.3.0 (2020-02-20)
 
 ### Fixed

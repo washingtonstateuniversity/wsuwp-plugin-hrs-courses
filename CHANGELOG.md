@@ -18,6 +18,12 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.3.2 (2020-04-07)
+
+### Fixed
+
+- Ignore `.prettierrc.js` on export.
+
 ## 1.3.1 (2020-04-07)
 
 ### Changed

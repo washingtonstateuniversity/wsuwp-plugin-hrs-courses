@@ -18,6 +18,14 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.3.3 (2020-06-11)
+
+### Changed
+
+- Rename "master" branch to "stable." See the Internet Engineering Task Force (IEFT), [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html#rfc.section.1.1.1).
+- :arrow_up: postcss-cli => 7.1.1
+- :arrow_up: webpack => 4.43.0
+
 ## 1.3.2 (2020-04-07)
 
 ### Fixed

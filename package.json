@@ -15,7 +15,7 @@
 		"custom-post-type",
 		"learning"
 	],
-	"homepage": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/master/README.md",
+	"homepage": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/stable/README.md",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses"

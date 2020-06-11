@@ -33,7 +33,7 @@ env:
 
 branches:
   only:
-    - master
+    - stable
 
 before_install:
   # Speed up build time by disabling Xdebug.

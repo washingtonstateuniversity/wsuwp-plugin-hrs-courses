@@ -10,7 +10,7 @@ import edit from './edit';
 import metadata from './block.json';
 import save from './save';
 
-const { name, category, attributes } = metadata;
+const { name, category, attributes, supports } = metadata;
 
 export { name };
 
@@ -21,6 +21,7 @@ export const settings = {
 	icon: 'location-alt',
 	keywords: [ __( 'location' ) ],
 	attributes,
+	supports,
 	edit,
 	save,
 };

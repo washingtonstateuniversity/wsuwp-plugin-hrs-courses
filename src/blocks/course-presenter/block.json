@@ -1,6 +1,10 @@
 {
 	"name": "hrscourses/course-presenter",
 	"category": "common",
+	"supports": {
+		"inserter": false,
+		"reusable": false
+	},
 	"attributes": {
 		"presenterMetaValue": {
 			"type": "string",

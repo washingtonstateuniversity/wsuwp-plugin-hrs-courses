@@ -11,7 +11,7 @@ import metadata from './block.json';
 import save from './save';
 import icon from './icon';
 
-const { name, category, attributes } = metadata;
+const { name, category, attributes, supports } = metadata;
 
 export { name };
 
@@ -22,6 +22,7 @@ export const settings = {
 	icon,
 	keywords: [ __( 'media' ) ],
 	attributes,
+	supports,
 	edit,
 	save,
 };

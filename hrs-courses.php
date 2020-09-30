@@ -21,18 +21,96 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * Loads the core plugin class.
- */
-require __DIR__ . '/includes/class-wsuwp-hrs-courses.php';
-
 // Starts things up.
-add_action( 'plugins_loaded', __NAMESPACE__ . '\load_hrs_courses' );
+pre_init();
 
-// Flush rules on activation and clean up on deactivation.
-register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_activate' ) );
-register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_deactivate' ) );
-register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_uninstall' ) );
+if ( false !== verify_wp_version() ) {
+	// Flush rules on activation and clean up on deactivation.
+	register_activation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_activate' ) );
+	register_deactivation_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_deactivate' ) );
+	register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Courses', 'hrs_courses_uninstall' ) );
+}
+
+/**
+ * Displays a WP version notice.
+ *
+ * @since 1.4.0
+ */
+function wordpress_version_notice() {
+	printf(
+		'<div class="error"><p>%s</p></div>',
+		esc_html__( 'The HRS Courses plugin requires WordPress 5.0.0 or later to function properly. Please upgrade WordPress before activating.', 'wsuwp-hrs-courses' )
+	);
+}
+
+/**
+ * Displays a required dependencies notice.
+ *
+ * @since 1.4.0
+ */
+function plugin_deps_notice() {
+	printf(
+		'<div class="error"><p>%s</p></div>',
+		esc_html__( 'The HRS Courses plugin requires the HRSWP Blocks plugin to function properly. Please install before activating.', 'wsuwp-hrs-courses' )
+	);
+}
+
+/**
+ * Verifies required WordPress version.
+ *
+ * @since 1.4.0
+ *
+ * @return bool True if WordPress dependencies are met, false if not.
+ */
+function verify_wp_version() {
+	global $wp_version;
+
+	// Get unmodified $wp_version.
+	include ABSPATH . WPINC . '/version.php';
+
+	// Remove '-src' from the version string for `version_compare()`.
+	$version = ( strpos( '-src', $wp_version ) )
+		? str_replace( '-src', '', $wp_version )
+		: preg_replace( '/-[A-Za-z-0-9]*$/', '.0', $wp_version );
+
+	if ( version_compare( $version, '5.0.0', '<' ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Verifies plugin dependencies.
+ *
+ * @since 1.4.0
+ *
+ * @return bool True if all dependencies are met, false if not.
+ */
+function verify_plugin_deps() {
+	// HRS Courses requires blocks from HRSWP Blocks.
+	if ( ! class_exists( 'HRSWP\Blocks\Setup' ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Verifies WP version dependency and then loads.
+ *
+ * @since 1.4.0
+ */
+function pre_init() {
+	if ( false === verify_wp_version() ) {
+		add_action( 'admin_notices', __NAMESPACE__ . '\wordpress_version_notice' );
+		deactivate_plugins( array( 'wsuwp-plugin-hrs-courses/hrs-courses.php' ) );
+		return;
+	}
+
+	require __DIR__ . '/includes/class-wsuwp-hrs-courses.php';
+	add_action( 'plugins_loaded', __NAMESPACE__ . '\load_hrs_courses' );
+}
 
 /**
  * Creates an instance of the HRS Courses class.
@@ -42,6 +120,13 @@ register_uninstall_hook( __FILE__, array( __NAMESPACE__ . '\Setup\WSUWP_HRS_Cour
  * @return WSUWP_HRS_Courses An instance of the WSUWP_HRS_Courses class.
  */
 function load_hrs_courses() {
+	// Must check after 'plugins_loaded'.
+	if ( false === verify_plugin_deps() ) {
+		add_action( 'admin_notices', __NAMESPACE__ . '\plugin_deps_notice' );
+		deactivate_plugins( array( 'wsuwp-plugin-hrs-courses/hrs-courses.php' ) );
+		return;
+	}
+
 	$wsuwp_hrs_courses = Setup\WSUWP_HRS_Courses::get_instance( __FILE__ );
 
 	return $wsuwp_hrs_courses;

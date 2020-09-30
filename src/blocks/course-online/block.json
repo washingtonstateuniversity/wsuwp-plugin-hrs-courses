@@ -1,6 +1,10 @@
 {
 	"name": "hrscourses/course-online",
 	"category": "common",
+	"supports": {
+		"inserter": false,
+		"reusable": false
+	},
 	"attributes": {
 		"onlineLearningUrl": {
 			"type": "string",

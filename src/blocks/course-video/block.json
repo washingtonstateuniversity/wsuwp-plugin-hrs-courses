@@ -1,6 +1,10 @@
 {
 	"name": "hrscourses/course-video",
 	"category": "common",
+	"supports": {
+		"inserter": false,
+		"reusable": false
+	},
 	"attributes": {
 		"recordedVideoUrl": {
 			"type": "string",

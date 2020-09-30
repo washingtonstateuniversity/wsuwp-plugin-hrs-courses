@@ -1,6 +1,10 @@
 {
 	"name": "hrscourses/course-location",
 	"category": "common",
+	"supports": {
+		"inserter": false,
+		"reusable": false
+	},
 	"attributes": {
 		"locationMetaValue": {
 			"type": "string",

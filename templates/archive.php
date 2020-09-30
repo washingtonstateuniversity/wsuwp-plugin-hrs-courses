@@ -108,7 +108,7 @@ get_header();
 		?>
 	</section>
 	<?php Render\archive_pagination(); ?>
-	<?php get_template_part( 'parts/footers' ); ?>
+	<?php get_template_part( 'build/templates/footer' ); ?>
 
 </main><!--/#page-->
 

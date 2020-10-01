@@ -18,6 +18,30 @@ Changelog formatting (http://semver.org/):
 ### Removed (for deprecated features removed in this release)
 -->
 
+## 1.4.0-rc.1 (:construction: 2020-09-30)
+
+### Fixed
+
+- 🐛 Fix #36 replace archive page footer. (7c894f6)
+- Fix #23 set up dependency checks. (77c3ac8)
+- Fix archive page search button margins. (9b7bdd6)
+
+### Changed
+
+- :arrow_up: Update Composer PHP_CodeSniffer Standards Composer Installer plugin.
+- :arrow_up: Update linting dependencies. (34f9586)
+- :arrow_up: Upgrade `postcss-cli` to latest version. (54b31ad)
+- :arrow_up: Upgrade `lodash` to latest version. (a45228d)
+- :arrow_up: Upgrade Copy Webpack Plugin to v6+ and correct Webpack config file. (7f4705e)
+- :arrow_up: Upgrade Webpack dependencies. (39fb7e4)
+- 💚 Update Travis config to use jobs and clean up install processes. (71eaf49)
+- Hide the Courses meta blocks from the block inserter. (d90b6f7)
+
+### Removed
+
+- ➖ Remove unused Jest dependencies. (5806269)
+- ➖ Remove unused Puppeteer dependency. (35e37c2)
+
 ## 1.3.3 (2020-06-11)
 
 ### Changed

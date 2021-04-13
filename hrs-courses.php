@@ -89,7 +89,7 @@ function verify_wp_version() {
  */
 function verify_plugin_deps() {
 	// HRS Courses requires blocks from HRSWP Blocks.
-	if ( ! class_exists( 'HRSWP\Blocks\Setup' ) ) {
+	if ( ! class_exists( 'HRSWP\Blocks\Setup\Setup' ) ) {
 		return false;
 	}
 

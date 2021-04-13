@@ -37,7 +37,7 @@ export default function CourseLocationEdit( {
 						displayValue: value,
 					} )
 				}
-				formattingControls={ [ 'bold', 'italic' ] }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
 			/>
 		</div>
 	);

@@ -35,7 +35,7 @@ export default function CourseDateEdit( {
 						displayValue: value,
 					} )
 				}
-				formattingControls={ [] }
+				allowedFormats={ [] }
 			/>
 		</div>
 	);

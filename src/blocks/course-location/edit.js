@@ -24,7 +24,7 @@ export default function CourseLocationEdit( {
 			</div>
 			<RichText
 				tagName="span"
-				classname="course-location"
+				className="course-location"
 				label={ __( 'Course location' ) }
 				placeholder={
 					placeholder || __( 'Add location…', 'wsuwp-hrs-courses' )
@@ -37,7 +37,7 @@ export default function CourseLocationEdit( {
 						displayValue: value,
 					} )
 				}
-				formattingControls={ [ 'bold', 'italic' ] }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
 			/>
 		</div>
 	);

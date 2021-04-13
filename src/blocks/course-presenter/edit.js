@@ -35,7 +35,7 @@ export default function CoursePresenterEdit( {
 						displayValue: value,
 					} )
 				}
-				formattingControls={ [ 'bold' ] }
+				allowedFormats={ [ 'core/bold' ] }
 			/>
 		</div>
 	);

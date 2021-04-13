@@ -24,7 +24,7 @@ export default function CourseLocationEdit( {
 			</div>
 			<RichText
 				tagName="span"
-				classname="course-location"
+				className="course-location"
 				label={ __( 'Course location' ) }
 				placeholder={
 					placeholder || __( 'Add location…', 'wsuwp-hrs-courses' )

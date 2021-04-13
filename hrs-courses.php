@@ -88,6 +88,11 @@ function verify_wp_version() {
  * @return bool True if all dependencies are met, false if not.
  */
 function verify_plugin_deps() {
+    // Check for @deprecated class name for back compat.
+    if ( class_exists( 'HRSWP\Blocks\Setup' ) ) {
+		return true;
+	}
+
 	// HRS Courses requires blocks from HRSWP Blocks.
 	if ( ! class_exists( 'HRSWP\Blocks\Setup\Setup' ) ) {
 		return false;

@@ -1,20 +1,20 @@
 <?php
 /**
- * Server-side rendering of the `hrswp/posts-list` block.
+ * Server-side rendering of the `hrscourses/courses-list` block.
  *
  * @package HRSWP_Blocks
  */
 
-namespace HRSWP\Blocks\PostsList;
+namespace HRSWP\Blocks\CoursesList;
 
 /**
- * Registers and renders the `hrswp/posts-list` block
+ * Registers and renders the `hrscourses/courses-list` block
  *
  * @since 0.5.0
  */
-class PostsList {
+class CoursesList {
 	/**
-	 * The excerpt length set by the `hrswp/posts-list` block.
+	 * The excerpt length set by the `hrscourses/courses-list` block.
 	 *
 	 * @since 0.5.0
 	 * @var int
@@ -22,7 +22,7 @@ class PostsList {
 	public $excerpt_length = 0;
 
 	/**
-	 * Initializes the `PostsList` class.
+	 * Initializes the `CoursesList` class.
 	 *
 	 * @since 0.5.0
 	 */
@@ -31,7 +31,7 @@ class PostsList {
 	}
 
 	/**
-	 * Returns the excerpt length set by the `hrswp/posts-list` block.
+	 * Returns the excerpt length set by the `hrscourses/courses-list` block.
 	 *
 	 * @since 0.5.0
 	 *
@@ -42,7 +42,7 @@ class PostsList {
 	}
 
 	/**
-	 * Renders the `hrswp/posts-list` block on the server.
+	 * Renders the `hrscourses/courses-list` block on the server.
 	 *
 	 * @since 0.5.0
 	 *
@@ -130,7 +130,7 @@ class PostsList {
 
 			$title = get_the_title( $post );
 			if ( ! $title ) {
-				$title = __( '(no title)', 'hrswp-blocks' );
+				$title = __( '(no title)', 'wsuwp-hrs-courses' );
 			}
 			$list_items_markup .= sprintf(
 				'<h3 class="wp-block-hrswp-posts-list--heading"><a href="%1$s">%2$s</a></h3>',
@@ -181,7 +181,7 @@ class PostsList {
 						$prefix = sprintf(
 							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
 							esc_attr( $taxonomy_name ),
-							__( 'More on', 'hrswp-blocks' )
+							__( 'More on', 'wsuwp-hrs-courses' )
 						);
 
 						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
@@ -193,7 +193,7 @@ class PostsList {
 						$prefix = sprintf(
 							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
 							esc_attr( $taxonomy_name ),
-							__( 'Tagged', 'hrswp-blocks' )
+							__( 'Tagged', 'wsuwp-hrs-courses' )
 						);
 
 						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
@@ -219,7 +219,7 @@ class PostsList {
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 				$post_meta_markup .= sprintf(
 					'<p class="wp-block-hrswp-posts-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
-					__( 'Published on', 'hrswp-blocks' ),
+					__( 'Published on', 'wsuwp-hrs-courses' ),
 					esc_attr( get_the_date( 'c', $post ) ),
 					esc_html( get_the_date( '', $post ) )
 				);
@@ -283,17 +283,17 @@ class PostsList {
 	}
 
 	/**
-	 * Registers the `hrswp/posts-list` block on the server.
+	 * Registers the `hrscourses/courses-list` block on the server.
 	 */
 	public function register() {
 		/* translators: Maximum number of words in a post excerpt. */
-		$excerpt_length = intval( _x( '55', 'excerpt_length', 'hrswp-blocks' ) );
+		$excerpt_length = intval( _x( '55', 'excerpt_length', 'wsuwp-hrs-courses' ) );
 		$excerpt_length = (int) apply_filters( 'excerpt_length', $excerpt_length );
 
 		$post_to_show = (int) get_option( 'posts_per_page', 5 );
 
 		register_block_type(
-			'hrswp/posts-list',
+			'hrscourses/courses-list',
 			array(
 				'attributes'      => array(
 					'align'                   => array(
@@ -382,13 +382,13 @@ class PostsList {
 }
 
 /**
- * Creates a new instance of the `PostsList` class.
+ * Creates a new instance of the `CoursesList` class.
  *
  * @since 0.5.0
  *
- * @return PostsList An instance of the PostsList class.
+ * @return CoursesList An instance of the CoursesList class.
  */
 function load() {
-	return new PostsList();
+	return new CoursesList();
 }
 add_action( 'init', __NAMESPACE__ . '\load', 25 );

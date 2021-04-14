@@ -7,7 +7,7 @@
 
 }
 
-.wp-block[data-type="hrswp/posts-list"] {
+.wp-block[data-type="hrscourses/courses-list"] {
 	font-size: 16px;
 
 	& .wp-block-hrswp-posts-list--heading div {

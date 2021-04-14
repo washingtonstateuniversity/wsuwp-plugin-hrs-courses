@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { SVG, Path } = wp.primitives;
+const { SVG, Path } = wp.components;
 
 export const icon = (
 	<SVG xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24">

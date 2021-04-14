@@ -11,9 +11,7 @@ import { ListTerms } from './list-terms';
 
 export const PostMeta = ( props ) => {
 	const {
-		displayPostCategory,
 		displayPostDate,
-		displayPostTag,
 		displayPostTaxonomy,
 		post,
 		taxonomies,
@@ -22,40 +20,16 @@ export const PostMeta = ( props ) => {
 
 	const dateFormat = __experimentalGetSettings().formats.date;
 
-	const hasPostTerms =
-		displayPostCategory || displayPostTag || displayPostTaxonomy;
-
-	// Move `post_tags` to the end.
-	if ( hasPostTerms && taxonomies ) {
-		taxonomies.push(
-			taxonomies.splice(
-				taxonomies.findIndex( ( i ) => i.slug === 'post_tag' ),
-				1
-			)[ 0 ]
-		);
-	}
+	const hasPostTerms = displayPostTaxonomy;
 
 	return (
 		<div className="wp-block-hrswp-posts-list--meta">
 			{ hasPostTerms &&
 				taxonomies.map( ( taxonomy ) => {
-					let prefix;
-					if ( 'category' === taxonomy.slug ) {
-						if ( ! displayPostCategory ) {
-							return null;
-						}
-						prefix = __( 'More on: ' );
-					} else if ( 'post_tag' === taxonomy.slug ) {
-						if ( ! displayPostTag ) {
-							return null;
-						}
-						prefix = 'Tagged: ';
-					} else {
-						if ( ! displayPostTaxonomy ) {
-							return null;
-						}
-						prefix = `${ taxonomy.labels.singular_name }: `;
+					if ( ! displayPostTaxonomy ) {
+						return null;
 					}
+					const prefix = `${ taxonomy.labels.singular_name }: `;
 
 					return (
 						<ListTerms

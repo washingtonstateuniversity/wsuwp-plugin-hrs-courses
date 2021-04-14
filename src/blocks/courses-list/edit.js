@@ -1,15 +1,7 @@
 /**
  * External dependencies
  */
-import {
-	get,
-	filter,
-	includes,
-	invoke,
-	isUndefined,
-	pickBy,
-	remove,
-} from 'lodash';
+import { filter, includes, invoke, isUndefined, pickBy, remove } from 'lodash';
 import classnames from 'classnames';
 
 /**
@@ -17,7 +9,6 @@ import classnames from 'classnames';
  */
 const { Component, RawHTML } = wp.element;
 const {
-	BaseControl,
 	CheckboxControl,
 	PanelBody,
 	Placeholder,
@@ -29,12 +20,7 @@ const {
 	ToolbarGroup,
 } = wp.components;
 const { __ } = wp.i18n;
-const {
-	InspectorControls,
-	BlockAlignmentToolbar,
-	BlockControls,
-	__experimentalImageSizeControl,
-} = wp.blockEditor;
+const { InspectorControls, BlockControls } = wp.blockEditor;
 const { withSelect } = wp.data;
 
 /**
@@ -88,20 +74,14 @@ class PostsListEdit extends Component {
 			attributes,
 			setAttributes,
 			className,
-			imageSizeOptions,
 			postsList,
 			taxonomies,
 			termLists,
-			defaultImageWidth,
-			defaultImageHeight,
 		} = this.props;
 		const {
-			displayFeaturedImage,
 			displayPostContentRadio,
 			displayPostContent,
 			displayPostDate,
-			displayPostCategory,
-			displayPostTag,
 			displayPostTaxonomy,
 			postLayout,
 			columns,
@@ -110,10 +90,6 @@ class PostsListEdit extends Component {
 			selectedTermLists,
 			postsToShow,
 			excerptLength,
-			featuredImageAlign,
-			featuredImageSizeSlug,
-			featuredImageSizeWidth,
-			featuredImageSizeHeight,
 		} = attributes;
 
 		const inspectorControls = (
@@ -167,82 +143,12 @@ class PostsListEdit extends Component {
 						}
 					/>
 					<ToggleControl
-						label={ __( 'Display post category' ) }
-						checked={ displayPostCategory }
-						onChange={ ( value ) =>
-							setAttributes( { displayPostCategory: value } )
-						}
-					/>
-					<ToggleControl
-						label={ __( 'Display post tag' ) }
-						checked={ displayPostTag }
-						onChange={ ( value ) =>
-							setAttributes( { displayPostTag: value } )
-						}
-					/>
-					<ToggleControl
 						label={ __( 'Display post taxonomy' ) }
 						checked={ displayPostTaxonomy }
 						onChange={ ( value ) =>
 							setAttributes( { displayPostTaxonomy: value } )
 						}
 					/>
-				</PanelBody>
-
-				<PanelBody title={ __( 'Featured image settings' ) }>
-					<ToggleControl
-						label={ __( 'Display featured image' ) }
-						checked={ displayFeaturedImage }
-						onChange={ ( value ) =>
-							setAttributes( { displayFeaturedImage: value } )
-						}
-					/>
-					{ displayFeaturedImage && (
-						<>
-							<__experimentalImageSizeControl
-								onChange={ ( value ) => {
-									const newAttrs = {};
-									if ( value.hasOwnProperty( 'width' ) ) {
-										newAttrs.featuredImageSizeWidth =
-											value.width;
-									}
-									if ( value.hasOwnProperty( 'height' ) ) {
-										newAttrs.featuredImageSizeHeight =
-											value.height;
-									}
-									setAttributes( newAttrs );
-								} }
-								slug={ featuredImageSizeSlug }
-								width={ featuredImageSizeWidth }
-								height={ featuredImageSizeHeight }
-								imageWidth={ defaultImageWidth }
-								imageHeight={ defaultImageHeight }
-								imageSizeOptions={ imageSizeOptions }
-								onChangeImage={ ( value ) =>
-									setAttributes( {
-										featuredImageSizeSlug: value,
-										featuredImageSizeWidth: undefined,
-										featuredImageSizeHeight: undefined,
-									} )
-								}
-							/>
-							<BaseControl>
-								<BaseControl.VisualLabel>
-									{ __( 'Image alignment' ) }
-								</BaseControl.VisualLabel>
-								<BlockAlignmentToolbar
-									value={ featuredImageAlign }
-									onChange={ ( value ) =>
-										setAttributes( {
-											featuredImageAlign: value,
-										} )
-									}
-									controls={ [ 'left', 'center', 'right' ] }
-									isCollapsed={ false }
-								/>
-							</BaseControl>
-						</>
-					) }
 				</PanelBody>
 
 				<PanelBody
@@ -376,7 +282,6 @@ class PostsListEdit extends Component {
 				<div
 					className={ classnames( className, {
 						'is-grid': postLayout === 'grid',
-						'has-feature-image': displayFeaturedImage,
 						'has-date': displayPostDate,
 						'has-full-content':
 							displayPostContent &&
@@ -402,18 +307,8 @@ class PostsListEdit extends Component {
 							excerptElement.innerText ||
 							'';
 
-						const imageSourceUrl = post.featuredImageSourceUrl;
-						const imageClasses = classnames( {
-							'wp-block-hrswp-posts-list--featured-image': true,
-							[ `size-${ featuredImageSizeSlug }` ]: !! featuredImageSizeSlug,
-							[ `align${ featuredImageAlign }` ]: !! featuredImageAlign,
-						} );
-
 						const hasPostMeta =
-							displayPostDate ||
-							displayPostCategory ||
-							displayPostTag ||
-							displayPostTaxonomy;
+							displayPostDate || displayPostTaxonomy;
 
 						const needsReadMore =
 							excerptLength <
@@ -438,21 +333,6 @@ class PostsListEdit extends Component {
 								className="wp-block-hrswp-posts-list--list-item"
 								key={ i }
 							>
-								{ displayFeaturedImage && imageSourceUrl && (
-									<figure className={ imageClasses }>
-										{ imageSourceUrl && (
-											<img
-												src={ imageSourceUrl }
-												alt=""
-												style={ {
-													maxWidth: featuredImageSizeWidth,
-													maxHeight: featuredImageSizeHeight,
-												} }
-											/>
-										) }
-									</figure>
-								) }
-
 								<div className="wp-block-hrswp-posts-list--body">
 									<h3 className="wp-block-hrswp-posts-list--heading">
 										<a
@@ -488,11 +368,7 @@ class PostsListEdit extends Component {
 
 									{ hasPostMeta && (
 										<PostMeta
-											displayPostCategory={
-												displayPostCategory
-											}
 											displayPostDate={ displayPostDate }
-											displayPostTag={ displayPostTag }
 											displayPostTaxonomy={
 												displayPostTaxonomy
 											}
@@ -512,16 +388,8 @@ class PostsListEdit extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const {
-		featuredImageSizeSlug,
-		postsToShow,
-		order,
-		orderBy,
-		selectedTermLists,
-	} = props.attributes;
-	const { getEntityRecords, getMedia, getTaxonomies } = select( 'core' );
-	const { getSettings } = select( 'core/block-editor' );
-	const { imageSizes, imageDimensions } = getSettings();
+	const { postsToShow, order, orderBy, selectedTermLists } = props.attributes;
+	const { getEntityRecords, getTaxonomies } = select( 'core' );
 
 	const postsListQuery = pickBy(
 		{
@@ -544,7 +412,7 @@ export default withSelect( ( select, props ) => {
 
 	const allTaxonomies = getTaxonomies( TERMS_LIST_QUERY );
 	const taxonomies = filter( allTaxonomies, ( taxonomy ) =>
-		includes( taxonomy.types, 'post' )
+		includes( taxonomy.types, 'wsuwp_hrs_courses' )
 	);
 	const termLists = {};
 	taxonomies.forEach( ( { slug } ) => {
@@ -553,44 +421,12 @@ export default withSelect( ( select, props ) => {
 		} );
 	} );
 
-	const imageSizeOptions = imageSizes
-		.filter( ( { slug } ) => slug !== 'full' )
-		.map( ( { name, slug } ) => ( { value: slug, label: name } ) );
-
 	return {
-		defaultImageWidth: get(
-			imageDimensions,
-			[ featuredImageSizeSlug, 'width' ],
-			0
-		),
-		defaultImageHeight: get(
-			imageDimensions,
-			[ featuredImageSizeSlug, 'height' ],
-			0
-		),
-		imageSizeOptions,
 		taxonomies,
 		termLists,
 		postsList: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) => {
-					if ( post.featured_media ) {
-						const image = getMedia( post.featured_media );
-						let url = get(
-							image,
-							[
-								'media_details',
-								'sizes',
-								featuredImageSizeSlug,
-								'source_url',
-							],
-							null
-						);
-						if ( ! url ) {
-							url = get( image, 'source_url', null );
-						}
-						return { ...post, featuredImageSourceUrl: url };
-					}
 					return post;
 			  } ),
 	};

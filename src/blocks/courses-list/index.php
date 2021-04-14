@@ -95,37 +95,6 @@ class CoursesList {
 		foreach ( $posts as $post ) {
 
 			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item">';
-
-			if ( $attributes['displayFeaturedImage'] && has_post_thumbnail( $post ) ) {
-				$image_style = '';
-				if ( isset( $attributes['featuredImageSizeWidth'] ) ) {
-					$image_style .= sprintf( 'max-width:%spx;', $attributes['featuredImageSizeWidth'] );
-				}
-				if ( isset( $attributes['featuredImageSizeHeight'] ) ) {
-					$image_style .= sprintf( 'max-height:%spx;', $attributes['featuredImageSizeHeight'] );
-				}
-
-				$image_classes = 'wp-block-hrswp-posts-list--featured-image';
-				if ( isset( $attributes['featuredImageSizeSlug'] ) ) {
-					$image_classes .= ' size-' . $attributes['featuredImageSizeSlug'];
-				}
-				if ( isset( $attributes['featuredImageAlign'] ) ) {
-					$image_classes .= ' align' . $attributes['featuredImageAlign'];
-				}
-
-				$list_items_markup .= sprintf(
-					'<figure class="%1$s">%2$s</figure>',
-					$image_classes,
-					get_the_post_thumbnail(
-						$post,
-						$attributes['featuredImageSizeSlug'],
-						array(
-							'style' => $image_style,
-						)
-					)
-				);
-			}
-
 			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--body">';
 
 			$title = get_the_title( $post );
@@ -158,19 +127,8 @@ class CoursesList {
 			}
 
 			$post_meta_markup = '';
-			if (
-				isset( $attributes['displayPostCategory'] ) ||
-				isset( $attributes['displayPostTag'] ) ||
-				isset( $attributes['displayPostTaxonomy'] )
-			) {
+			if ( isset( $attributes['displayPostTaxonomy'] ) ) {
 				$taxonomy_names = get_object_taxonomies( $post->post_type );
-
-				// Move `post_tags` to the end.
-				$taxonomy_names[] = array_splice(
-					$taxonomy_names,
-					array_search( 'post_tag', $taxonomy_names, true ),
-					1
-				)[0];
 
 				foreach ( $taxonomy_names as $taxonomy_name ) {
 					if (
@@ -238,10 +196,6 @@ class CoursesList {
 		remove_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 20 );
 
 		$class = array( 'wp-block-hrswp-posts-list' );
-
-		if ( isset( $attributes['displayFeaturedImage'] ) && $attributes['displayFeaturedImage'] ) {
-			$class[] = 'has-feature-image';
-		}
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$class[] = 'has-date';
@@ -326,14 +280,6 @@ class CoursesList {
 						'type'    => 'boolean',
 						'default' => false,
 					),
-					'displayPostCategory'     => array(
-						'type'    => 'boolean',
-						'default' => false,
-					),
-					'displayPostTag'          => array(
-						'type'    => 'boolean',
-						'default' => false,
-					),
 					'displayPostTaxonomy'     => array(
 						'type'    => 'boolean',
 						'default' => false,
@@ -353,26 +299,6 @@ class CoursesList {
 					'orderBy'                 => array(
 						'type'    => 'string',
 						'default' => 'date',
-					),
-					'displayFeaturedImage'    => array(
-						'type'    => 'boolean',
-						'default' => false,
-					),
-					'featuredImageAlign'      => array(
-						'type' => 'string',
-						'enum' => array( 'left', 'center', 'right' ),
-					),
-					'featuredImageSizeSlug'   => array(
-						'type'    => 'string',
-						'default' => 'thumbnail',
-					),
-					'featuredImageSizeWidth'  => array(
-						'type'    => 'number',
-						'default' => null,
-					),
-					'featuredImageSizeHeight' => array(
-						'type'    => 'number',
-						'default' => null,
 					),
 				),
 				'render_callback' => array( $this, 'render' ),

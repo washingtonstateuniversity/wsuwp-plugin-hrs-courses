@@ -258,7 +258,11 @@ class CoursesList {
 						'type' => 'string',
 					),
 					'selectedTermLists'       => array(
-						'type' => 'object',
+						'type'    => 'object',
+						'default' => array(
+							'learningProgramIds' => array(),
+							'courseTagIds'       => array(),
+						),
 					),
 					'postsToShow'             => array(
 						'type'    => 'number',

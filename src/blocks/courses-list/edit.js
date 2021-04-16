@@ -10,6 +10,7 @@ import classnames from 'classnames';
 const { Component, RawHTML } = wp.element;
 const {
 	CheckboxControl,
+	FormTokenField,
 	PanelBody,
 	Placeholder,
 	QueryControls,
@@ -36,38 +37,108 @@ import {
 	taxonomyListToIds,
 } from './shared';
 
+const getTermsInfo = ( terms ) => ( {
+	terms,
+	...terms?.reduce(
+		( accumulator, term ) => {
+			const { mapById, mapByName, names } = accumulator;
+			mapById[ term.id ] = term;
+			mapByName[ term.name ] = term;
+			names.push( term.name );
+			return accumulator;
+		},
+		{ mapById: {}, mapByName: {}, names: [] }
+	),
+} );
+
+// selectedTermLists will be an object containing arrays of term ids
+// mapped to the term key, either 'learningProgramIds' or
+// 'courseTagIds'.
+const getExistingTermsFormTokenValue = (
+	taxonomy,
+	allTerms,
+	selectedTermLists
+) => {
+	const termsMapper = {
+		learning_program: {
+			queryProp: 'learningProgramIds',
+			terms: allTerms,
+		},
+		course_tag: {
+			queryProp: 'courseTagIds',
+			terms: allTerms,
+		},
+	};
+	const requestedTerm = termsMapper[ taxonomy ];
+
+	return ( selectedTermLists[ requestedTerm.queryProp ] || [] ).reduce(
+		( accumulator, termId ) => {
+			const term = requestedTerm.terms.mapById[ termId ];
+			if ( term ) {
+				accumulator.push( {
+					id: termId,
+					value: term.name,
+				} );
+			}
+			return accumulator;
+		},
+		[]
+	);
+};
+
+const setTermLists = ( newList, selectedTermLists, setAttributes ) => {
+	setAttributes( {
+		selectedTermLists: { ...selectedTermLists, ...newList },
+	} );
+	console.log( 'updated' );
+};
+
+const onTermsChange = (
+	terms,
+	queryProperty,
+	selectedTermLists,
+	setAttributes
+) => ( newTermValues ) => {
+	const termIds = newTermValues.reduce( ( accumulator, termValue ) => {
+		const termId = termValue?.id || terms.mapByName[ termValue ]?.id;
+		if ( termId ) accumulator.push( termId );
+		return accumulator;
+	}, [] );
+	setTermLists(
+		{ [ queryProperty ]: termIds },
+		selectedTermLists,
+		setAttributes
+	);
+};
+
 class PostsListEdit extends Component {
-	/**
-	 * Adds or removes a taxonomy term from the selected terms attribute.
-	 *
-	 * @param {string} taxonomy A WP taxonomy `rest_base` value.
-	 * @param {Object} term The selected term to add or remove.
-	 */
-	toggleSelectedTerms( taxonomy, term ) {
-		const { attributes, setAttributes } = this.props;
-		const { selectedTermLists } = attributes;
+	// toggleSelectedTerms( taxonomy, term ) {
+	// 	const { attributes, setAttributes } = this.props;
+	// 	const { selectedTermLists } = attributes;
 
-		const allTerms = ! isUndefined( selectedTermLists )
-			? selectedTermLists
-			: {};
-		const taxonomyTerms = ! isUndefined( allTerms[ taxonomy ] )
-			? allTerms[ taxonomy ]
-			: ( allTerms[ taxonomy ] = [] );
-		const hasTerm = includes(
-			taxonomyListToIds( allTerms, taxonomy ),
-			term.id
-		);
+	// 	const allTerms = ! isUndefined( selectedTermLists )
+	// 		? selectedTermLists
+	// 		: {};
+	// 	const taxonomyTerms = ! isUndefined( allTerms[ taxonomy ] )
+	// 		? allTerms[ taxonomy ]
+	// 		: ( allTerms[ taxonomy ] = [] );
+	// 	const hasTerm = includes(
+	// 		taxonomyListToIds( allTerms, taxonomy ),
+	// 		term.id
+	// 	);
 
-		const newTerms = hasTerm
-			? remove( taxonomyTerms, ( value ) => {
-					return value.id !== term.id;
-			  } )
-			: [ ...taxonomyTerms, term ];
+	// 	const newTerms = hasTerm
+	// 		? remove( taxonomyTerms, ( value ) => {
+	// 				return value.id !== term.id;
+	// 		  } )
+	// 		: [ ...taxonomyTerms, term ];
 
-		allTerms[ taxonomy ] = newTerms;
+	// 	allTerms[ taxonomy ] = newTerms;
 
-		setAttributes( { selectedTermLists: allTerms } );
-	}
+	// 	return [ allTerms ];
+
+	// 	setAttributes( { selectedTermLists: allTerms } );
+	// }
 
 	render() {
 		const {
@@ -75,8 +146,10 @@ class PostsListEdit extends Component {
 			setAttributes,
 			className,
 			postsList,
-			taxonomies,
-			termLists,
+			// taxonomies,
+			// termLists,
+			learningProgramTerms,
+			courseTagTerms,
 		} = this.props;
 		const {
 			displayPostContentRadio,
@@ -91,6 +164,23 @@ class PostsListEdit extends Component {
 			postsToShow,
 			excerptLength,
 		} = attributes;
+
+		const learningPrograms = getTermsInfo( learningProgramTerms );
+		const courseTags = getTermsInfo( courseTagTerms );
+
+		const onLearningProgramsChange = onTermsChange(
+			learningPrograms,
+			'learningProgramIds',
+			selectedTermLists,
+			setAttributes
+		);
+
+		const onCourseTagsChange = onTermsChange(
+			courseTags,
+			'courseTagIds',
+			selectedTermLists,
+			setAttributes
+		);
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -156,7 +246,31 @@ class PostsListEdit extends Component {
 					title={ __( 'Filtering' ) }
 					initialOpen={ false }
 				>
-					{ taxonomies.map( ( taxonomy ) => (
+					{ learningPrograms?.terms?.length > 0 && (
+						<FormTokenField
+							label={ __( 'Learning Programs' ) }
+							value={ getExistingTermsFormTokenValue(
+								'learning_program',
+								learningPrograms,
+								selectedTermLists
+							) }
+							suggestions={ learningPrograms.names }
+							onChange={ onLearningProgramsChange }
+						/>
+					) }
+					{ courseTags?.terms?.length > 0 && (
+						<FormTokenField
+							label={ __( 'Course Tags' ) }
+							value={ getExistingTermsFormTokenValue(
+								'course_tag',
+								courseTags,
+								selectedTermLists
+							) }
+							suggestions={ courseTags.names }
+							onChange={ onCourseTagsChange }
+						/>
+					) }
+					{ /* { taxonomies.map( ( taxonomy ) => (
 						<PanelBody
 							className={ 'taxonomy-filter--body' }
 							key={ taxonomy.slug }
@@ -192,7 +306,7 @@ class PostsListEdit extends Component {
 									) }
 							</ul>
 						</PanelBody>
-					) ) }
+					) ) } */ }
 				</PanelBody>
 
 				<PanelBody
@@ -399,35 +513,48 @@ export default withSelect( ( select, props ) => {
 		},
 		( value ) => ! isUndefined( value )
 	);
-	if ( ! isUndefined( selectedTermLists ) ) {
-		Object.entries( selectedTermLists ).forEach( ( [ slug, terms ] ) => {
-			postsListQuery[ slug ] = terms.map( ( term ) => term.id );
-		} );
+
+	if ( selectedTermLists?.learningProgramIds?.length > 0 ) {
+		postsListQuery[ 'learning_program' ] = selectedTermLists.learningProgramIds;
 	}
+	if ( selectedTermLists?.courseTagIds?.length > 0 ) {
+		postsListQuery[ 'course_tag' ] = selectedTermLists.courseTagIds;
+	}
+
 	const posts = getEntityRecords(
 		'postType',
 		'wsuwp_hrs_courses',
 		postsListQuery
 	);
-
-	const allTaxonomies = getTaxonomies( TERMS_LIST_QUERY );
-	const taxonomies = filter( allTaxonomies, ( taxonomy ) =>
-		includes( taxonomy.types, 'wsuwp_hrs_courses' )
+	const learningProgramTerms = getEntityRecords(
+		'taxonomy',
+		'learning_program',
+		TERMS_LIST_QUERY
 	);
-	const termLists = {};
-	taxonomies.forEach( ( { slug } ) => {
-		Object.defineProperty( termLists, slug, {
-			value: getEntityRecords( 'taxonomy', slug, TERMS_LIST_QUERY ),
-		} );
-	} );
+	const courseTagTerms = getEntityRecords(
+		'taxonomy',
+		'course_tag',
+		TERMS_LIST_QUERY
+	);
+
+	// const taxonomies = filter( allTaxonomies, ( taxonomy ) =>
+	// 	includes( taxonomy.types, 'wsuwp_hrs_courses' )
+	// );
+
+	// const termLists = {};
+	// taxonomies.forEach( ( { slug } ) => {
+	// 	Object.defineProperty( termLists, slug, {
+	// 		value: getEntityRecords( 'taxonomy', slug, TERMS_LIST_QUERY ),
+	// 	} );
+	// } );
 
 	return {
-		taxonomies,
-		termLists,
+		learningProgramTerms,
+		courseTagTerms,
 		postsList: ! Array.isArray( posts )
 			? posts
-			: posts.map( ( post ) => {
-					return post;
-			  } ),
+			: posts.map( ( post ) =>
+				post
+			),
 	};
 } )( PostsListEdit );

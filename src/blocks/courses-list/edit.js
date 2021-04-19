@@ -499,7 +499,6 @@ class PostsListEdit extends Component {
 												displayLearningProgram
 											}
 											post={ post }
-											assignedTerms={ selectedTermLists }
 											learningPrograms={ learningPrograms }
 											courseTags={ courseTags }
 										/>

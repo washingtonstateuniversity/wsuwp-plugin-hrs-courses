@@ -10,7 +10,6 @@ const { Fragment } = wp.element;
 
 export const ListTerms = ( props ) => {
 	const { post, prefix, taxonomySlug, terms } = props;
-
 	const postTerms = post[ taxonomySlug ] || [];
 
 	// Exit early if the post has no terms assigned to it.
@@ -19,7 +18,6 @@ export const ListTerms = ( props ) => {
 	}
 
 	const allTermsById = terms?.mapById || [];
-
 	const termsList = postTerms.reduce(
 		( accumulator, termId ) => {
 			const term = allTermsById[ termId ];

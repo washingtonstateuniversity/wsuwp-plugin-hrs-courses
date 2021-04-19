@@ -15,7 +15,6 @@ export const PostMeta = ( props ) => {
 		displayCourseTag,
 		displayLearningProgram,
 		post,
-		assignedTerms,
 		learningPrograms,
 		courseTags,
 	} = props;
@@ -32,7 +31,14 @@ export const PostMeta = ( props ) => {
 					prefix={ __( 'Learning Programs: ' ) }
 				/>
 			) }
-
+			{ displayCourseTag && courseTags && (
+				<ListTerms
+					post={ post }
+					terms={ courseTags }
+					taxonomySlug={ 'course_tag' }
+					prefix={ __( 'Course Tags: ' ) }
+				/>
+			) }
 			{ displayPostDate && post.date_gmt && (
 				<p className="wp-block-hrswp-posts-list--post-date">
 					{ __( 'Published on ' ) }

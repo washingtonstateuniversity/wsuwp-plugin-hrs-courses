@@ -280,11 +280,15 @@ class CoursesList {
 						'type'    => 'number',
 						'default' => $excerpt_length,
 					),
-					'displayPostDate'         => array(
+					'displayLearningProgram'  => array(
 						'type'    => 'boolean',
 						'default' => false,
 					),
-					'displayPostTaxonomy'     => array(
+					'displayCourseTag'        => array(
+						'type'    => 'boolean',
+						'default' => false,
+					),
+					'displayPostDate'         => array(
 						'type'    => 'boolean',
 						'default' => false,
 					),

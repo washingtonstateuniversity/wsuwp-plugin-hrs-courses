@@ -155,7 +155,9 @@ class PostsListEdit extends Component {
 			displayPostContentRadio,
 			displayPostContent,
 			displayPostDate,
-			displayPostTaxonomy,
+			displayCourseTag,
+			displayLearningProgram,
+			// displayPostTaxonomy,
 			postLayout,
 			columns,
 			order,
@@ -233,10 +235,17 @@ class PostsListEdit extends Component {
 						}
 					/>
 					<ToggleControl
-						label={ __( 'Display post taxonomy' ) }
-						checked={ displayPostTaxonomy }
+						label={ __( 'Display learning programs' ) }
+						checked={ displayLearningProgram }
 						onChange={ ( value ) =>
-							setAttributes( { displayPostTaxonomy: value } )
+							setAttributes( { displayLearningProgram: value } )
+						}
+					/>
+					<ToggleControl
+						label={ __( 'Display course tags' ) }
+						checked={ displayCourseTag }
+						onChange={ ( value ) =>
+							setAttributes( { displayCourseTag: value } )
 						}
 					/>
 				</PanelBody>
@@ -422,7 +431,7 @@ class PostsListEdit extends Component {
 							'';
 
 						const hasPostMeta =
-							displayPostDate || displayPostTaxonomy;
+							displayPostDate || displayLearningProgram || displayCourseTag;
 
 						const needsReadMore =
 							excerptLength <
@@ -483,12 +492,16 @@ class PostsListEdit extends Component {
 									{ hasPostMeta && (
 										<PostMeta
 											displayPostDate={ displayPostDate }
-											displayPostTaxonomy={
-												displayPostTaxonomy
+											displayCourseTag={
+												displayCourseTag
+											}
+											displayLearningProgram={
+												displayLearningProgram
 											}
 											post={ post }
-											taxonomies={ taxonomies }
-											termLists={ termLists }
+											assignedTerms={ selectedTermLists }
+											learningPrograms={ learningPrograms }
+											courseTags={ courseTags }
 										/>
 									) }
 								</div>

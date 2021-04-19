@@ -12,35 +12,27 @@ import { ListTerms } from './list-terms';
 export const PostMeta = ( props ) => {
 	const {
 		displayPostDate,
-		displayPostTaxonomy,
+		displayCourseTag,
+		displayLearningProgram,
 		post,
-		taxonomies,
-		termLists,
+		assignedTerms,
+		learningPrograms,
+		courseTags,
 	} = props;
 
 	const dateFormat = __experimentalGetSettings().formats.date;
 
-	const hasPostTerms = displayPostTaxonomy;
-
 	return (
 		<div className="wp-block-hrswp-posts-list--meta">
-			{ hasPostTerms &&
-				taxonomies.map( ( taxonomy ) => {
-					if ( ! displayPostTaxonomy ) {
-						return null;
-					}
-					const prefix = `${ taxonomy.labels.singular_name }: `;
+			{ displayLearningProgram && learningPrograms && (
+				<ListTerms
+					post={ post }
+					terms={ learningPrograms }
+					taxonomySlug={ 'learning_program' }
+					prefix={ __( 'Learning Programs: ' ) }
+				/>
+			) }
 
-					return (
-						<ListTerms
-							key={ taxonomy.slug }
-							post={ post }
-							terms={ termLists }
-							taxonomySlug={ taxonomy.slug }
-							prefix={ prefix }
-						/>
-					);
-				} ) }
 			{ displayPostDate && post.date_gmt && (
 				<p className="wp-block-hrswp-posts-list--post-date">
 					{ __( 'Published on ' ) }

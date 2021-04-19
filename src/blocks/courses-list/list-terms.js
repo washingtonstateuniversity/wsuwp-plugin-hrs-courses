@@ -9,32 +9,30 @@ import { filter, includes } from 'lodash';
 const { Fragment } = wp.element;
 
 export const ListTerms = ( props ) => {
-	const { terms, taxonomySlug, post, prefix } = props;
+	const { post, prefix, taxonomySlug, terms } = props;
 
-	// Compat check for WP mismatched slugs.
-	let slug;
-	if ( 'category' === taxonomySlug || 'post_tag' === taxonomySlug ) {
-		slug = 'category' === taxonomySlug ? 'categories' : 'tags';
-	} else {
-		slug = taxonomySlug;
-	}
+	const postTerms = post[ taxonomySlug ] || [];
 
-	const postTerms = post[ slug ];
-
-	const hasTerms = Array.isArray( postTerms ) && postTerms.length;
-
-	if ( ! hasTerms ) {
+	// Exit early if the post has no terms assigned to it.
+	if ( ! postTerms?.length > 0) {
 		return null;
 	}
 
-	const listTerms = filter( terms[ taxonomySlug ], ( i ) =>
-		includes( postTerms, i.id )
+	const allTermsById = terms?.mapById || [];
+
+	const termsList = postTerms.reduce(
+		( accumulator, termId ) => {
+			const term = allTermsById[ termId ];
+			if ( term ) accumulator.push( term );
+			return accumulator;
+		},
+		[]
 	);
 
 	return (
 		<p className={ `wp-block-hrswp-posts-list--${ taxonomySlug }-list` }>
 			<span>{ prefix }</span>
-			{ listTerms.map( ( term, i ) => {
+			{ termsList.map( ( term, i ) => {
 				const sep = i > 0 ? ', ' : '';
 				return (
 					<Fragment key={ i }>

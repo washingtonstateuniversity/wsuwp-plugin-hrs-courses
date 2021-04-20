@@ -8,7 +8,7 @@ const { dateI18n, format, __experimentalGetSettings } = wp.date;
  * Internal dependencies
  */
 import { ListTerms } from './list-terms';
-import { COURSE_TAGS_SLUG, LEARNING_PROGRAMS_SLUG } from './shared';
+import { COURSE_TAGS_SLUG, LEARNING_PROGRAMS_SLUG } from './constants';
 
 export const PostMeta = ( props ) => {
 	const {

@@ -35,81 +35,12 @@ import {
 	MAX_EXCERPT_LENGTH,
 	MAX_POSTS_COLUMNS,
 	TERMS_LIST_QUERY,
-} from './shared';
-
-const getTermsInfo = ( terms ) => ( {
-	terms,
-	...terms?.reduce(
-		( accumulator, term ) => {
-			const { mapById, mapByName, names } = accumulator;
-			mapById[ term.id ] = term;
-			mapByName[ term.name ] = term;
-			names.push( term.name );
-			return accumulator;
-		},
-		{ mapById: {}, mapByName: {}, names: [] }
-	),
-} );
-
-// selectedTermLists will be an object containing arrays of term ids
-// mapped to the term key, either 'learningProgramIds' or
-// 'courseTagIds'.
-const getExistingTermsFormTokenValue = (
-	taxonomy,
-	allTerms,
-	selectedTermLists
-) => {
-	const termsMapper = {
-		learning_program: {
-			queryProp: 'learningProgramIds',
-			terms: allTerms,
-		},
-		course_tag: {
-			queryProp: 'courseTagIds',
-			terms: allTerms,
-		},
-	};
-	const requestedTerm = termsMapper[ taxonomy ];
-
-	return ( selectedTermLists[ requestedTerm.queryProp ] || [] ).reduce(
-		( accumulator, termId ) => {
-			const term = requestedTerm.terms.mapById[ termId ];
-			if ( term ) {
-				accumulator.push( {
-					id: termId,
-					value: term.name,
-				} );
-			}
-			return accumulator;
-		},
-		[]
-	);
-};
-
-const setTermLists = ( newList, selectedTermLists, setAttributes ) => {
-	setAttributes( {
-		selectedTermLists: { ...selectedTermLists, ...newList },
-	} );
-	console.log( 'updated' );
-};
-
-const onTermsChange = (
-	terms,
-	queryProperty,
-	selectedTermLists,
-	setAttributes
-) => ( newTermValues ) => {
-	const termIds = newTermValues.reduce( ( accumulator, termValue ) => {
-		const termId = termValue?.id || terms.mapByName[ termValue ]?.id;
-		if ( termId ) accumulator.push( termId );
-		return accumulator;
-	}, [] );
-	setTermLists(
-		{ [ queryProperty ]: termIds },
-		selectedTermLists,
-		setAttributes
-	);
-};
+} from './constants';
+import {
+	getExistingTermsFormTokenValue,
+	getTermsInfo,
+	onTermsChange,
+} from './utils';
 
 class PostsListEdit extends Component {
 	render() {
@@ -362,7 +293,9 @@ class PostsListEdit extends Component {
 							'';
 
 						const hasPostMeta =
-							displayPostDate || displayLearningProgram || displayCourseTag;
+							displayPostDate ||
+							displayLearningProgram ||
+							displayCourseTag;
 
 						const needsReadMore =
 							excerptLength <
@@ -460,7 +393,8 @@ export default withSelect( ( select, props ) => {
 	);
 
 	if ( selectedTermLists?.learningProgramIds?.length > 0 ) {
-		postsListQuery[ LEARNING_PROGRAMS_SLUG ] = selectedTermLists.learningProgramIds;
+		postsListQuery[ LEARNING_PROGRAMS_SLUG ] =
+			selectedTermLists.learningProgramIds;
 	}
 	if ( selectedTermLists?.courseTagIds?.length > 0 ) {
 		postsListQuery[ COURSE_TAGS_SLUG ] = selectedTermLists.courseTagIds;
@@ -471,7 +405,7 @@ export default withSelect( ( select, props ) => {
 		'wsuwp_hrs_courses',
 		postsListQuery
 	);
-    const courseTagTerms = getEntityRecords(
+	const courseTagTerms = getEntityRecords(
 		'taxonomy',
 		COURSE_TAGS_SLUG,
 		TERMS_LIST_QUERY
@@ -487,8 +421,6 @@ export default withSelect( ( select, props ) => {
 		learningProgramTerms,
 		postsList: ! Array.isArray( posts )
 			? posts
-			: posts.map( ( post ) =>
-				post
-			),
+			: posts.map( ( post ) => post ),
 	};
 } )( PostsListEdit );

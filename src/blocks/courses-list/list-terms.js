@@ -8,19 +8,16 @@ export const ListTerms = ( props ) => {
 	const postTerms = post[ taxonomySlug ] || [];
 
 	// Exit early if the post has no terms assigned to it.
-	if ( ! postTerms?.length > 0) {
+	if ( ! postTerms?.length > 0 ) {
 		return null;
 	}
 
 	const allTermsById = terms?.mapById || [];
-	const termsList = postTerms.reduce(
-		( accumulator, termId ) => {
-			const term = allTermsById[ termId ];
-			if ( term ) accumulator.push( term );
-			return accumulator;
-		},
-		[]
-	);
+	const termsList = postTerms.reduce( ( accumulator, termId ) => {
+		const term = allTermsById[ termId ];
+		if ( term ) accumulator.push( term );
+		return accumulator;
+	}, [] );
 
 	return (
 		<p className={ `wp-block-hrswp-posts-list--${ taxonomySlug }-list` }>

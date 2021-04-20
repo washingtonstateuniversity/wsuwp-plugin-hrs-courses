@@ -8,15 +8,16 @@ const { dateI18n, format, __experimentalGetSettings } = wp.date;
  * Internal dependencies
  */
 import { ListTerms } from './list-terms';
+import { COURSE_TAGS_SLUG, LEARNING_PROGRAMS_SLUG } from './shared';
 
 export const PostMeta = ( props ) => {
 	const {
 		displayPostDate,
 		displayCourseTag,
 		displayLearningProgram,
-		post,
-		learningPrograms,
 		courseTags,
+		learningPrograms,
+		post,
 	} = props;
 
 	const dateFormat = __experimentalGetSettings().formats.date;
@@ -27,7 +28,7 @@ export const PostMeta = ( props ) => {
 				<ListTerms
 					post={ post }
 					terms={ learningPrograms }
-					taxonomySlug={ 'learning_program' }
+					taxonomySlug={ LEARNING_PROGRAMS_SLUG }
 					prefix={ __( 'Learning Programs: ' ) }
 				/>
 			) }
@@ -35,7 +36,7 @@ export const PostMeta = ( props ) => {
 				<ListTerms
 					post={ post }
 					terms={ courseTags }
-					taxonomySlug={ 'course_tag' }
+					taxonomySlug={ COURSE_TAGS_SLUG }
 					prefix={ __( 'Course Tags: ' ) }
 				/>
 			) }

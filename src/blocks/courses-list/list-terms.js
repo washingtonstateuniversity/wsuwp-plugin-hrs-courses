@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import { filter, includes } from 'lodash';
-
-/**
  * WordPress dependencies
  */
 const { Fragment } = wp.element;

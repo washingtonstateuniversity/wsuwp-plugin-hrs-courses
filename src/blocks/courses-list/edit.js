@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { filter, includes, invoke, isUndefined, pickBy, remove } from 'lodash';
+import { invoke, isUndefined, pickBy } from 'lodash';
 import classnames from 'classnames';
 
 /**
@@ -9,7 +9,6 @@ import classnames from 'classnames';
  */
 const { Component, RawHTML } = wp.element;
 const {
-	CheckboxControl,
 	FormTokenField,
 	PanelBody,
 	Placeholder,
@@ -30,11 +29,12 @@ const { withSelect } = wp.data;
 import { pin, list, grid } from './icons';
 import { PostMeta } from './post-meta';
 import {
+	COURSE_TAGS_SLUG,
+	LEARNING_PROGRAMS_SLUG,
 	MIN_EXCERPT_LENGTH,
 	MAX_EXCERPT_LENGTH,
 	MAX_POSTS_COLUMNS,
 	TERMS_LIST_QUERY,
-	taxonomyListToIds,
 } from './shared';
 
 const getTermsInfo = ( terms ) => ( {
@@ -112,52 +112,21 @@ const onTermsChange = (
 };
 
 class PostsListEdit extends Component {
-	// toggleSelectedTerms( taxonomy, term ) {
-	// 	const { attributes, setAttributes } = this.props;
-	// 	const { selectedTermLists } = attributes;
-
-	// 	const allTerms = ! isUndefined( selectedTermLists )
-	// 		? selectedTermLists
-	// 		: {};
-	// 	const taxonomyTerms = ! isUndefined( allTerms[ taxonomy ] )
-	// 		? allTerms[ taxonomy ]
-	// 		: ( allTerms[ taxonomy ] = [] );
-	// 	const hasTerm = includes(
-	// 		taxonomyListToIds( allTerms, taxonomy ),
-	// 		term.id
-	// 	);
-
-	// 	const newTerms = hasTerm
-	// 		? remove( taxonomyTerms, ( value ) => {
-	// 				return value.id !== term.id;
-	// 		  } )
-	// 		: [ ...taxonomyTerms, term ];
-
-	// 	allTerms[ taxonomy ] = newTerms;
-
-	// 	return [ allTerms ];
-
-	// 	setAttributes( { selectedTermLists: allTerms } );
-	// }
-
 	render() {
 		const {
 			attributes,
 			setAttributes,
 			className,
 			postsList,
-			// taxonomies,
-			// termLists,
-			learningProgramTerms,
 			courseTagTerms,
+			learningProgramTerms,
 		} = this.props;
 		const {
+			displayCourseTag,
+			displayLearningProgram,
 			displayPostContentRadio,
 			displayPostContent,
 			displayPostDate,
-			displayCourseTag,
-			displayLearningProgram,
-			// displayPostTaxonomy,
 			postLayout,
 			columns,
 			order,
@@ -176,7 +145,6 @@ class PostsListEdit extends Component {
 			selectedTermLists,
 			setAttributes
 		);
-
 		const onCourseTagsChange = onTermsChange(
 			courseTags,
 			'courseTagIds',
@@ -259,7 +227,7 @@ class PostsListEdit extends Component {
 						<FormTokenField
 							label={ __( 'Learning Programs' ) }
 							value={ getExistingTermsFormTokenValue(
-								'learning_program',
+								LEARNING_PROGRAMS_SLUG,
 								learningPrograms,
 								selectedTermLists
 							) }
@@ -271,7 +239,7 @@ class PostsListEdit extends Component {
 						<FormTokenField
 							label={ __( 'Course Tags' ) }
 							value={ getExistingTermsFormTokenValue(
-								'course_tag',
+								COURSE_TAGS_SLUG,
 								courseTags,
 								selectedTermLists
 							) }
@@ -279,43 +247,6 @@ class PostsListEdit extends Component {
 							onChange={ onCourseTagsChange }
 						/>
 					) }
-					{ /* { taxonomies.map( ( taxonomy ) => (
-						<PanelBody
-							className={ 'taxonomy-filter--body' }
-							key={ taxonomy.slug }
-							title={ taxonomy.name }
-							initialOpen={ false }
-						>
-							<ul className="edit__checklist">
-								{ termLists[ taxonomy.slug ] &&
-									termLists[ taxonomy.slug ].map(
-										( term ) => (
-											<li
-												key={ term.id }
-												className="components-checkbox-control__label"
-											>
-												<CheckboxControl
-													label={ term.name }
-													checked={ includes(
-														taxonomyListToIds(
-															selectedTermLists,
-															taxonomy.rest_base
-														),
-														term.id
-													) }
-													onChange={ () => {
-														this.toggleSelectedTerms(
-															taxonomy.rest_base,
-															term
-														);
-													} }
-												/>
-											</li>
-										)
-									) }
-							</ul>
-						</PanelBody>
-					) ) } */ }
 				</PanelBody>
 
 				<PanelBody
@@ -499,7 +430,9 @@ class PostsListEdit extends Component {
 												displayLearningProgram
 											}
 											post={ post }
-											learningPrograms={ learningPrograms }
+											learningPrograms={
+												learningPrograms
+											}
 											courseTags={ courseTags }
 										/>
 									) }
@@ -515,7 +448,7 @@ class PostsListEdit extends Component {
 
 export default withSelect( ( select, props ) => {
 	const { postsToShow, order, orderBy, selectedTermLists } = props.attributes;
-	const { getEntityRecords, getTaxonomies } = select( 'core' );
+	const { getEntityRecords } = select( 'core' );
 
 	const postsListQuery = pickBy(
 		{
@@ -527,10 +460,10 @@ export default withSelect( ( select, props ) => {
 	);
 
 	if ( selectedTermLists?.learningProgramIds?.length > 0 ) {
-		postsListQuery[ 'learning_program' ] = selectedTermLists.learningProgramIds;
+		postsListQuery[ LEARNING_PROGRAMS_SLUG ] = selectedTermLists.learningProgramIds;
 	}
 	if ( selectedTermLists?.courseTagIds?.length > 0 ) {
-		postsListQuery[ 'course_tag' ] = selectedTermLists.courseTagIds;
+		postsListQuery[ COURSE_TAGS_SLUG ] = selectedTermLists.courseTagIds;
 	}
 
 	const posts = getEntityRecords(
@@ -538,31 +471,20 @@ export default withSelect( ( select, props ) => {
 		'wsuwp_hrs_courses',
 		postsListQuery
 	);
+    const courseTagTerms = getEntityRecords(
+		'taxonomy',
+		COURSE_TAGS_SLUG,
+		TERMS_LIST_QUERY
+	);
 	const learningProgramTerms = getEntityRecords(
 		'taxonomy',
-		'learning_program',
+		LEARNING_PROGRAMS_SLUG,
 		TERMS_LIST_QUERY
 	);
-	const courseTagTerms = getEntityRecords(
-		'taxonomy',
-		'course_tag',
-		TERMS_LIST_QUERY
-	);
-
-	// const taxonomies = filter( allTaxonomies, ( taxonomy ) =>
-	// 	includes( taxonomy.types, 'wsuwp_hrs_courses' )
-	// );
-
-	// const termLists = {};
-	// taxonomies.forEach( ( { slug } ) => {
-	// 	Object.defineProperty( termLists, slug, {
-	// 		value: getEntityRecords( 'taxonomy', slug, TERMS_LIST_QUERY ),
-	// 	} );
-	// } );
 
 	return {
-		learningProgramTerms,
 		courseTagTerms,
+		learningProgramTerms,
 		postsList: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) =>

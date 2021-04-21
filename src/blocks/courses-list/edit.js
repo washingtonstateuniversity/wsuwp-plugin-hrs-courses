@@ -9,6 +9,7 @@ import classnames from 'classnames';
  */
 const { Component, RawHTML } = wp.element;
 const {
+	ExternalLink,
 	FormTokenField,
 	PanelBody,
 	Placeholder,
@@ -178,6 +179,18 @@ class PostsListEdit extends Component {
 							onChange={ onCourseTagsChange }
 						/>
 					) }
+					<p className={ 'components-filter-control__help' }>
+						{ __(
+							'Filtering by both Learning Program and Course Tag will return only courses that have both terms assigned.'
+						) }
+						<ExternalLink
+							href={
+								'https://hrscms.hrs.wsu.edu/component-library/courses-list/#filtering-and-sorting-options'
+							}
+						>
+							{ __( 'Learn more about filtering' ) }
+						</ExternalLink>
+					</p>
 				</PanelBody>
 
 				<PanelBody

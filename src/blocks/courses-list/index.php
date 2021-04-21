@@ -84,6 +84,10 @@ class CoursesList {
 
 		$posts = get_posts( $args );
 
+		if ( ! $posts ) {
+			return '<div class="wp-block-hrswp-posts-list"><p>' . __( 'No courses found.', 'wsuwp-hrs-courses' ) . '</p></div>';
+		}
+
 		$list_items_markup = '';
 		foreach ( $posts as $post ) {
 			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item"><div class="wp-block-hrswp-posts-list--body">';
@@ -92,38 +96,29 @@ class CoursesList {
 			if ( ! $title ) {
 				$title = __( '(no title)', 'wsuwp-hrs-courses' );
 			}
-			$list_items_markup .= sprintf(
-				'<h3 class="wp-block-hrswp-posts-list--heading"><a href="%1$s">%2$s</a></h3>',
-				esc_url( get_permalink( $post ) ),
-				$title
-			);
+			$list_items_markup .= '<h3 class="wp-block-hrswp-posts-list--heading"><a href="' . esc_url( get_permalink( $post ) ) . '">' . $title . '</a></h3>';
 
-			if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent']
-				&& isset( $attributes['displayPostContentRadio'] ) && 'excerpt' === $attributes['displayPostContentRadio'] ) {
-
-				$trimmed_excerpt = get_the_excerpt( $post );
-
-				$list_items_markup .= sprintf(
-					'<p class="wp-block-hrswp-posts-list--post-excerpt">%1$s</p>',
-					$trimmed_excerpt
-				);
-			}
-
-			if ( isset( $attributes['displayPostContent'] ) && $attributes['displayPostContent']
-				&& isset( $attributes['displayPostContentRadio'] ) && 'full_post' === $attributes['displayPostContentRadio'] ) {
-				$list_items_markup .= sprintf(
-					'<div class="wp-block-hrswp-posts-list--post-full-content">%1$s</div>',
-					wp_kses_post( html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) ) )
-				);
+			if (
+				isset( $attributes['displayPostContent'] ) &&
+				$attributes['displayPostContent'] &&
+				isset( $attributes['displayPostContentRadio'] )
+			) {
+				if ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
+					$list_items_markup .= '<p class="wp-block-hrswp-posts-list--post-excerpt">' . get_the_excerpt( $post ) . '</p>';
+				}
+				if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
+					$post_content       = html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) );
+					$list_items_markup .= '<div class="wp-block-hrswp-posts-list--post-full-content">' . wp_kses_post( $post_content ) . '</div>';
+				}
 			}
 
 			$post_meta_markup = '';
 			if ( isset( $attributes['displayLearningProgram'] ) && $attributes['displayLearningProgram'] ) {
-				$prefix = '<p class="wp-block-hrswp-posts-list--learning_program-list"><span>' . __( 'Learning Programs', 'wsuwp-hrs-courses' ) . ': </span>';
+				$prefix            = '<p class="wp-block-hrswp-posts-list--learning_program-list"><span>' . __( 'Learning Programs', 'wsuwp-hrs-courses' ) . ': </span>';
 				$post_meta_markup .= get_the_term_list( $post->ID, 'learning_program', $prefix, ', ', '</p>' );
 			}
 			if ( isset( $attributes['displayCourseTag'] ) && $attributes['displayCourseTag'] ) {
-				$prefix = '<p class="wp-block-hrswp-posts-list--course_tag-list"><span>' . __( 'Course Tags', 'wsuwp-hrs-courses' ) . ': </span>';
+				$prefix            = '<p class="wp-block-hrswp-posts-list--course_tag-list"><span>' . __( 'Course Tags', 'wsuwp-hrs-courses' ) . ': </span>';
 				$post_meta_markup .= get_the_term_list( $post->ID, 'course_tag', $prefix, ', ', '</p>' );
 			}
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {

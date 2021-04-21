@@ -2,10 +2,12 @@
 /**
  * Server-side rendering of the `hrscourses/courses-list` block.
  *
- * @package HRSWP_Blocks
+ * @package WSUWP_HRS_Courses
+ * @since 1.5.0
  */
 
-namespace HRSWP\Blocks\CoursesList;
+namespace WSUWP\HRS\Courses\Blocks\CoursesList;
+use WSUWP\HRS\Courses\Setup;
 
 /**
  * Registers and renders the `hrscourses/courses-list` block
@@ -52,6 +54,7 @@ class CoursesList {
 	public function render( $attributes ) {
 		$args = array(
 			'posts_per_page'   => $attributes['postsToShow'],
+			'post_type'        => Setup\WSUWP_HRS_Courses::$post_type_slug,
 			'post_status'      => 'publish',
 			'order'            => $attributes['order'],
 			'orderby'          => $attributes['orderBy'],
@@ -62,40 +65,28 @@ class CoursesList {
 		add_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 25 );
 
 		// Taxonomy handling.
-		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 		if ( isset( $attributes['selectedTermLists'] ) && ! empty( $attributes['selectedTermLists'] ) ) {
-			// Begin the query.
-			$args['tax_query'] = array( 'relation' => 'AND' );
-
-			// Build each query array.
-			foreach ( $attributes['selectedTermLists'] as $slug => $terms ) {
-				// WP_Query uses some different props than the Rest API \(°-°)/.
-				if ( 'categories' === $slug ) {
-					$slug = 'category';
-				}
-				if ( 'tags' === $slug ) {
-					$slug = 'post_tag';
-				}
-
-				if ( ! empty( $terms ) ) {
-					$args['tax_query'][] = array(
-						'taxonomy' => $slug,
-						'field'    => 'id',
-						'terms'    => array_column( $terms, 'id' ),
-					);
-				}
+			if ( ! empty( $attributes['selectedTermLists']['learningProgramIds'] ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy' => 'learning_program',
+					'field'    => 'id',
+					'terms'    => $attributes['selectedTermLists']['learningProgramIds'],
+				);
+			}
+			if ( ! empty( $attributes['selectedTermLists']['courseTagIds'] ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy' => 'course_tag',
+					'field'    => 'id',
+					'terms'    => $attributes['selectedTermLists']['courseTagIds'],
+				);
 			}
 		}
-		// phpcs:enable WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 
 		$posts = get_posts( $args );
 
 		$list_items_markup = '';
-
 		foreach ( $posts as $post ) {
-
-			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item">';
-			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--body">';
+			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item"><div class="wp-block-hrswp-posts-list--body">';
 
 			$title = get_the_title( $post );
 			if ( ! $title ) {
@@ -127,52 +118,13 @@ class CoursesList {
 			}
 
 			$post_meta_markup = '';
-			if ( isset( $attributes['displayPostTaxonomy'] ) ) {
-				$taxonomy_names = get_object_taxonomies( $post->post_type );
-
-				foreach ( $taxonomy_names as $taxonomy_name ) {
-					if (
-						'category' === $taxonomy_name &&
-						isset( $attributes['displayPostCategory'] ) &&
-						$attributes['displayPostCategory']
-					) {
-						$prefix = sprintf(
-							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
-							esc_attr( $taxonomy_name ),
-							__( 'More on', 'wsuwp-hrs-courses' )
-						);
-
-						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
-					} elseif (
-						'post_tag' === $taxonomy_name &&
-						isset( $attributes['displayPostTag'] ) &&
-						$attributes['displayPostTag']
-					) {
-						$prefix = sprintf(
-							'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
-							esc_attr( $taxonomy_name ),
-							__( 'Tagged', 'wsuwp-hrs-courses' )
-						);
-
-						$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
-					} else {
-						if (
-							'post_tag' !== $taxonomy_name &&
-							'category' !== $taxonomy_name &&
-							isset( $attributes['displayPostTaxonomy'] ) &&
-							$attributes['displayPostTaxonomy']
-						) {
-							$taxonomy_object = get_taxonomy( $taxonomy_name );
-							$prefix          = sprintf(
-								'<p class="wp-block-hrswp-posts-list--%1$s-list"><span>%2$s: </span>',
-								esc_attr( $taxonomy_name ),
-								esc_html( $taxonomy_object->labels->singular_name )
-							);
-
-							$post_meta_markup .= get_the_term_list( $post->ID, $taxonomy_name, $prefix, ', ', '</p>' );
-						}
-					}
-				}
+			if ( isset( $attributes['displayLearningProgram'] ) && $attributes['displayLearningProgram'] ) {
+				$prefix = '<p class="wp-block-hrswp-posts-list--learning_program-list"><span>' . __( 'Learning Programs', 'wsuwp-hrs-courses' ) . ': </span>';
+				$post_meta_markup .= get_the_term_list( $post->ID, 'learning_program', $prefix, ', ', '</p>' );
+			}
+			if ( isset( $attributes['displayCourseTag'] ) && $attributes['displayCourseTag'] ) {
+				$prefix = '<p class="wp-block-hrswp-posts-list--course_tag-list"><span>' . __( 'Course Tags', 'wsuwp-hrs-courses' ) . ': </span>';
+				$post_meta_markup .= get_the_term_list( $post->ID, 'course_tag', $prefix, ', ', '</p>' );
 			}
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 				$post_meta_markup .= sprintf(
@@ -184,10 +136,7 @@ class CoursesList {
 			}
 
 			if ( '' !== $post_meta_markup ) {
-				$list_items_markup .= sprintf(
-					'<div class="wp-block-hrswp-posts-list--meta">%1$s</div>',
-					$post_meta_markup
-				);
+				$list_items_markup .= '<div class="wp-block-hrswp-posts-list--meta">' . $post_meta_markup . '</div>';
 			}
 
 			$list_items_markup .= "</div></div>\n";

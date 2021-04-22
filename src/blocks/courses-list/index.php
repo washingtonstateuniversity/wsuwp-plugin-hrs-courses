@@ -44,6 +44,121 @@ class CoursesList {
 	}
 
 	/**
+	 * Renders inner blocks from the `core/columns` or `hrswp/sidebar` blocks.
+	 *
+	 * Essentially a copy of the core `_excerpt_render_inner_columns_blocks`
+	 * function.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @param array $columns        The parsed columns or sidebar block.
+	 * @param array $allowed_blocks The list of allowed inner blocks.
+	 * @return string The rendered inner blocks.
+	 */
+	private function excerpt_render_inner_columns_blocks( $columns, $allowed_blocks ) {
+		$output = '';
+
+		foreach ( $columns['innerBlocks'] as $column ) {
+			foreach ( $column['innerBlocks'] as $inner_block ) {
+				if ( in_array( $inner_block['blockName'], $allowed_blocks, true ) && empty( $inner_block['innerBlocks'] ) ) {
+					$output .= render_block( $inner_block );
+				}
+			}
+		}
+
+		return $output;
+	}
+
+	/**
+	 * Parses blocks out of a content string and renders those allowed in an excerpt.
+	 *
+	 * This function strips out blocks that are unlikely to contain text content or
+	 * that might mess up an excerpt. It also tries to get allowed blocks from inside
+	 * of layout blocks like the `core/columns` and `hrswp/sidebar` blocks. This is
+	 * essentially a copy of the core `excerpt_remove_blocks` function, which doesn't
+	 * support adding blocks with inner blocks to the allowed blocks list.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @param string $content The content to parse.
+	 * @return string The parsed and filtered content.
+	 */
+	private function excerpt_remove_blocks( $content ) {
+		$allowed_inner_blocks = array(
+			null, // Classic blocks have their blockName set to null.
+			'core/freeform',
+			'core/heading',
+			'core/html',
+			'core/list',
+			'core/media-text',
+			'core/paragraph',
+			'core/preformatted',
+			'core/pullquote',
+			'core/quote',
+			'core/table',
+			'core/verse',
+		);
+
+		$allowed_blocks = array_merge(
+			$allowed_inner_blocks,
+			array( 'core/columns', 'hrswp/sidebar' )
+		);
+
+		$blocks = parse_blocks( $content );
+		$output = '';
+		foreach ( $blocks as $block ) {
+			if ( in_array( $block['blockName'], $allowed_blocks, true ) ) {
+				if ( ! empty( $block['innerBlocks'] ) ) {
+					if (
+						'core/columns' === $block['blockName'] ||
+						'hrswp/sidebar' === $block['blockName']
+					) {
+						$output .= $this->excerpt_render_inner_columns_blocks( $block, $allowed_inner_blocks );
+						continue;
+					}
+
+					// Skip the block if it has disallowed or nested inner blocks.
+					foreach ( $block['innerBlocks'] as $inner_block ) {
+						if (
+							! in_array( $inner_block['blockName'], $allowed_inner_blocks, true ) ||
+							! empty( $inner_block['innerBlocks'] )
+						) {
+							continue 2;
+						}
+					}
+				}
+
+				$output .= render_block( $block );
+			}
+		}
+
+		return $output;
+	}
+
+	/**
+	 * Trims the course content for the excerpt.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @param WP_Post|object|int $post The post instance or ID/object to be trimmed.
+	 * @return string The generated excerpt text html.
+	 */
+	private function create_excerpt( $post ) {
+		if ( ! $post ) {
+			return;
+		}
+
+		$content = get_the_content( '', false, $post );
+		$content = $this->excerpt_remove_blocks( $content );
+
+		$excerpt_length = (int) $this->get_excerpt_length();
+		$excerpt_length = (int) apply_filters( 'excerpt_length', $excerpt_length );
+		$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+
+		return wp_trim_words( $content, $excerpt_length, $excerpt_more );
+	}
+
+	/**
 	 * Renders the `hrscourses/courses-list` block on the server.
 	 *
 	 * @since 0.5.0
@@ -104,7 +219,7 @@ class CoursesList {
 				isset( $attributes['displayPostContentRadio'] )
 			) {
 				if ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
-					$list_items_markup .= '<p class="wp-block-hrscourses-courses-list--post-excerpt">' . get_the_excerpt( $post ) . '</p>';
+					$list_items_markup .= '<p class="wp-block-hrscourses-courses-list--post-excerpt">' . $this->create_excerpt( $post ) . '</p>';
 				}
 				if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 					$post_content       = html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) );

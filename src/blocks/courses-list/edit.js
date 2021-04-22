@@ -330,11 +330,11 @@ class PostsListEdit extends Component {
 
 						return (
 							<div
-								className="wp-block-hrswp-posts-list--list-item"
+								className="wp-block-hrscourses-courses-list--list-item"
 								key={ i }
 							>
-								<div className="wp-block-hrswp-posts-list--body">
-									<h3 className="wp-block-hrswp-posts-list--heading">
+								<div className="wp-block-hrscourses-courses-list--body">
+									<h3 className="wp-block-hrscourses-courses-list--heading">
 										<a
 											href={ post.link }
 											target="_blank"
@@ -352,14 +352,14 @@ class PostsListEdit extends Component {
 									{ displayPostContent &&
 										displayPostContentRadio ===
 											'excerpt' && (
-											<p className="wp-block-hrswp-posts-list--post-excerpt">
+											<p className="wp-block-hrscourses-courses-list--post-excerpt">
 												{ postExcerpt }
 											</p>
 										) }
 									{ displayPostContent &&
 										displayPostContentRadio ===
 											'full_post' && (
-											<div className="wp-block-hrswp-posts-list--post-full-content">
+											<div className="wp-block-hrscourses-courses-list--post-full-content">
 												<RawHTML key="html">
 													{ post.content.raw.trim() }
 												</RawHTML>

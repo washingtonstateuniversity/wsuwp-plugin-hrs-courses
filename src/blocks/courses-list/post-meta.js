@@ -23,7 +23,7 @@ export const PostMeta = ( props ) => {
 	const dateFormat = __experimentalGetSettings().formats.date;
 
 	return (
-		<div className="wp-block-hrswp-posts-list--meta">
+		<div className="wp-block-hrscourses-courses-list--meta">
 			{ displayLearningProgram && learningPrograms && (
 				<ListTerms
 					post={ post }
@@ -41,7 +41,7 @@ export const PostMeta = ( props ) => {
 				/>
 			) }
 			{ displayPostDate && post.date_gmt && (
-				<p className="wp-block-hrswp-posts-list--post-date">
+				<p className="wp-block-hrscourses-courses-list--post-date">
 					{ __( 'Published on ' ) }
 					<time dateTime={ format( 'c', post.date_gmt ) }>
 						{ dateI18n( dateFormat, post.date_gmt ) }

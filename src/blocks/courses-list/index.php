@@ -85,18 +85,18 @@ class CoursesList {
 		$posts = get_posts( $args );
 
 		if ( ! $posts ) {
-			return '<div class="wp-block-hrswp-posts-list"><p>' . __( 'No courses found.', 'wsuwp-hrs-courses' ) . '</p></div>';
+			return '<div class="wp-block-hrscourses-courses-list"><p>' . __( 'No courses found.', 'wsuwp-hrs-courses' ) . '</p></div>';
 		}
 
 		$list_items_markup = '';
 		foreach ( $posts as $post ) {
-			$list_items_markup .= '<div class="wp-block-hrswp-posts-list--list-item"><div class="wp-block-hrswp-posts-list--body">';
+			$list_items_markup .= '<div class="wp-block-hrscourses-courses-list--list-item"><div class="wp-block-hrscourses-courses-list--body">';
 
 			$title = get_the_title( $post );
 			if ( ! $title ) {
 				$title = __( '(no title)', 'wsuwp-hrs-courses' );
 			}
-			$list_items_markup .= '<h3 class="wp-block-hrswp-posts-list--heading"><a href="' . esc_url( get_permalink( $post ) ) . '">' . $title . '</a></h3>';
+			$list_items_markup .= '<h3 class="wp-block-hrscourses-courses-list--heading"><a href="' . esc_url( get_permalink( $post ) ) . '">' . $title . '</a></h3>';
 
 			if (
 				isset( $attributes['displayPostContent'] ) &&
@@ -104,26 +104,26 @@ class CoursesList {
 				isset( $attributes['displayPostContentRadio'] )
 			) {
 				if ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
-					$list_items_markup .= '<p class="wp-block-hrswp-posts-list--post-excerpt">' . get_the_excerpt( $post ) . '</p>';
+					$list_items_markup .= '<p class="wp-block-hrscourses-courses-list--post-excerpt">' . get_the_excerpt( $post ) . '</p>';
 				}
 				if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 					$post_content       = html_entity_decode( $post->post_content, ENT_QUOTES, get_option( 'blog_charset' ) );
-					$list_items_markup .= '<div class="wp-block-hrswp-posts-list--post-full-content">' . wp_kses_post( $post_content ) . '</div>';
+					$list_items_markup .= '<div class="wp-block-hrscourses-courses-list--post-full-content">' . wp_kses_post( $post_content ) . '</div>';
 				}
 			}
 
 			$post_meta_markup = '';
 			if ( isset( $attributes['displayLearningProgram'] ) && $attributes['displayLearningProgram'] ) {
-				$prefix            = '<p class="wp-block-hrswp-posts-list--learning_program-list"><span>' . __( 'Learning Programs', 'wsuwp-hrs-courses' ) . ': </span>';
+				$prefix            = '<p class="wp-block-hrscourses-courses-list--learning_program-list"><span>' . __( 'Learning Programs', 'wsuwp-hrs-courses' ) . ': </span>';
 				$post_meta_markup .= get_the_term_list( $post->ID, 'learning_program', $prefix, ', ', '</p>' );
 			}
 			if ( isset( $attributes['displayCourseTag'] ) && $attributes['displayCourseTag'] ) {
-				$prefix            = '<p class="wp-block-hrswp-posts-list--course_tag-list"><span>' . __( 'Course Tags', 'wsuwp-hrs-courses' ) . ': </span>';
+				$prefix            = '<p class="wp-block-hrscourses-courses-list--course_tag-list"><span>' . __( 'Course Tags', 'wsuwp-hrs-courses' ) . ': </span>';
 				$post_meta_markup .= get_the_term_list( $post->ID, 'course_tag', $prefix, ', ', '</p>' );
 			}
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 				$post_meta_markup .= sprintf(
-					'<p class="wp-block-hrswp-posts-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
+					'<p class="wp-block-hrscourses-courses-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
 					__( 'Published on', 'wsuwp-hrs-courses' ),
 					esc_attr( get_the_date( 'c', $post ) ),
 					esc_html( get_the_date( '', $post ) )
@@ -131,7 +131,7 @@ class CoursesList {
 			}
 
 			if ( '' !== $post_meta_markup ) {
-				$list_items_markup .= '<div class="wp-block-hrswp-posts-list--meta">' . $post_meta_markup . '</div>';
+				$list_items_markup .= '<div class="wp-block-hrscourses-courses-list--meta">' . $post_meta_markup . '</div>';
 			}
 
 			$list_items_markup .= "</div></div>\n";
@@ -139,7 +139,7 @@ class CoursesList {
 
 		remove_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 20 );
 
-		$class = array( 'wp-block-hrswp-posts-list' );
+		$class = array( 'wp-block-hrscourses-courses-list' );
 
 		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 			$class[] = 'has-date';

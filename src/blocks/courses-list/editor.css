@@ -47,4 +47,14 @@
 		margin-top: 0.5rem;
 	}
 }
+
+.components-filter-control__help {
+	color: rgb(117, 117, 117);
+	font-size: 0.75rem;
+
+	& .components-external-link {
+		display: block;
+		margin-top: 0.75rem;
+	}
+}
 /* stylelint-enable selector-class-pattern */

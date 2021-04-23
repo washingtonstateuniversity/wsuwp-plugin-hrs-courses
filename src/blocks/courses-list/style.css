@@ -163,6 +163,10 @@
 			box-shadow:
 				0 1px 3px 1px rgba(66, 66, 66, 0.2),
 				0 2px 8px 4px rgba(66, 66, 66, 0.1);
+
+			& .wp-block-hrscourses-courses-list--post-date {
+				background-color: #f6f6f6;
+			}
 		}
 	}
 
@@ -195,18 +199,6 @@
 		margin: 1rem -1.5rem 0;
 		padding: 1.5rem 1rem 1.5rem 1.5rem;
 		transition: background-color 0.3s ease;
-	}
-
-	& .wp-block-hrscourses-courses-list--list-item:hover {
-
-		&::after {
-			opacity: 1;
-		}
-
-		& .wp-block-hrscourses-courses-list--post-date {
-			background-color: #f6f6f6;
-		}
-
 	}
 
 }

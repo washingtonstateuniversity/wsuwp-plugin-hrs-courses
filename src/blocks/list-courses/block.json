@@ -3,6 +3,8 @@
 	"category": "widgets",
 	"supports": {
 		"align": true,
-		"html": false
+		"html": false,
+		"inserter": false,
+		"reusable": false
 	}
 }

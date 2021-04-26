@@ -86,9 +86,9 @@ class PostsListEdit extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Post content settings' ) }>
+				<PanelBody title={ __( 'Course content settings' ) }>
 					<ToggleControl
-						label={ __( 'Post content' ) }
+						label={ __( 'Course content' ) }
 						checked={ displayPostContent }
 						onChange={ ( value ) =>
 							setAttributes( { displayPostContent: value } )
@@ -101,7 +101,7 @@ class PostsListEdit extends Component {
 							options={ [
 								{ label: __( 'Excerpt' ), value: 'excerpt' },
 								{
-									label: __( 'Full post' ),
+									label: __( 'Full content' ),
 									value: 'full_post',
 								},
 							] }
@@ -128,7 +128,7 @@ class PostsListEdit extends Component {
 
 				<PanelBody title={ __( 'Post meta settings' ) }>
 					<ToggleControl
-						label={ __( 'Display post date' ) }
+						label={ __( 'Display date' ) }
 						checked={ displayPostDate }
 						onChange={ ( value ) =>
 							setAttributes( { displayPostDate: value } )
@@ -239,11 +239,11 @@ class PostsListEdit extends Component {
 			return (
 				<>
 					{ inspectorControls }
-					<Placeholder icon={ pin } label={ __( 'Posts' ) }>
+					<Placeholder icon={ pin } label={ __( 'Courses' ) }>
 						{ ! Array.isArray( postsList ) ? (
 							<Spinner />
 						) : (
-							__( 'No posts found.' )
+							__( 'No courses found.' )
 						) }
 					</Placeholder>
 				</>

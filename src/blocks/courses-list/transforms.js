@@ -15,8 +15,7 @@ const transforms = {
 		{
 			type: 'block',
 			blocks: [ 'hrscourses/list-courses' ],
-			transform: ( attributes ) =>
-				createBlock( name, attributes )
+			transform: ( attributes ) => createBlock( name, attributes ),
 		},
 	],
 };

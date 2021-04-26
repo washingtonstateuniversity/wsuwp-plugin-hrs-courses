@@ -8,6 +8,7 @@ const { __ } = wp.i18n;
  */
 import edit from './edit';
 import metadata from './block.json';
+import transforms from './transforms';
 import { icon } from './icons';
 
 const { name, category, supports } = metadata;
@@ -23,4 +24,5 @@ export const settings = {
 	supports,
 	example: {},
 	edit,
+	transforms,
 };

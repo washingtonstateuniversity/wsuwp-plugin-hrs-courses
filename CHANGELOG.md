@@ -20,7 +20,19 @@ Changelog formatting (http://semver.org/):
 
 ## 1.5.0-rc.1 (:construction: 2021-04-27)
 
-### 
+### Changed
+
+- Bump WordPress "tested to" to 5.7.1.
+- Update npm and Composer build tools.
+- Add CSS nesting support flag for the PostCSS Preset Env plugin.
+
+### Added
+
+- Courses List block to generate lists of Course CPTs with custom taxonomy filtering and various layout options. This replaces the List Courses block, which couldn't handle taxonomy filtering on the HRS Courses custom taxonomies.
+
+### Deprecated
+
+- List Courses block, in favor of the new Courses List block.
 
 ## 1.4.0 (2020-10-01)
 

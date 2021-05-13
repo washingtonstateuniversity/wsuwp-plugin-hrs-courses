@@ -22,7 +22,7 @@ Changelog formatting (http://semver.org/):
 
 ### Changed
 
-- Bump WordPress "tested to" to 5.7.1.
+- Bump WordPress "tested to" to 5.7.2.
 - Update npm and Composer build tools.
 - Add CSS nesting support flag for the PostCSS Preset Env plugin.
 

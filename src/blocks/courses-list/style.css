@@ -1,0 +1,272 @@
+/* stylelint-disable selector-class-pattern */
+.wp-block-hrscourses-courses-list--list-item {
+	margin-bottom: 0.7rem;
+	position: relative;
+}
+
+.wp-block-hrscourses-courses-list.has-full-content .wp-block-hrscourses-courses-list--list-item {
+	border-bottom: 2px solid #eaeaea;
+	margin-bottom: 2em;
+	overflow: hidden;
+}
+
+.wp-block-hrscourses-courses-list--heading {
+	font-size: var(--font-size-3);
+	font-weight: 600;
+	line-height: 1.2;
+	margin: 0 0 0.25rem;
+
+	& a {
+		font-weight: inherit;
+	}
+}
+
+.wp-block-hrscourses-courses-list--body {
+	color: #606060;
+	display: flex;
+	flex-direction: column;
+}
+
+.wp-block-hrscourses-courses-list--post-excerpt {
+	font-size: var(--font-size-base);
+	line-height: 1.35;
+}
+
+.wp-block-hrscourses-courses-list--meta {
+	font-size: var(--font-size-1);
+	font-weight: 600;
+	line-height: 1.35;
+	margin-top: auto;
+
+	& span {
+		text-transform: uppercase;
+	}
+
+	& .wp-block-hrscourses-courses-list--course_tag-list span {
+		border: 0;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute !important;
+		width: 1px;
+		word-wrap: normal !important;
+	}
+
+	& a {
+		font-weight: 400;
+	}
+}
+
+.wp-block-hrscourses-courses-list.has-full-content .wp-block-hrscourses-courses-list--meta,
+.wp-block-hrscourses-courses-list.has-excerpt .wp-block-hrscourses-courses-list--meta {
+	padding-top: 1rem;
+}
+
+.wp-block-hrscourses-courses-list--post-date::before,
+.wp-block-hrscourses-courses-list--course_tag-list::before {
+	background-image: url(icons/tag.svg);
+	background-position: center 100%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: "";
+	display: inline-block;
+	height: 1em;
+	margin: 0 0.4em -0.2em 0;
+	margin-bottom: -0.2em;
+	width: 1em;
+}
+
+.wp-block-hrscourses-courses-list--post-date::before {
+	background-image: url(icons/event.svg);
+	margin: 0 0.2em -0.1em 0;
+}
+
+.wp-block-hrscourses-courses-list--post-excerpt,
+.wp-block-hrscourses-courses-list--meta p {
+	padding: 0;
+}
+
+.wp-block-hrscourses-courses-list--meta .wp-block-hrscourses-courses-list--post-date:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.wp-block-hrscourses-courses-list:not(.has-full-content) {
+
+	& .wp-block-hrscourses-courses-list--list-item {
+		display: flex;
+	}
+
+	& .wp-block-hrscourses-courses-list--body {
+		flex: 1;
+	}
+
+}
+
+.wp-block-hrscourses-courses-list:not(.is-grid) {
+
+	&.has-excerpt .wp-block-hrscourses-courses-list--list-item:not(:first-of-type) {
+		padding-top: 1em;
+		border-top: 2px solid #eaeaea;
+	}
+
+	& .wp-block-hrscourses-courses-list--meta p:last-child {
+		margin-bottom: 0.75rem;
+	}
+
+	& .wp-block-hrscourses-courses-list--heading::before {
+		border-left: 0.8rem solid var(--brand-crimson);
+		content: "";
+		display: inline-block;
+		height: 0.8rem;
+		padding-right: 8px;
+		opacity: 0.6;
+		transition: opacity 0.3s ease;
+	}
+
+	& .wp-block-hrscourses-courses-list--heading:hover::before {
+		opacity: 1;
+	}
+
+	& .wp-block-hrscourses-courses-list--meta,
+	& .wp-block-hrscourses-courses-list--post-excerpt,
+	& .wp-block-hrscourses-courses-list--post-full-content {
+		padding-left: calc(0.8rem + 8px);
+	}
+
+}
+
+.wp-block-hrscourses-courses-list.is-grid {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: -20px;
+	margin-right: -20px;
+
+	& .wp-block-hrscourses-courses-list--list-item {
+		background-color: #fff;
+		border: none;
+		border-radius: 5px;
+		box-shadow:
+			0 1px 1px 0 rgba(66, 66, 66, 0.08),
+			0 1px 3px 1px rgba(66, 66, 66, 0.16);
+		flex-direction: column;
+		min-height: 150px;
+		max-width: 600px;
+		overflow: hidden;
+		margin: 10px;
+		transition: box-shadow 135ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+		width: 100%;
+
+		&:hover {
+			box-shadow:
+				0 1px 3px 1px rgba(66, 66, 66, 0.2),
+				0 2px 8px 4px rgba(66, 66, 66, 0.1);
+
+			& .wp-block-hrscourses-courses-list--post-date {
+				background-color: #f6f6f6;
+			}
+		}
+	}
+
+	& .wp-block-hrscourses-courses-list--body {
+		padding: 1.5rem;
+	}
+
+	&.has-date .wp-block-hrscourses-courses-list--body {
+		padding-bottom: 0;
+	}
+
+	& .wp-block-hrscourses-courses-list--heading {
+		margin: 0;
+
+		& a::after {
+			background: none;
+		}
+	}
+
+	& .wp-block-hrscourses-courses-list--post-excerpt {
+		padding: 1em 0 0;
+	}
+
+	& .wp-block-hrscourses-courses-list--meta {
+		padding-top: 1.5em;
+	}
+
+	& .wp-block-hrscourses-courses-list--meta .wp-block-hrscourses-courses-list--post-date {
+		background-color: transparent;
+		margin: 1rem -1.5rem 0;
+		padding: 1.5rem 1rem 1.5rem 1.5rem;
+		transition: background-color 0.3s ease;
+	}
+
+}
+
+@media (min-width: 576px) {
+
+	.wp-block-hrscourses-courses-list.is-grid,
+	.wp-block-hrscourses-courses-list.is-grid.columns-1,
+	.wp-block-hrscourses-courses-list.is-grid.columns-2,
+	.wp-block-hrscourses-courses-list.is-grid.columns-3,
+	.wp-block-hrscourses-courses-list.is-grid.columns-4,
+	.wp-block-hrscourses-courses-list.is-grid.columns-5,
+	.wp-block-hrscourses-courses-list.is-grid.columns-6 {
+
+		& .wp-block-hrscourses-courses-list--list-item {
+			width: calc(100% / 2 - 20px);
+		}
+
+	}
+
+}
+
+@media (min-width: 768px) {
+
+	.wp-block-hrscourses-courses-list.is-grid.columns-3,
+	.wp-block-hrscourses-courses-list.is-grid.columns-4,
+	.wp-block-hrscourses-courses-list.is-grid.columns-5,
+	.wp-block-hrscourses-courses-list.is-grid.columns-6 {
+
+		& .wp-block-hrscourses-courses-list--list-item {
+			width: calc(100% / 3 - 20px);
+		}
+
+	}
+
+}
+
+@media (min-width: 900px) {
+
+	.wp-block-hrscourses-courses-list.is-grid.columns-4,
+	.wp-block-hrscourses-courses-list.is-grid.columns-5,
+	.wp-block-hrscourses-courses-list.is-grid.columns-6 {
+
+		& .wp-block-hrscourses-courses-list--list-item {
+			width: calc(100% / 4 - 20px);
+		}
+
+	}
+
+}
+
+@media (min-width: 1386px) {
+
+	.wp-block-hrscourses-courses-list.is-grid.columns-5 {
+
+		& .wp-block-hrscourses-courses-list--list-item {
+			width: calc(100% / 5 - 20px);
+		}
+
+	}
+
+	.wp-block-hrscourses-courses-list.is-grid.columns-6 {
+
+		& .wp-block-hrscourses-courses-list--list-item {
+			width: calc(100% / 6 - 20px);
+		}
+
+	}
+
+}
+/* stylelint-enable selector-class-pattern */

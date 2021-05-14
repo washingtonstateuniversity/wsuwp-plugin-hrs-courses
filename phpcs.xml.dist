@@ -23,6 +23,10 @@
 		</properties>
 	</rule>
 
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>/src/blocks/courses-list/index\.php</exclude-pattern>
+	</rule>
+
 	<arg value="ps"/>
 	<arg name="extensions" value="php"/>
 	<arg name="basepath" value="./"/>

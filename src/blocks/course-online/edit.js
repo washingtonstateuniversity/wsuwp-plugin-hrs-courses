@@ -40,9 +40,9 @@ export default function CourseLocationEdit( {
 			</InspectorControls>
 			<div className={ className }>
 				<div className={ 'components-base-control' }>
-					<p className="components-base-control__label">
+					<span className="components-base-control__label">
 						{ __( 'Online course URL' ) }
-					</p>
+					</span>
 				</div>
 				<URLInput
 					autoFocus={ false } // eslint-disable-line jsx-a11y/no-autofocus

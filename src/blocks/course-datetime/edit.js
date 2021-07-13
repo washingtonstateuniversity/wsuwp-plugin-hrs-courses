@@ -27,7 +27,6 @@ export default function CourseDateEdit( {
 				className="course-datetime"
 				label={ __( 'Course date and time' ) }
 				placeholder={ placeholder || __( 'Add date and / or time…' ) }
-				keepPlaceholderOnFocus={ true }
 				value={ datetimeMetaValue }
 				onChange={ ( value ) =>
 					setAttributes( {

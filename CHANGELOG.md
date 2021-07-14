@@ -5,20 +5,56 @@ Author: Washington State University
 URI: https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses
 
 <!--
-Changelog formatting (http://semver.org/):
+Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
-## Major.MinorAddorDeprec.Bugfix YYYY-MM-DD
+## Major.MinorAddorDeprec.Bugfix (YYYY-MM-DD)
 
-### To Do (for upcoming changes)
-### Security (in case of fixed vulnerabilities)
-### Fixed (for any bug fixes)
-### Changed (for changes in existing functionality)
 ### Added (for new features)
+### Changed (for changes in existing functionality)
 ### Deprecated (for once-stable features removed in upcoming releases)
 ### Removed (for deprecated features removed in this release)
+### Fixed (for any bug fixes)
+### Security (in case of fixed vulnerabilities)
 -->
 
 ## 1.6.0-rc.1 (:construction: Future)
+
+### Added
+
+- Create a contributing guide in `CONTRIBUTING.md`. (ba7a561)
+
+### Changed
+
+- Update course meta styles in block editor. (9265613)
+- Replace the GPL v2 license with a GPL v3 license. (7678b6e, d19147b)
+- Update issue and pull request templates. (ba7a561)
+- Update status badges in `README.md` and add contributing guide info. (ba7a561)
+- Upgrade copy-webpack-plugin from 8.1.1 to 9.0.1. (ef2a454)
+- Upgrade @wordpress/babel-preset-default from 5.2.2 to 6.2.0. (a56bf25)
+- Upgrade source-map-loader from 2.0.1 to 3.0.0. (ef2a454)
+- Update webpack from 5.37.0 to 5.44.0. (ef2a454)
+- Update postcss from 8.2.15 to 8.3.5. (b8d00d6)
+- Update eslint from 7.26.0 to 7.30.0. (8c2ab99)
+
+### Fixed
+
+- Fix #64 remove keepPlaceholderOnFocus. (3dc662b)
+
+### Security
+
+- Bump sirbrillig/phpcs-variable-analysis from 2.11.0 to 2.11.2. (13017ba)
+- Bump @wordpress/npm-package-json-lint-config from 4.0.3 to 4.0.5. (8c2ab99)
+- Bump @wordpress/stylelint-config from 19.0.3 to 19.0.5. (8c2ab99)
+- Bump @wordpress/eslint-plugin from 9.0.4 to 9.0.6. (8c2ab99)
+- Bump cssnano from 5.0.2 to 5.0.6. (b8d00d6)
+- Bump @babel/core from 7.14.2 to 7.14.6. (a56bf25)
+- Bump @babel/runtime from 7.14.0 to 7.14.6. (a56bf25)
+- Bump webpack-cli from 4.7.0 to 4.7.2. (ef2a454)
+- Bump webpack-bundle-analyzer from 4.4.1 to 4.4.2. (ef2a454)
+- Bump resolve-bin from 0.4.0 to 0.4.1. (ef2a454)
+- Bump @wordpress/dependency-extraction-webpack-plugin from 3.1.2 to 3.1.4. (ef2a454)
+- Bump hosted-git-info from 2.7.1 to 2.8.9. (b6ae01e)
+- Bump trim-newlines from 3.0.0 to 3.0.1. (e6dd241)
 
 ## 1.5.0 (2021-05-13)
 

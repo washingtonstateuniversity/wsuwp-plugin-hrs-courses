@@ -1,6 +1,6 @@
 # WSUWP HRS Courses
 
-[![Build Status](https://travis-ci.org/washingtonstateuniversity/wsuwp-plugin-hrs-courses.svg?branch=stable)](https://travis-ci.org/washingtonstateuniversity/wsuwp-plugin-hrs-courses) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![Build Status](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/actions/workflows/coding-standards.yml/badge.svg)](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/actions) [![Release Version](https://img.shields.io/github/v/release/washingtonstateuniversity/wsuwp-plugin-hrs-courses)](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/releases/latest) ![WordPress tested up to version 5.8.0](https://img.shields.io/badge/WordPress-v5.8.0%20tested-success.svg) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![GPLv3 License](https://img.shields.io/github/license/washingtonstateuniversity/wsuwp-plugin-hrs-courses)](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/develop/LICENSE.md)
 
 ## Overview
 
@@ -63,8 +63,14 @@ The following commands will handle basic build functions. (Remove the `-s` flag 
 
 See the scripts section of `package.json` for additional available commands.
 
-## WSUP HRS Courses Issues
+## Support Level
 
-Please submit bugs, fixes, and feature requests through [GitHub Issues](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/issues). Please read (and adhere to) the guidelines for contributions detailed in the issue templates.
+**Active:** WSU HRS actively works on this plugin. We plant to continue work for the foreseeable future, adding new features, enhancing existing ones, and maintaining compatability with the latest version of WordPress. Bug reports, feature requests, questions, and pull requests are welcome.
 
-Read the [CHANGELOG.md](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/stable/CHANGELOG.md) to review release and update notes.
+## Changelog
+
+All notable changes are documented in the [CHANGELOG.md](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/develop/CHANGELOG.md), with dates and version numbers.
+
+## Contributing
+
+Please submit bugs and feature requests through [GitHub Issues](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/issues). Refer to [CONTRIBUTING.md](https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/blob/develop/CONTRIBUTING.md) for the development workflow and details for submitting pull requests.

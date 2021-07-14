@@ -29,7 +29,6 @@ export default function CourseLocationEdit( {
 				placeholder={
 					placeholder || __( 'Add location…', 'wsuwp-hrs-courses' )
 				}
-				keepPlaceholderOnFocus={ true }
 				value={ locationMetaValue }
 				onChange={ ( value ) =>
 					setAttributes( {

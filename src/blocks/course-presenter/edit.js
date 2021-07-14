@@ -27,7 +27,6 @@ export default function CoursePresenterEdit( {
 				className="course-presenter"
 				label={ __( 'Course presenter' ) }
 				placeholder={ placeholder || __( 'Add presenter(s)…' ) }
-				keepPlaceholderOnFocus={ true }
 				value={ presenterMetaValue }
 				onChange={ ( value ) =>
 					setAttributes( {

@@ -1,0 +1,4 @@
+svg.svg-icon {
+	transition: fill 0.3s ease;
+	fill: currentColor;
+}

@@ -53,11 +53,11 @@ add_action( 'pre_get_posts', __NAMESPACE__ . '\modify_courses_archive_query' );
  */
 function load_template( $template ) {
 	if ( is_tax( 'learning_program' ) || is_tax( 'course_tag' ) ) {
-		$template = dirname( __DIR__ ) . '/templates/archive.php';
+		$template = dirname( __DIR__ ) . '/build/templates/archive.php';
 	}
 
 	if ( is_post_type_archive( Setup\WSUWP_HRS_Courses::$post_type_slug ) ) {
-		$template = dirname( __DIR__ ) . '/templates/archive.php';
+		$template = dirname( __DIR__ ) . '/build/templates/archive.php';
 	}
 
 	return $template;

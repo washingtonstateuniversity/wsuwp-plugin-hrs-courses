@@ -76,7 +76,7 @@ get_header();
 								get_the_ID(),
 								'learning_program',
 								__( '<ul><li>', 'wsuwp-hrs-courses' ),
-								' ',
+								', ',
 								'</li></ul>'
 							);
 							?>

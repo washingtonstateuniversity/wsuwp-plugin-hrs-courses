@@ -17,7 +17,7 @@ const config = {
 	mode,
 	entry: {
 		index: resolve( process.cwd(), 'src/', 'index.js' ),
-		menu: resolve( process.cwd(), 'src/', 'menu.js' ),
+		menu: resolve( process.cwd(), 'src/components/menu/', 'index.js' ),
 	},
 	output: {
 		filename: '[name].js',

@@ -4,12 +4,6 @@
 	position: relative;
 }
 
-.wp-block-hrscourses-courses-list.has-full-content .wp-block-hrscourses-courses-list--list-item {
-	border-bottom: 2px solid #eaeaea;
-	margin-bottom: 2em;
-	overflow: hidden;
-}
-
 .wp-block-hrscourses-courses-list--heading {
 	font-size: var(--font-size-3);
 	font-weight: 600;
@@ -22,7 +16,7 @@
 }
 
 .wp-block-hrscourses-courses-list--body {
-	color: #606060;
+	color: var(--wp--custom--wsu-color-black--70);
 	display: flex;
 	flex-direction: column;
 }
@@ -107,9 +101,9 @@
 
 .wp-block-hrscourses-courses-list:not(.is-grid) {
 
-	&.has-excerpt .wp-block-hrscourses-courses-list--list-item:not(:first-of-type) {
+	& .wp-block-hrscourses-courses-list--list-item:not(:first-of-type) {
 		padding-top: 1em;
-		border-top: 2px solid #eaeaea;
+		border-top: 2px solid var(--wp--custom--wsu-color-black--5);
 	}
 
 	& .wp-block-hrscourses-courses-list--meta p:last-child {
@@ -117,7 +111,7 @@
 	}
 
 	& .wp-block-hrscourses-courses-list--heading::before {
-		border-left: 0.8rem solid var(--brand-crimson);
+		border-left: 0.8rem solid var(--wp--preset--color--primary-crimson);
 		content: "";
 		display: inline-block;
 		height: 0.8rem;
@@ -145,7 +139,7 @@
 	margin-right: -20px;
 
 	& .wp-block-hrscourses-courses-list--list-item {
-		background-color: #fff;
+		background-color: var(--wp--preset--color--white);
 		border: none;
 		border-radius: 5px;
 		box-shadow:
@@ -165,7 +159,7 @@
 				0 2px 8px 4px rgba(66, 66, 66, 0.1);
 
 			& .wp-block-hrscourses-courses-list--post-date {
-				background-color: #f6f6f6;
+				background-color: var(--wp--custom--wsu-color-black--3);
 			}
 		}
 	}

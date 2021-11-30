@@ -34,7 +34,7 @@
 	& .courses-archive-frontmatter .menu {
 		animation-duration: 200ms;
 		animation-timing-function: step-end;
-		background: #fff;
+		background: var(--wp--preset--color--white);
 		border-radius: 3px;
 		contain: content;
 		position: absolute;
@@ -111,8 +111,8 @@
 	}
 
 	& .courses-archive-frontmatter .menu-expanded .menu-toggle {
-		background: #fff;
-		color: #c60c30;
+		background: var(--wp--preset--color--white);
+		color: var(--wp--preset--color--primary-crimson);
 	}
 
 	& .courses-archive-frontmatter .menu-expanded .menu-title::after {

@@ -69,7 +69,7 @@
 
 .wp-block-hrscourses-list-courses:not(.is-style-bulleted) .course-title,
 .wsuwp-courses-archive .course-title {
-	border-left: var(--font-size-1) solid var(--brand-crimson);
+	border-left: var(--font-size-1) solid var(--wp--preset--color--primary-crimson);
 	font-size: var(--font-size-4);
 	line-height: 1.4;
 	margin-top: 1em;

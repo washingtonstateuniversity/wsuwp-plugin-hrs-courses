@@ -23,4 +23,28 @@
 		}
 	}
 
+	& .course-title {
+		border-left: var(--font-size-1) solid var(--wp--preset--color--primary-crimson);
+		font-size: var(--font-size-4);
+		line-height: 1.4;
+		margin-top: 1em;
+		margin-bottom: 0.4em;
+		padding: 0 0 0 calc(var(--font-size-base) / 2);
+	}
+
+}
+
+.wsuwp_hrs_courses .course-documents {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	word-break: keep-all;
+
+	& a {
+		margin-right: 2em;
+	}
+}
+
+.wsuwp_hrs_courses .course-meta .label {
+	font-weight: 600;
 }

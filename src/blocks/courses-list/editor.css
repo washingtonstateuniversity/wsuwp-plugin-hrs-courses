@@ -6,7 +6,7 @@ div[data-type="hrscourses/courses-list"] {
 .wp-block-hrscourses-courses-list {
 
 	& .wp-block-hrscourses-courses-list--heading {
-		font-size: var(--font-size-3);
+		font-size: var(--wp--preset--font-size--medium);
 		font-weight: 600;
 		margin: 0 0 0.25rem;
 
@@ -37,11 +37,11 @@ div[data-type="hrscourses/courses-list"] {
 
 .components-filter-control__help {
 	color: rgb(117, 117, 117);
-	font-size: 0.75rem;
+	font-size: var(--wp--custom--typography--tiny);
 
 	& .components-external-link {
 		display: block;
-		margin-top: 0.75rem;
+		margin-top: var(--wp--custom--typography--tiny);
 	}
 
 }

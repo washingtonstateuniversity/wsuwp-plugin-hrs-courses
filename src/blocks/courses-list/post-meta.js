@@ -40,11 +40,11 @@ export const PostMeta = ( props ) => {
 					prefix={ __( 'Course Tags: ' ) }
 				/>
 			) }
-			{ displayPostDate && post.date_gmt && (
+			{ displayPostDate && post.modified_gmt && (
 				<p className="wp-block-hrscourses-courses-list--post-date">
-					{ __( 'Published on ' ) }
-					<time dateTime={ format( 'c', post.date_gmt ) }>
-						{ dateI18n( dateFormat, post.date_gmt ) }
+					{ __( 'Updated on ' ) }
+					<time dateTime={ format( 'c', post.modified_gmt ) }>
+						{ dateI18n( dateFormat, post.modified_gmt ) }
 					</time>
 				</p>
 			) }

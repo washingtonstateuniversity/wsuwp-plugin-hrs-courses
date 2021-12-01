@@ -1,11 +1,11 @@
 /* stylelint-disable selector-class-pattern */
 .wp-block-hrscourses-courses-list--list-item {
-	margin-bottom: 0.7rem;
+	margin-bottom: var(--wp--custom--typography--tiny);
 	position: relative;
 }
 
 .wp-block-hrscourses-courses-list--heading {
-	font-size: var(--font-size-3);
+	font-size: var(--wp--preset--font-size--medium);
 	font-weight: 600;
 	line-height: 1.2;
 	margin: 0 0 0.25rem;
@@ -22,12 +22,12 @@
 }
 
 .wp-block-hrscourses-courses-list--post-excerpt {
-	font-size: var(--font-size-base);
+	font-size: var(--wp--preset--font-size--normal);
 	line-height: 1.35;
 }
 
 .wp-block-hrscourses-courses-list--meta {
-	font-size: var(--font-size-1);
+	font-size: var(--wp--preset--font-size--small);
 	font-weight: 600;
 	line-height: 1.35;
 	margin-top: auto;

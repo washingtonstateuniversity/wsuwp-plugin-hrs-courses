@@ -10,7 +10,7 @@
 		margin-left: 2rem;
 
 		& h3 {
-			font-size: var(--font-size-3);
+			font-size: var(--wp--preset--font-size--medium);
 		}
 
 		& form {
@@ -24,12 +24,12 @@
 	}
 
 	& .course-title {
-		border-left: var(--font-size-1) solid var(--wp--preset--color--primary-crimson);
-		font-size: var(--font-size-4);
+		border-left: var(--wp--preset--font-size--small) solid var(--wp--preset--color--primary-crimson);
+		font-size: var(--wp--custom--typography--mediumx);
 		line-height: 1.4;
 		margin-top: 1em;
 		margin-bottom: 0.4em;
-		padding: 0 0 0 calc(var(--font-size-base) / 2);
+		padding: 0 0 0 calc(var(--wp--preset--font-size--normal) / 2);
 	}
 
 }

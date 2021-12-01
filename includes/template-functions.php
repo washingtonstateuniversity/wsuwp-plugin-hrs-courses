@@ -107,16 +107,20 @@ add_filter( 'nav_menu_css_class', __NAMESPACE__ . '\modify_nav_menu_classes', 15
  *
  * @since 0.4.0
  *
- * @param string $post_date The date created value for a post in the Loop.
+ * @param string      $the_date The formatted date.
+ * @param string      $format   PHP date format.
+ * @param int|WP_Post $post     The post object or ID.
+ * @return string The formatted date a post was published, or the modifed date for Courses.
  */
-function filter_courses_date( $post_date ) {
+function filter_courses_date( $the_date, $format, $post ) {
 	if ( get_post_type() === Setup\WSUWP_HRS_Courses::$post_type_slug ) {
-		return;
+		$modified_date = get_the_modified_date( $format, $post );
+		return $modified_date;
 	}
 
-	return $post_date;
+	return $the_date;
 }
-add_filter( 'wsuwp_hrs_post_time_html', __NAMESPACE__ . '\filter_courses_date', 10, 1 );
+add_filter( 'get_the_date', __NAMESPACE__ . '\filter_courses_date', 10, 3 );
 
 /**
  * Modifies the archive description output on courses taxonomy archive pages.

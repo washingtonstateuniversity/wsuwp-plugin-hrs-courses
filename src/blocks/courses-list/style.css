@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 .wp-block-hrscourses-courses-list--list-item {
 	margin-bottom: var(--wp--custom--typography--tiny);
 	position: relative;
@@ -265,4 +264,3 @@
 	}
 
 }
-/* stylelint-enable selector-class-pattern */

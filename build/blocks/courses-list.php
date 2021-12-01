@@ -239,9 +239,9 @@ class CoursesList {
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 				$post_meta_markup .= sprintf(
 					'<p class="wp-block-hrscourses-courses-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
-					__( 'Published on', 'wsuwp-hrs-courses' ),
-					esc_attr( get_the_date( 'c', $post ) ),
-					esc_html( get_the_date( '', $post ) )
+					__( 'Updated on', 'wsuwp-hrs-courses' ),
+					esc_attr( get_the_modified_date( 'c', $post ) ),
+					esc_html( get_the_modified_date( '', $post ) )
 				);
 			}
 

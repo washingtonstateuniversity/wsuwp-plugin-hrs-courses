@@ -17,6 +17,62 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
+## 2.0.0 (2021-12-02)
+
+### Added
+
+- Add GitHub releases API URL as Update URI. (1e0c9b4)
+- Add stylelint-a11y package along with css a11y linting rules. (3e667ad)
+- Add Babel parser options to eslint config. (3f0a4d3)
+
+### Changed
+
+- Change post date to modified date, close #13. (3ab36b1)
+- Replace typography variables with theme values, close #71. (0285a7f)
+- Update colors for WSU brand updates using theme vars, close #72. (b6b2f38)
+- Update courses archive tags menu styles. (b70e659)
+- Consolidate menu scripts and styles to their own component directory. (3dedddb)
+- Move archive template into src directory. (5458f14)
+- Reorganize src directory. (2129861)
+- Upgrade eslint from 7.30.0 to 8.3.0. (3f0a4d3)
+- Upgrade resolve-bin from 0.4.1 to 1.0.0. (d20f19c)
+- Upgrade copy-webpack-plugin from 9.0.1 to 10.0.0. (7f9b960)
+- Upgrade postcss-preset-env from 6.7.0 to 7.0.1. (dd1baec)
+- Update postcss from 8.3.5 to 8.4.4. (dd1baec)
+- Upgrade postcss-cli from 8.3.1 to 9.0.2. (dd1baec)
+- Update @wordpress/stylelint-config from 19.0.5 to 19.1.0. (507225d)
+- Update @wordpress/eslint-plugin from 9.0.6 to 9.3.0. (3f0a4d3)
+- Update webpack from 5.44.0 to 5.64.4. (7f9b960)
+- Update webpack-cli from 4.7.2 to 4.9.1. (7f9b960)
+- Update webpack-bundle-analyzer from 4.4.2 to 4.5.0. (7f9b960)
+- Update @wordpress/dependency-extraction-webpack-plugin from 3.1.4 to 3.2.1. (7f9b960)
+- Update @babel/core from 7.14.6 to 7.16.0. (f422ad4)
+- Update @babel/runtime from 7.14.6 to 7.16.3. (f422ad4)
+- Update @wordpress/babel-preset-default from 6.2.0 to 6.4.1. (f422ad4)
+- Update npm-package-json-lint from 5.1.0 to 5.4.2. (db3a303)
+- Update @wordpress/npm-package-json-lint-config from 4.0.5 to 4.1.0. (db3a303)
+- Update browserlist db. (d1723ca)
+- Update squizlabs/php_codesniffer from 3.5.6 to 3.6.1. (9757425)
+- Update roave/security-advisories from dev-master 88c4d97 to 8092d4a. (9757425)
+
+### Removed
+
+- Remove deprecated List Courses block. (2d25236)
+- Remove `selector-class-pattern` rules from stylelint config. (3e667ad)
+
+### Fixed
+
+- Fix #70 add taxonomy list separater character. (240c652)
+- Fix #68 Use p tag for menu title. (e055611)
+
+### Security
+
+- Bump ansi-regex from 5.0.0 to 5.0.1. (f301f81)
+- Bump cssnano from 5.0.6 to 5.0.12. (bae955e)
+- Bump nth-check from 2.0.0 to 2.0.1. (95c9a18)
+- Bump path-parse from 1.0.6 to 1.0.7. (80d796c)
+- Bump babel-loader from 8.2.2 to 8.2.3. (f422ad4)
+
 ## 1.6.0 (2021-07-14)
 
 ### Added

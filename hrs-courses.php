@@ -9,7 +9,7 @@
  * Update URI: https://api.github.com/repos/washingtonstateuniversity/wsuwp-plugin-hrs-courses/releases/latest
  * Text Domain: wsuwp-hrs-courses
  * Requires at least: 5.7
- * Tested up to: 5.8.0
+ * Tested up to: 5.8.2
  * Requires PHP: 7.0
  *
  * @package WSUWP_HRS_Courses
@@ -40,7 +40,7 @@ if ( false !== verify_wp_version() ) {
 function wordpress_version_notice() {
 	printf(
 		'<div class="error"><p>%s</p></div>',
-		esc_html__( 'The HRS Courses plugin requires WordPress 5.0.0 or later to function properly. Please upgrade WordPress before activating.', 'wsuwp-hrs-courses' )
+		esc_html__( 'The HRS Courses plugin requires WordPress 5.7.0 or later to function properly. Please upgrade WordPress before activating.', 'wsuwp-hrs-courses' )
 	);
 }
 
@@ -74,7 +74,7 @@ function verify_wp_version() {
 		? str_replace( '-src', '', $wp_version )
 		: preg_replace( '/-[A-Za-z-0-9]*$/', '.0', $wp_version );
 
-	if ( version_compare( $version, '5.0.0', '<' ) ) {
+	if ( version_compare( $version, '5.7.0', '<' ) ) {
 		return false;
 	}
 

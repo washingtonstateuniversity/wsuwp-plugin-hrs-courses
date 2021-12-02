@@ -1,0 +1,10 @@
+svg.svg-icon {
+	transition: fill 0.3s ease;
+	fill: currentColor;
+}
+
+.wsuwp_hrs_courses .svg-icon {
+	margin-right: 0.24em;
+	padding-right: 0.12em;
+	vertical-align: bottom;
+}

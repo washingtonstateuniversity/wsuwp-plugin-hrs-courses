@@ -11,7 +11,7 @@ class ExpandableNavMenu {
 		this._menu = document.createElement( 'nav' );
 		this._menuContents = document.createElement( 'div' );
 		this._menuToggle = document.createElement( 'button' );
-		this._menuTitle = document.createElement( 'h1' );
+		this._menuTitle = document.createElement( 'p' );
 		this._menuId = `taxonomy-menu-${ listId }`;
 
 		this._appendElements();

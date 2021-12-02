@@ -12,7 +12,6 @@ import * as coursePresenter from './course-presenter';
 import * as courseVideo from './course-video';
 import * as courseOnline from './course-online';
 import * as coursesList from './courses-list';
-import * as listCourses from './list-courses';
 
 /**
  * Function to register WSUWP HRS Courses blocks.
@@ -32,7 +31,6 @@ export const registerCoursesBlocks = () => {
 		courseVideo,
 		courseOnline,
 		coursesList,
-		listCourses,
 	].forEach( ( block ) => {
 		if ( ! block ) {
 			return;

@@ -46,9 +46,8 @@ get_header();
 				echo wp_kses_post( wptexturize( $lod_courses_notice_block ) );
 			}
 			?>
-			<div class="wp-block-hrs-wsu-edu-callouts courses-archive-frontmatter">
-				<p class="has-large-font-size">Find a Course</p>
-				<div class="wp-block-columns has-3-columns">
+			<div class="archive-content courses-archive-frontmatter">
+				<div class="wp-block-columns has-3-columns has-primary-gray-background-color">
 					<?php Render\the_taxonomy_nav_list( 'course_tag' ); ?>
 					<?php Render\the_taxonomy_nav_list( 'learning_program' ); ?>
 					<div class="wp-block-column">
@@ -77,7 +76,7 @@ get_header();
 								get_the_ID(),
 								'learning_program',
 								__( '<ul><li>', 'wsuwp-hrs-courses' ),
-								' ',
+								', ',
 								'</li></ul>'
 							);
 							?>

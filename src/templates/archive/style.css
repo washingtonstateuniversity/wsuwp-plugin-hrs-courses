@@ -1,0 +1,50 @@
+.wsuwp-courses-archive {
+
+	& .taxonomy-description {
+		max-width: 45em;
+		padding-left: 2rem;
+	}
+
+	& .courses-archive-frontmatter {
+		margin-right: 2rem;
+		margin-left: 2rem;
+
+		& h3 {
+			font-size: var(--wp--preset--font-size--medium);
+		}
+
+		& form {
+			margin: 0;
+			padding: 0;
+		}
+
+		& .search-form input[type="submit"] {
+			padding: 0.4rem 1rem;
+		}
+	}
+
+	& .course-title {
+		border-left: var(--wp--preset--font-size--small) solid var(--wp--preset--color--primary-crimson);
+		font-size: var(--wp--custom--typography--mediumx);
+		line-height: 1.4;
+		margin-top: 1em;
+		margin-bottom: 0.4em;
+		padding: 0 0 0 calc(var(--wp--preset--font-size--normal) / 2);
+	}
+
+}
+
+.wsuwp_hrs_courses .course-documents {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	word-break: keep-all;
+
+	& a {
+		margin-right: 2em;
+	}
+}
+
+.wsuwp_hrs_courses .course-meta .label {
+	font-weight: 600;
+}

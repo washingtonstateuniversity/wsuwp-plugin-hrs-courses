@@ -1,0 +1,101 @@
+.wsuwp-courses-archive {
+
+	& .menu {
+		animation-duration: 200ms;
+		animation-timing-function: step-end;
+		background: var(--wp--preset--color--white);
+		border-radius: 3px;
+		contain: content;
+		position: absolute;
+		pointer-events: none;
+		opacity: 0;
+		overflow: hidden;
+		transform-origin: top left;
+		will-change: transform;
+	}
+
+	& .menu-contents {
+		animation-duration: 200ms;
+		animation-timing-function: step-end;
+		contain: content;
+		transform-origin: top left;
+		will-change: transform;
+	}
+
+	& .menu-toggle {
+		border: none;
+		box-shadow: none;
+		cursor: pointer;
+		padding: 0;
+		text-align: left;
+		text-transform: none;
+
+		&:hover,
+		&:focus {
+			background-color: var(--wp--preset--color--secondary-crimson);
+			color: var(--wp--preset--color--white);
+		}
+	}
+
+	& .menu-title {
+		display: inline-block;
+		font-size: var(--wp--custom--typography--normalx);
+		font-weight: 400;
+		line-height: normal;
+		margin: 0;
+		padding: 8px 12px;
+
+		&::after {
+			background-image: url(../build/icons/arrow-dropdown.svg);
+			background-position: center 100%;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: "";
+			display: inline-block;
+			height: 24px;
+			margin: 0 -5px -5px 0;
+			width: 24px;
+		}
+	}
+
+	& .menu-items {
+		list-style: none;
+		margin-top: 1rem;
+		padding: 0 3rem 1.4rem 1rem;
+		position: relative;
+	}
+
+	& .menu-active {
+		opacity: 1;
+		pointer-events: auto;
+		z-index: 1;
+	}
+
+	& .menu-expanded {
+		animation-name: menuExpandAnimation;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.09);
+
+		& .menu-toggle {
+			background-color: var(--wp--preset--color--secondary-crimson);
+			color: var(--wp--preset--color--white);
+			width: 100%;
+		}
+
+		& .menu-title::after {
+			transform: rotate(180deg);
+		}
+	}
+
+	& .menu-contents-expanded {
+		animation-name: menuExpandContentsAnimation;
+	}
+
+	& .menu-collapsed {
+		animation-name: menuCollapseAnimation;
+	}
+
+	& .menu-contents-collapsed {
+		animation-name: menuCollapseContentsAnimation;
+	}
+
+}

@@ -17,7 +17,7 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
-## 2.0.0-rc.1 (:construction: TBD)
+## 2.0.0 (2021-12-02)
 
 ### Added
 

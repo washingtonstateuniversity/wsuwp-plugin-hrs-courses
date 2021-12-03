@@ -22,7 +22,7 @@
 		will-change: transform;
 	}
 
-	& .menu-toggle {
+	& button.menu-toggle {
 		border: none;
 		box-shadow: none;
 		cursor: pointer;

@@ -19,7 +19,9 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ## 2.0.1-rc.1 (:construction: TBD)
 
+### Fixed
 
+- Fix menu button css specificity overide from theme. (57cddf8)
 
 ## 2.0.0 (2021-12-02)
 

@@ -47,7 +47,7 @@ get_header();
 			}
 			?>
 			<div class="archive-content courses-archive-frontmatter">
-				<div class="wp-block-columns has-3-columns has-primary-gray-background-color">
+				<div class="wp-block-columns has-3-columns has-background has-primary-gray-background-color">
 					<?php Render\the_taxonomy_nav_list( 'course_tag' ); ?>
 					<?php Render\the_taxonomy_nav_list( 'learning_program' ); ?>
 					<div class="wp-block-column">

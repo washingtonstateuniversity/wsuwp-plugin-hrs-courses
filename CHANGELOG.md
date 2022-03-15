@@ -19,7 +19,14 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ## 2.1.0-rc.1 (:construction: TBD)
 
+### Fixed
 
+- Fix archive template search button size. (27f999a)
+- Add `has-background` class for core columns block compliance. (cd1391f)
+
+### Security
+
+- Bump nanoid from 3.1.30 to 3.2.0. (b1d0116)
 
 ## 2.0.1 (2021-12-03)
 

@@ -39,7 +39,7 @@
 		"babel-loader": "^8.2.3",
 		"classnames": "^2.3.1",
 		"copy-webpack-plugin": "^10.2.4",
-		"cssnano": "^5.0.12",
+		"cssnano": "^5.1.4",
 		"eslint": "^8.3.0",
 		"lodash": "^4.17.21",
 		"npm-package-json-lint": "^5.4.2",

@@ -19,6 +19,24 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ## 2.1.0-rc.1 (:construction: TBD)
 
+### Changed
+
+- Upgrade npm-package-json-lint from 5.4.2 to 6.0.3. (c929695)
+- Upgrade stylelint from 13.13.1 to 14.6.0. (de93132, a926bfe)
+- Upgrade @wordpress/stylelint-config from 19.1.0 to 20.0.2. (de93132)
+- Upgrade @wordpress/eslint-plugin from 9.3.0 to 11.0.1. (7754dea)
+- Update eslint from 8.3.0 to 8.11.0. (7754dea)
+- Update postcss-preset-env from 7.0.1 to 7.4.2. (dc2762e)
+- Update postcss-cli from 9.0.2 to 9.1.0. (dc2762e)
+- Update cssnano from 5.0.12 to 5.1.4. (967872a)
+- Update @wordpress/babel-preset-default from 6.4.1 to 6.6.1. (8d24b22)
+- Update @babel/core from 7.16.02 to 7.17.7. (49ff9dd)
+- Update @babel/runtime from 7.16.3 to 7.17.7. (49ff9dd)
+- Update @wordpress/dependency-extraction-webpack-plugin from 3.2.1 to 3.4.1. (a041486)
+- Update copy-webpack-plugin from 10.0.0 to 10.2.4. (2237c61)
+- Update webpack from 5.64.4 to 5.70.0. (24249e8)
+- Update roave/security-advisories dev-master from 8092d4a to 86b842d. (4281e1a)
+
 ### Fixed
 
 - Fix archive template search button size. (27f999a)
@@ -26,6 +44,13 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ### Security
 
+- Bump squizlabs/php_codesniffer from 3.6.1 to 3.6.2. (5c03521)
+- Bump sirbrillig/phpcs-variable-analysis from 2.11.2 to 2.11.3. (893bd9a)
+- Bump dealerdirect/phpcodesniffer-composer-installer from 0.7.1 to 0.7.2. (f9b14cb)
+- Bump @wordpress/npm-package-json-lint-config from 4.1.0 to 4.1.2. (c929695)
+- Bump postcss from 8.4.4 to 8.4.12. (dc2762e, 7778a5f)
+- Bump source-map-loader from 3.0.0 to 3.0.1. (c7f868d)
+- Bump webpack-cli from 4.9.1 to 4.9.2. (dee18dd)
 - Bump nanoid from 3.1.30 to 3.2.0. (b1d0116)
 
 ## 2.0.1 (2021-12-03)

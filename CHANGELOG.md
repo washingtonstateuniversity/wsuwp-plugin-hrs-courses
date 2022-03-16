@@ -21,6 +21,7 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ### Changed
 
+- Bump WordPress tested-to to 5.9.2.
 - Upgrade npm-package-json-lint from 5.4.2 to 6.0.3. (c929695)
 - Upgrade stylelint from 13.13.1 to 14.6.0. (de93132, a926bfe)
 - Upgrade @wordpress/stylelint-config from 19.1.0 to 20.0.2. (de93132)

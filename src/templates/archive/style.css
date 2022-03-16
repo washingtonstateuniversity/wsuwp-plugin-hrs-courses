@@ -19,7 +19,7 @@
 		}
 
 		& .search-form input[type="submit"] {
-			padding: 0.4rem 1rem;
+			max-width: 130px;
 		}
 	}
 

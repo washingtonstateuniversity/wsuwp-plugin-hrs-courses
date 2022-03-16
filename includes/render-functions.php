@@ -138,7 +138,7 @@ function get_courses_search_form() {
 
 	// Remove the closing `<form>` tag to allow additions and modify submit button text.
 	$form = str_replace( '</form>', '', $default_form );
-	$form = str_replace( 'value="Search"', 'value="Search Courses"', $form );
+	$form = str_replace( 'value="Search"', 'value="Search"', $form );
 
 	printf(
 		'%1$s<input type="hidden" value="%2$s" name="post_type" /></form>',

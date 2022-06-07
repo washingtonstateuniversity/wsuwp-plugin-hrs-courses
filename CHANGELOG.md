@@ -19,6 +19,8 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ## 2.1.1-rc.1 (:construction: TBD)
 
+- Bump WP tested-to to 6.0.0.
+
 ## 2.1.0 (2022-03-16)
 
 ### Changed

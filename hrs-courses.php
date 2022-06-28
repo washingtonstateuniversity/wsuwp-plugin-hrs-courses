@@ -97,7 +97,7 @@ function verify_plugin_deps() {
 	if (
 		in_array(
 			'hrswp-plugin-blocks/hrswp-blocks.php',
-			apply_filters( 'active_plugins', get_option('active_plugins') ),
+			apply_filters( 'active_plugins', get_option( 'active_plugins' ) ),
 			true
 		)
 	) {

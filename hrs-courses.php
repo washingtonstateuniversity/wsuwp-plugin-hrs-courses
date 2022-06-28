@@ -89,17 +89,22 @@ function verify_wp_version() {
  * @return bool True if all dependencies are met, false if not.
  */
 function verify_plugin_deps() {
-	// Check for @deprecated class name for back compat.
-	if ( class_exists( 'HRSWP\Blocks\Setup' ) ) {
+	// Check for @deprecated class names for back compat.
+	if ( class_exists( 'HRSWP\Blocks\Setup' ) || class_exists( 'HRSWP\Blocks\Setup\Setup' ) ) {
 		return true;
 	}
 
-	// HRS Courses requires blocks from HRSWP Blocks.
-	if ( ! class_exists( 'HRSWP\Blocks\Setup\Setup' ) ) {
-		return false;
+	if (
+		in_array(
+			'hrswp-plugin-blocks/hrswp-blocks.php',
+			apply_filters( 'active_plugins', get_option('active_plugins') ),
+			true
+		)
+	) {
+		return true;
 	}
 
-	return true;
+	return false;
 }
 
 /**
@@ -110,8 +115,6 @@ function verify_plugin_deps() {
 function pre_init() {
 	if ( false === verify_wp_version() ) {
 		add_action( 'admin_notices', __NAMESPACE__ . '\wordpress_version_notice' );
-		deactivate_plugins( array( 'wsuwp-plugin-hrs-courses/hrs-courses.php' ) );
-		return;
 	}
 
 	require __DIR__ . '/includes/class-wsuwp-hrs-courses.php';
@@ -129,8 +132,6 @@ function load_hrs_courses() {
 	// Must check after 'plugins_loaded'.
 	if ( false === verify_plugin_deps() ) {
 		add_action( 'admin_notices', __NAMESPACE__ . '\plugin_deps_notice' );
-		deactivate_plugins( array( 'wsuwp-plugin-hrs-courses/hrs-courses.php' ) );
-		return;
 	}
 
 	$wsuwp_hrs_courses = Setup\WSUWP_HRS_Courses::get_instance( __FILE__ );

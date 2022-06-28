@@ -17,6 +17,12 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
+## 2.1.2-beta.1 (:construction: TBD)
+
+### Fixed
+
+- Fix #84 plugin dependency checks broken by external change. (8449a56)
+
 ## 2.1.1 (2022-06-07)
 
 ### Changed

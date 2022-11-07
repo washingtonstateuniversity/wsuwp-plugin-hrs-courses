@@ -329,10 +329,16 @@ class WSUWP_HRS_Courses {
 				),
 			),
 			array(
-				'core/button',
+				'hrswp/buttons',
+				array(),
 				array(
-					'text'      => 'Enroll',
-					'className' => 'is-style-outline',
+					array(
+						'hrswp/button',
+						array(
+							'text'      => 'Enroll',
+							'className' => 'is-style-outline',
+						),
+					),
 				),
 			),
 		);

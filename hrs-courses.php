@@ -5,7 +5,7 @@
  * Description: A plugin to create a Course custom post type for WSU Human Resource Services.
  * Author: Adam Turner, washingtonstateuniversity
  * Author URI: https://hrs.wsu.edu/
- * Plugin URI: https://github.com/washingtonstateuniversity/wsuwp-hrs-courses
+ * Plugin URI: https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses
  * Update URI: https://api.github.com/repos/washingtonstateuniversity/wsuwp-plugin-hrs-courses/releases/latest
  * Text Domain: wsuwp-hrs-courses
  * Requires at least: 5.7

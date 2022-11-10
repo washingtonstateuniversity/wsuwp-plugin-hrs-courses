@@ -17,6 +17,22 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
+## 2.1.3 (2022-11-10)
+
+### Changed
+
+- Bump WordPress tested-to to 6.1.1.
+
+### Fixed
+
+- Fix #89 use hrswp/buttons instead of Core buttons block. (aa5b353)
+- Fix #86 typo in plugin header metadata. (631341c)
+
+### Security
+
+- Bump loader-utils from 1.4.0 to 1.4.1. (09dd0db)
+- Bump terser from 5.12.1 to 5.14.2. (ca788f9)
+
 ## 2.1.2 (2022-06-29)
 
 ### Fixed

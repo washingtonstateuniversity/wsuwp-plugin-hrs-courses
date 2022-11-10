@@ -9,7 +9,7 @@
  * Update URI: https://api.github.com/repos/washingtonstateuniversity/wsuwp-plugin-hrs-courses/releases/latest
  * Text Domain: wsuwp-hrs-courses
  * Requires at least: 5.7
- * Tested up to: 6.0.0
+ * Tested up to: 6.1.1
  * Requires PHP: 7.0
  *
  * @package WSUWP_HRS_Courses

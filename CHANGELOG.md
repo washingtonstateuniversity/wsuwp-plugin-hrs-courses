@@ -19,6 +19,10 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ## TBD
 
+### Changed
+
+- Bump WordPress tested-to to 6.2.
+
 ### Security
 
 - Bump webpack from 5.70.0 to 5.76.0. (3277e97)

@@ -17,6 +17,14 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
+## TBD
+
+### Security
+
+- Bump webpack from 5.70.0 to 5.76.0. (3277e97)
+- Bump json5 from 1.0.1 to 1.0.2. (72560bd)
+- Bump loader-utils from 1.4.1 to 1.4.2. (96e77ba)
+
 ## 2.1.3 (2022-11-10)
 
 ### Changed

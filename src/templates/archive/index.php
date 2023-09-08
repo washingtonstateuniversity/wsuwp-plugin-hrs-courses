@@ -40,13 +40,28 @@ get_header();
 		if ( is_tax() ) {
 			the_archive_description();
 		} else {
-			$lod_courses_notice_block = get_page_by_title( 'LOD Courses Notice', OBJECT, 'wp_block' );
-			if ( $lod_courses_notice_block ) {
-				$lod_courses_notice_block = do_blocks( $lod_courses_notice_block->post_content );
-				echo wp_kses_post( wptexturize( $lod_courses_notice_block ) );
-			}
 			?>
 			<div class="archive-content courses-archive-frontmatter">
+				<?php
+				/*
+				 * This is looking for a synced pattern (formerly resuable block)
+				 * with the title/slug "lod-courses-notice." Edit synced patterns
+				 * directly by navigating to "/wp-admin/edit.php?post_type=wp_block".
+				 */
+				$lod_query = new \WP_Query(
+					array(
+						'name'      => 'lod-courses-notice',
+						'post_type' => 'wp_block',
+					)
+				);
+				if ( $lod_query->have_posts() ) {
+					while ( $lod_query->have_posts() ) {
+						$lod_query->the_post();
+						the_content();
+					}
+				}
+				wp_reset_postdata();
+				?>
 				<div class="wp-block-columns has-3-columns has-background has-primary-gray-background-color">
 					<?php Render\the_taxonomy_nav_list( 'course_tag' ); ?>
 					<?php Render\the_taxonomy_nav_list( 'learning_program' ); ?>

@@ -17,6 +17,21 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
+## 2.2.0 (2023-09-11)
+
+### Changed
+
+- Bump WP tested-to to 6.3.1.
+
+### Fixed
+
+- Fix #94 replace get_page_by_title with WP_Query. (b946a83)
+
+### Security
+
+- Bump word-wrap from 1.2.3 to 1.2.4. (36dd7eb)
+- Bump stylelint from 14.6.0 to 15.10.1. (489f0c2)
+
 ## 2.1.4 (2023-04-11)
 
 ### Changed

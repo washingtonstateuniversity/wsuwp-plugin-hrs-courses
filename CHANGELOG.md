@@ -17,7 +17,11 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
-## 2.2.0-rc.1 (:construction: TBD)
+## 2.2.0 (2023-09-11)
+
+### Changed
+
+- Bump WP tested-to to 6.3.1.
 
 ### Fixed
 

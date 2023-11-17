@@ -42,6 +42,7 @@ export default function CourseLocationEdit( {
 					</span>
 				</div>
 				<URLInput
+					__nextHasNoMarginBottom={ true }
 					autoFocus={ false } // eslint-disable-line jsx-a11y/no-autofocus
 					value={ recordedVideoUrl }
 					onChange={ ( value ) =>

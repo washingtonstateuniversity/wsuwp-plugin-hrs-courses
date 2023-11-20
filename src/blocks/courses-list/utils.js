@@ -114,20 +114,17 @@ export const getExistingTermsFormTokenValue = (
  * @param {Function}       setAttributes     A core WordPress function to update an attribute.
  * @return {void}
  */
-export const onTermsChange = (
-	terms,
-	queryProperty,
-	selectedTermLists,
-	setAttributes
-) => ( newTermValues ) => {
-	const termIds = newTermValues.reduce( ( accumulator, termValue ) => {
-		const termId = termValue?.id || terms.mapByName[ termValue ]?.id;
-		if ( termId ) accumulator.push( termId );
-		return accumulator;
-	}, [] );
-	setTermLists(
-		{ [ queryProperty ]: termIds },
-		selectedTermLists,
-		setAttributes
-	);
-};
+export const onTermsChange =
+	( terms, queryProperty, selectedTermLists, setAttributes ) =>
+	( newTermValues ) => {
+		const termIds = newTermValues.reduce( ( accumulator, termValue ) => {
+			const termId = termValue?.id || terms.mapByName[ termValue ]?.id;
+			if ( termId ) accumulator.push( termId );
+			return accumulator;
+		}, [] );
+		setTermLists(
+			{ [ queryProperty ]: termIds },
+			selectedTermLists,
+			setAttributes
+		);
+	};

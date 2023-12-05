@@ -1,6 +1,6 @@
 /**
  * Internal dependencies
  */
-import { registerCoursesBlocks } from './blocks';
+import { registerBlocks } from './blocks';
 
-registerCoursesBlocks();
+registerBlocks();

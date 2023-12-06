@@ -17,7 +17,7 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
-## 2.3.0-rc.1 (TBD)
+## 2.3.0 (2023-12-06)
 
 ### Added
 
@@ -25,6 +25,7 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ### Changed
 
+- Bump WordPress tested-to to 6.4.2.
 - Update block registration method. (18b760c)
 - Upgrade webpack-cli from 4.9.2 to 5.1.4. (7c03c98)
 - Upgrade thread-loader from 3.0.4 to 4.0.2. (7c03c98)

@@ -17,6 +17,48 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
+## 2.3.0 (2023-12-06)
+
+### Added
+
+- Add @wordpress/icons package. (18b760c)
+
+### Changed
+
+- Bump WordPress tested-to to 6.4.2.
+- Update block registration method. (18b760c)
+- Upgrade webpack-cli from 4.9.2 to 5.1.4. (7c03c98)
+- Upgrade thread-loader from 3.0.4 to 4.0.2. (7c03c98)
+- Upgrade source-map-loader from 3.0.1 to 4.0.1. (7c03c98)
+- Upgrade rimraf from 3.0.2 to 5.0.5. (7c03c98)
+- Upgrade postcss-preset-env from 7.4.2 to 9.3.0. (7c03c98)
+- Upgrade postcss-import from 14.0.2 to 15.1.0. (7c03c98)
+- Upgrade postcss-cli from 9.1.0 to 10.1.0. (7c03c98)
+- Upgrade npm-package-json-lint from 6.0.3 to 7.1.0. (7c03c98)
+- Upgrade cssnano from 5.1.4 to 6.0.1. (7c03c98)
+- Upgrade copy-webpack-plugin from 10.2.4 to 11.0.0. (7c03c98)
+- Upgrade babel-loader from 8.2.3 to 9.1.3. (7c03c98)
+- Upgrade @wordpress/babel-preset-default from 6.6.1 to 7.30.0. (7c03c98)
+- Upgrade @wordpress/dependency-extraction-webpack-plugin from 3.4.1 to 4.29.0. (7c03c98)
+- Upgrade @wordpress/stylelint-config from 20.0.2 to 21.29.0. (7c03c98)
+- Upgrade pretter from wp-prettier@2.2.1-beta-1 to wp-prettier@3.0.3. (7c03c98)
+- Upgrade @wordpress/eslint-plugin from 11.0.1 to 17.3.0. (7c03c98)
+- Downgrade stylelint from 15.10.1 to 14.16.2 to resolve peer dependency issue with WordPress. (7c03c98)
+
+### Removed
+
+- Remove stylelint-a11y package and downgrade stylelint to 14.2. (7c03c98)
+
+### Fixed
+
+- Fix #104 Refactor Courses List block and correct `pickBy` error. (18b760c)
+- Fix #103 `URLInput` bottom margin styles deprecated. (8cc2a1e)
+
+### Security
+
+- Bump @babel/traverse from 7.17.3 to 7.23.2. (0046de3)
+- Bump postcss from 8.4.25 to 8.4.31. (a8c57ae)
+
 ## 2.2.0 (2023-09-11)
 
 ### Changed

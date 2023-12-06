@@ -1,6 +1,64 @@
 {
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "hrscourses/courses-list",
+	"title": "Courses List",
 	"category": "widgets",
+	"description": "Display a list of courses.",
+	"keywords": [ "courses", "latest courses" ],
+	"textdomain": "default",
+	"attributes": {
+		"courseTags": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "int"
+			}
+		},
+		"learningPrograms": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "int"
+			}
+		},
+		"postsToShow": {
+			"type": "number",
+			"default": 10
+		},
+		"displayPostContent": {
+			"type": "boolean",
+			"default": false
+		},
+		"displayPostContentRadio": {
+			"type": "string",
+			"default": "excerpt"
+		},
+		"excerptLength": {
+			"type": "number",
+			"default": 25
+		},
+		"displayPostDate": {
+			"type": "boolean",
+			"default": false
+		},
+		"postLayout": {
+			"type": "string",
+			"default": "list"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		}
+	},
 	"supports": {
 		"align": true,
 		"html": false

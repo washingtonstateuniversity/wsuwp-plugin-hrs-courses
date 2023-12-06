@@ -17,5 +17,10 @@
 	"scripts": {
 		"format": "phpcbf --standard=phpcs.xml.dist --report=summary,source",
 		"lint": "phpcs --colors"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

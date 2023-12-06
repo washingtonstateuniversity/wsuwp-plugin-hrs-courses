@@ -89,7 +89,6 @@ class CoursesList {
 			'core/freeform',
 			'core/heading',
 			'core/html',
-			'core/list',
 			'core/media-text',
 			'core/paragraph',
 			'core/preformatted',
@@ -180,21 +179,19 @@ class CoursesList {
 		add_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 25 );
 
 		// Taxonomy handling.
-		if ( isset( $attributes['selectedTermLists'] ) && ! empty( $attributes['selectedTermLists'] ) ) {
-			if ( ! empty( $attributes['selectedTermLists']['learningProgramIds'] ) ) {
-				$args['tax_query'][] = array(
-					'taxonomy' => 'learning_program',
-					'field'    => 'id',
-					'terms'    => $attributes['selectedTermLists']['learningProgramIds'],
-				);
-			}
-			if ( ! empty( $attributes['selectedTermLists']['courseTagIds'] ) ) {
-				$args['tax_query'][] = array(
-					'taxonomy' => 'course_tag',
-					'field'    => 'id',
-					'terms'    => $attributes['selectedTermLists']['courseTagIds'],
-				);
-			}
+		if ( ! empty( $attributes['learningPrograms'] ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'learning_program',
+				'field'    => 'id',
+				'terms'    => $attributes['learningPrograms'],
+			);
+		}
+		if ( ! empty( $attributes['courseTags'] ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'course_tag',
+				'field'    => 'id',
+				'terms'    => $attributes['courseTags'],
+			);
 		}
 
 		$posts = get_posts( $args );
@@ -205,7 +202,7 @@ class CoursesList {
 
 		$list_items_markup = '';
 		foreach ( $posts as $post ) {
-			$list_items_markup .= '<div class="wp-block-hrscourses-courses-list--list-item"><div class="wp-block-hrscourses-courses-list--body">';
+			$list_items_markup .= '<li>';
 
 			$title = get_the_title( $post );
 			if ( ! $title ) {
@@ -227,17 +224,8 @@ class CoursesList {
 				}
 			}
 
-			$post_meta_markup = '';
-			if ( isset( $attributes['displayLearningProgram'] ) && $attributes['displayLearningProgram'] ) {
-				$prefix            = '<p class="wp-block-hrscourses-courses-list--learning_program-list"><span>' . __( 'Learning Programs', 'wsuwp-hrs-courses' ) . ': </span>';
-				$post_meta_markup .= get_the_term_list( $post->ID, 'learning_program', $prefix, ', ', '</p>' );
-			}
-			if ( isset( $attributes['displayCourseTag'] ) && $attributes['displayCourseTag'] ) {
-				$prefix            = '<p class="wp-block-hrscourses-courses-list--course_tag-list"><span>' . __( 'Course Tags', 'wsuwp-hrs-courses' ) . ': </span>';
-				$post_meta_markup .= get_the_term_list( $post->ID, 'course_tag', $prefix, ', ', '</p>' );
-			}
 			if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-				$post_meta_markup .= sprintf(
+				$list_items_markup .= sprintf(
 					'<p class="wp-block-hrscourses-courses-list--post-date">%1$s <time datetime="%2$s">%3$s</time></p>',
 					__( 'Updated on', 'wsuwp-hrs-courses' ),
 					esc_attr( get_the_modified_date( 'c', $post ) ),
@@ -245,11 +233,7 @@ class CoursesList {
 				);
 			}
 
-			if ( '' !== $post_meta_markup ) {
-				$list_items_markup .= '<div class="wp-block-hrscourses-courses-list--meta">' . $post_meta_markup . '</div>';
-			}
-
-			$list_items_markup .= "</div></div>\n";
+			$list_items_markup .= "</li>\n";
 		}
 
 		remove_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ), 20 );
@@ -289,7 +273,7 @@ class CoursesList {
 		}
 
 		return sprintf(
-			'<div class="%1$s">%2$s</div>',
+			'<ul class="%1$s">%2$s</ul>',
 			esc_attr( implode( ' ', $class ) ),
 			$list_items_markup
 		);

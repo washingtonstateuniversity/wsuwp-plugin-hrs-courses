@@ -23,6 +23,10 @@
 	"bugs": {
 		"url": "https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses/issues"
 	},
+	"engines": {
+		"node": ">=20.10.0",
+		"npm": ">=10.2.3"
+	},
 	"browserslist": [
 		"> 1%",
 		"ie 8-11",
@@ -33,7 +37,7 @@
 		"@babel/runtime": "^7.17.7",
 		"@wordpress/babel-preset-default": "^7.30.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^4.29.0",
-		"@wordpress/eslint-plugin": "^17.3.0",
+		"@wordpress/eslint-plugin": "^17.11.0",
 		"@wordpress/icons": "^9.37.0",
 		"@wordpress/npm-package-json-lint-config": "^4.1.2",
 		"@wordpress/stylelint-config": "^21.29.0",

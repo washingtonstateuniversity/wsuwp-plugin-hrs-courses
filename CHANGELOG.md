@@ -19,6 +19,15 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ## 2.3.1-rc.1 (:construction: TBD)
 
+### Changed
+
+- Upgrade Node.js to v20 and track version at project level.
+- Update eslint from 8.11.0 to 8.57.0.
+
+### Removed
+
+- Remove lodash package.
+
 ## 2.3.0 (2023-12-06)
 
 ### Added

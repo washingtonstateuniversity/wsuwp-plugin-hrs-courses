@@ -36,7 +36,7 @@
 		"@babel/core": "^7.24.4",
 		"@babel/runtime": "^7.24.4",
 		"@wordpress/babel-preset-default": "^7.39.0",
-		"@wordpress/dependency-extraction-webpack-plugin": "^4.29.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "^5.6.0",
 		"@wordpress/eslint-plugin": "^17.11.0",
 		"@wordpress/icons": "^9.37.0",
 		"@wordpress/npm-package-json-lint-config": "^4.1.2",
@@ -58,7 +58,7 @@
 		"source-map-loader": "^4.0.1",
 		"stylelint": "14.2",
 		"thread-loader": "^4.0.2",
-		"webpack": "^5.76.0",
+		"webpack": "^5.91.0",
 		"webpack-bundle-analyzer": "^4.5.0",
 		"webpack-cli": "^5.1.4"
 	},

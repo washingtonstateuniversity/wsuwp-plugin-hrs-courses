@@ -9,6 +9,7 @@
  */
 
 namespace WSUWP\HRS\Courses\Templates\Archive;
+
 use WSUWP\HRS\Courses\Setup;
 use WSUWP\HRS\Courses\Render;
 
@@ -66,7 +67,7 @@ get_header();
 					<?php Render\the_taxonomy_nav_list( 'course_tag' ); ?>
 					<?php Render\the_taxonomy_nav_list( 'learning_program' ); ?>
 					<div class="wp-block-column">
-						<h3><?php _e( 'Search by Keyword', 'wsuwp-hrs-courses' ); ?></h3>
+						<h3><?php esc_html_e( 'Search by Keyword', 'wsuwp-hrs-courses' ); ?></h3>
 						<?php Render\get_courses_search_form(); ?>
 					</div>
 				</div>

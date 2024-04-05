@@ -9,6 +9,7 @@
  */
 
 namespace WSUWP\HRS\Courses\Templates;
+
 use WSUWP\HRS\Courses\Setup;
 use WSUWP\HRS\Courses\Icons;
 

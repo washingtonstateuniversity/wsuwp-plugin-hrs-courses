@@ -33,7 +33,7 @@
 		"Firefox ESR"
 	],
 	"devDependencies": {
-		"@babel/core": "^7.17.7",
+		"@babel/core": "^7.24.4",
 		"@babel/runtime": "^7.17.7",
 		"@wordpress/babel-preset-default": "^7.30.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^4.29.0",

@@ -10,9 +10,9 @@
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- Ignore filenames -->
-	<!-- <rule ref="WordPress-Extra">
+	<rule ref="WordPress-Extra">
 		<exclude name="WordPress.Files.FileName"/>
-	</rule> -->
+	</rule>
 
 	<!-- Loads the PHP Compatibility ruleset. -->
 	<rule ref="PHPCompatibilityWP"/>
@@ -22,18 +22,6 @@
 
 	<!-- Loads the variable analysis ruleset. -->
 	<rule ref="VariableAnalysis"/>
-
-	<!-- <rule ref="WordPress.CodeAnalysis.EmptyStatement"/> -->
-
-	<!-- <rule ref="PEAR.Functions.FunctionCallSignature">
-		<properties>
-			<property name="allowMultipleArguments" value="false"/>
-		</properties>
-	</rule> -->
-
-	<!-- <rule ref="WordPress.Files.FileName.InvalidClassFileName">
-		<exclude-pattern>/src/blocks/courses-list/index\.php</exclude-pattern>
-	</rule> -->
 
 	<arg value="ps"/>
 	<arg name="extensions" value="php"/>

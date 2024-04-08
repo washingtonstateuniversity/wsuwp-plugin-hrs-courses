@@ -21,12 +21,37 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ### Changed
 
-- Upgrade Node.js to v20 and track version at project level.
-- Update eslint from 8.11.0 to 8.57.0.
+- Replace direct call to database for plugin terms cleanup with `wp_delete_term`. (148bbd7)
+- Replace direct call to database for plugin posts cleanup with `wp_trash_post`. (148bbd7)
+- Separate CoursesList class instantiation from class file. (148bbd7)
+- Upgrade Node.js to v20 and track version at project level. (b816b9a)
+- Upgrade Composer dependencies and config. (148bbd7)
+- Upgrade @wordpress/dependency-extraction-webpack-plugin from 4.29.0 to 5.6.0. (84c8407)
+- Upgrade copy-webpack-plugin from 11.0.0 to 12.0.2. (20de331)
+- Upgrade postcss-cli from 10.1.0 to 11.0.0. (7d402ee)
+- Upgrade postcss-import from 15.1.0 to 16.1.0. (7d402ee)
+- Upgrade source-map-loader from 4.0.1 to 5.0.0. (b900def)
+- Upgrade stylelint from 14.2.0 to 15.11.0. (b2a3f6e)
+- Update @wordpress/icons from 9.37.0 to 9.46.0. (e80c2c6)
+- Update eslint from 8.11.0 to 8.57.0. (b816b9a)
+- Update @babel/core from 7.17.7 to 7.24.4. (4b8507a)
+- Update @babel/runtime from 7.17.7 to 7.24.4. (4b8507a)
+- Update @wordpress/babel-preset-default from 7.30.0 to 7.39.0. (4b8507a)
+- Update webpack from 5.76.0 to 5.91.0. (84c8407)
+- Update @wordpress/eslint-plugin from 17.11.0 to 17.12.0. (9fef8fe)
+- Update @wordpress/npm-package-json-lint-config from 4.1.2 to 4.40.0. (db2280b)
+- Update @wordpress/stylelint-config from 21.29.0 to 21.38.0. (a198073)
+- Update classnames from 2.3.1 to 2.5.1. (99ba0b5)
+- Update cssnano from 6.0.1 to 6.1.2. (747a2b0)
+- Update postcss-preset-env from 9.3.0 to 9.5.4. (7d402ee)
 
 ### Removed
 
-- Remove lodash package.
+- Remove lodash package. (817f8f2)
+
+### Security
+
+- Bump postcss from 8.4.31 to 8.4.38. (7d402ee)
 
 ## 2.3.0 (2023-12-06)
 

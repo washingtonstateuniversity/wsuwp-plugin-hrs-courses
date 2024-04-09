@@ -21,6 +21,7 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 
 ### Changed
 
+- Bump WP tested-to to 6.5.0 to close #106.
 - Replace direct call to database for plugin terms cleanup with `wp_delete_term`. (148bbd7)
 - Replace direct call to database for plugin posts cleanup with `wp_trash_post`. (148bbd7)
 - Separate CoursesList class instantiation from class file. (148bbd7)

@@ -7,6 +7,7 @@
  */
 
 namespace WSUWP\HRS\Courses\Blocks\CoursesList;
+
 use WSUWP\HRS\Courses\Setup;
 
 /**
@@ -152,7 +153,7 @@ class CoursesList {
 
 		$excerpt_length = (int) $this->get_excerpt_length();
 		$excerpt_length = (int) apply_filters( 'excerpt_length', $excerpt_length );
-		$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$excerpt_more   = apply_filters( 'excerpt_more', ' [&hellip;]' );
 
 		return wp_trim_words( $content, $excerpt_length, $excerpt_more );
 	}
@@ -357,15 +358,3 @@ class CoursesList {
 		);
 	}
 }
-
-/**
- * Creates a new instance of the `CoursesList` class.
- *
- * @since 0.5.0
- *
- * @return CoursesList An instance of the CoursesList class.
- */
-function load() {
-	return new CoursesList();
-}
-add_action( 'init', __NAMESPACE__ . '\load', 25 );

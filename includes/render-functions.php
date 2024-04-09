@@ -9,6 +9,7 @@
  */
 
 namespace WSUWP\HRS\Courses\Render;
+
 use WSUWP\HRS\Courses\Setup;
 
 /**
@@ -115,9 +116,9 @@ function the_taxonomy_nav_list( $taxonomy ) {
 
 		printf(
 			'<div class="wp-block-column"><h3>%1$s</h3><ul%2$s>%3$s</ul></div>',
-			__( 'Browse by ', 'wsuwp-hrs-courses' ) . esc_html( $tax_name ),
-			$data_attr,
-			$terms_list
+			esc_html__( 'Browse by ', 'wsuwp-hrs-courses' ) . esc_html( $tax_name ),
+			esc_attr( $data_attr ),
+			wp_kses_post( $terms_list )
 		);
 	}
 }
@@ -140,9 +141,30 @@ function get_courses_search_form() {
 	$form = str_replace( '</form>', '', $default_form );
 	$form = str_replace( 'value="Search"', 'value="Search"', $form );
 
+	$allowed_tags = array(
+		'form'  => array(
+			'role'       => true,
+			'aria-label' => true,
+			'method'     => true,
+			'class'      => true,
+			'action'     => true,
+		),
+		'label' => array(),
+		'span'  => array(
+			'class' => true,
+		),
+		'input' => array(
+			'type'        => true,
+			'class'       => true,
+			'placeholder' => true,
+			'value'       => true,
+			'name'        => true,
+		),
+	);
+
 	printf(
 		'%1$s<input type="hidden" value="%2$s" name="post_type" /></form>',
-		$form,
+		wp_kses( $form, $allowed_tags ),
 		esc_attr( Setup\WSUWP_HRS_Courses::$post_type_slug )
 	);
 }

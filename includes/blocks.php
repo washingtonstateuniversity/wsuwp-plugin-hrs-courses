@@ -8,6 +8,8 @@
 
 namespace WSUWP\HRS\Courses\Blocks;
 
+use WSUWP\HRS\Courses\Blocks\CoursesList;
+
 /**
  * Retrieves the block registration file from every dynamic block.
  *
@@ -40,3 +42,18 @@ function register_dynamic_blocks() {
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_dynamic_blocks' );
+
+/**
+ * Creates a new instance of the `CoursesList` class.
+ *
+ * @since 0.5.0
+ *
+ * @return CoursesList An instance of the CoursesList class.
+ */
+add_action(
+	'init',
+	function () {
+		return new CoursesList\CoursesList();
+	},
+	25
+);

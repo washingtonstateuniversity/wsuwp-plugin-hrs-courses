@@ -7,6 +7,7 @@
  */
 
 namespace WSUWP\HRS\Courses\Setup;
+
 use WSUWP\HRS\Courses\Render;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -120,7 +121,7 @@ class WSUWP_HRS_Courses {
 		/*
 		 * Don't love this, but can't see another solution. Need to flush
 		 * rewrite rules only after the post type is created, but
-		 * register_activation_hook	runs before that.
+		 * register_activation_hook runs before that.
 		 */
 		add_option( 'hrs-courses-plugin-activated', 'activated' );
 	}
@@ -235,31 +236,27 @@ class WSUWP_HRS_Courses {
 	 * Deletes all HRS Courses custom taxonomies and terms.
 	 *
 	 * @since 1.0.0
+	 * @since 2.3.1 use wp_delete_term
 	 */
 	private static function remove_taxonomies() {
-		global $wpdb;
-
-		// Retrieve the term and taxonomy IDs.
-		$terms = $wpdb->get_results(
-			$wpdb->prepare(
-				"
-				SELECT term_id, term_taxonomy_id
-				FROM $wpdb->term_taxonomy
-				WHERE taxonomy IN ( %s, %s )
-				",
-				array(
-					'course_tag',
-					'learning_program',
-				)
+		$course_tag_terms       = get_terms(
+			array(
+				'taxonomy'   => 'course_tag',
+				'hide_empty' => false,
+			)
+		);
+		$learning_program_terms = get_terms(
+			array(
+				'taxonomy'   => 'learning_program',
+				'hide_empty' => false,
 			)
 		);
 
-		// Delete all data for each term and taxonomy.
-		foreach ( $terms as $term ) {
-			$wpdb->delete( $wpdb->term_relationships, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
-			$wpdb->delete( $wpdb->term_taxonomy, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
-			$wpdb->delete( $wpdb->terms, array( 'term_id' => $term->term_id ) );
-			$wpdb->delete( $wpdb->termmeta, array( 'term_id' => $term->term_id ) );
+		foreach ( $course_tag_terms as $course_tag_term ) {
+			wp_delete_term( $course_tag_term, 'course_tag' );
+		}
+		foreach ( $learning_program_terms as $learning_program_term ) {
+			wp_delete_term( $learning_program_term, 'learning_program' );
 		}
 	}
 
@@ -374,27 +371,23 @@ class WSUWP_HRS_Courses {
 	/**
 	 * Moves all HRS Courses custom post types to the Trash.
 	 *
-	 * Uses a direct MySQL command with the $wpdb object in order to prevent
-	 * memory-based timeouts when trying to trash many posts.
-	 *
 	 * @since 1.0.0
+	 * @since 2.3.1 use wp_trash_post
 	 *
-	 * @return int|false The number of rows affected by the query or false if a MySQL error is encountered.
+	 * @return void
 	 */
 	private static function remove_courses_posts() {
-		global $wpdb;
-
-		return $wpdb->query(
-			$wpdb->prepare(
-				"
-				UPDATE `$wpdb->posts`
-				SET `post_status` = %s
-				WHERE `post_type` = %s
-				",
-				'trash',
-				self::$post_type_slug
+		$courses_post_ids = get_posts(
+			array(
+				'fields'      => 'ids',
+				'numberposts' => -1,
+				'post_type'   => self::$post_type_slug,
 			)
 		);
+
+		foreach ( $courses_post_ids as $courses_post_id ) {
+			wp_trash_post( $courses_post_id );
+		}
 	}
 
 	/**
@@ -411,7 +404,7 @@ class WSUWP_HRS_Courses {
 				'show_in_rest'   => true,
 				'single'         => true,
 				'type'           => 'string',
-				'auth_callback'  => function() {
+				'auth_callback'  => function () {
 					return current_user_can( 'edit_posts' );
 				},
 			)
@@ -424,7 +417,7 @@ class WSUWP_HRS_Courses {
 				'show_in_rest'   => true,
 				'single'         => true,
 				'type'           => 'string',
-				'auth_callback'  => function() {
+				'auth_callback'  => function () {
 					return current_user_can( 'edit_posts' );
 				},
 			)
@@ -437,7 +430,7 @@ class WSUWP_HRS_Courses {
 				'show_in_rest'   => true,
 				'single'         => true,
 				'type'           => 'string',
-				'auth_callback'  => function() {
+				'auth_callback'  => function () {
 					return current_user_can( 'edit_posts' );
 				},
 			)
@@ -463,7 +456,10 @@ class WSUWP_HRS_Courses {
 				'wp-api-fetch',
 				'wp-url',
 			),
-			get_plugin_data( $this->basename )['Version']
+			get_plugin_data( $this->basename )['Version'],
+			array(
+				'in_footer' => true,
+			)
 		);
 
 		wp_enqueue_style(
@@ -483,7 +479,8 @@ class WSUWP_HRS_Courses {
 		wp_enqueue_style(
 			'wsuwp-hrs-courses-style',
 			plugins_url( 'build/style.css', $this->basename ),
-			array()
+			array(),
+			get_plugin_data( $this->basename )['Version'],
 		);
 
 		if ( is_post_type_archive( self::$post_type_slug ) ) {

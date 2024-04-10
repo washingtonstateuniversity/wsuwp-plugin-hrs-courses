@@ -17,7 +17,7 @@ Changelog formatting (https://keepachangelog.com/en/1.0.0/):
 ### Security (in case of fixed vulnerabilities)
 -->
 
-## TBD
+## 2.3.2 (2024-04-10)
 
 ### Changed
 

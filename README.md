@@ -51,7 +51,7 @@ In a terminal:
 git clone https://github.com/washingtonstateuniversity/wsuwp-plugin-hrs-courses.git wsuwp-plugin-hrs-courses
 cd wsuwp-plugin-hrs-courses
 npm install; composer install
-npm test -s
+npm lint
 git checkout -b new-branch-name
 ~~~
 
@@ -59,10 +59,10 @@ git checkout -b new-branch-name
 
 The following commands will handle basic build functions. (Remove the `-s` flag to show additional debug info.)
 
-- `npm run build -s`: Remove old compiled files such as minified CSS, lint PHP and CSS, and then compile new versions.
-- `npm test -s`: Check all PHP and CSS files for coding standards compliance.
-- `npm run clean -s`: Remove old compiled files such as minified CSS.
-- `npm run build:styles -s`: Compile CSS.
+- `npm run build`: Remove old compiled files such as minified CSS, lint PHP and CSS, and then compile new versions.
+- `npm lint`: Check all PHP and CSS files for coding standards compliance.
+- `npm run clean`: Remove old compiled files such as minified CSS.
+- `npm run build:styles`: Compile CSS.
 
 See the scripts section of `package.json` for additional available commands.
 
